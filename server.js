@@ -86,6 +86,8 @@ var _cors2 = _interopRequireDefault(_cors);
 
 var _server = __webpack_require__(4);
 
+var _reactRouterDom = __webpack_require__(13);
+
 var _App = __webpack_require__(5);
 
 var _App2 = _interopRequireDefault(_App);
@@ -106,9 +108,14 @@ app.use((0, _cors2.default)());
 app.use(_express2.default.static("public"));
 
 app.get("*", function (req, res, next) {
-  var markup = (0, _server.renderToString)(_react2.default.createElement(_App2.default, null));
+  var context = {};
+  var markup = (0, _server.renderToString)(_react2.default.createElement(
+    _reactRouterDom.StaticRouter,
+    { context: context, location: req.url },
+    _react2.default.createElement(_App2.default, null)
+  ));
 
-  res.send("\n    <!DOCTYPE html>\n    <html>\n      <head>\n        <title>YeSmart</title>\n        <link href=\"//fonts.googleapis.com/css?family=PT+Sans:400,700|Krona+One:400,700,900|Yanone Kaffeesatz:400\" rel=\"stylesheet\" type=\"text/css\">\n        <link rel=\"stylesheet\" href=\"/main.css\">\n        <script src=\"/bundle.js\" defer></script>\n      </head>\n\n      <body>\n        <div id=\"app\">" + markup + "</div>\n      </body>\n    </html>\n  ");
+  res.send("\n    <!DOCTYPE html>\n    <html>\n      <head>\n        <title>YeSmart</title>\n        <link href=\"//fonts.googleapis.com/css?family=PT+Sans:400,700|Montserrat:400,700,900|Yanone Kaffeesatz:400\" rel=\"stylesheet\" type=\"text/css\">\n        <link rel=\"stylesheet\" href=\"/main.css\">\n        <script src=\"/bundle.js\" defer></script>\n      </head>\n\n      <body>\n        <div id=\"app\">" + markup + "</div>\n      </body>\n    </html>\n  ");
 });
 
 app.listen(3000, function () {
@@ -150,21 +157,15 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _SideNav = __webpack_require__(6);
+var _reactRouterDom = __webpack_require__(13);
 
-var _SideNav2 = _interopRequireDefault(_SideNav);
+var _Home = __webpack_require__(12);
 
-var _Main = __webpack_require__(7);
+var _Home2 = _interopRequireDefault(_Home);
 
-var _Main2 = _interopRequireDefault(_Main);
+var _About = __webpack_require__(15);
 
-var _Header = __webpack_require__(10);
-
-var _Header2 = _interopRequireDefault(_Header);
-
-var _Footer = __webpack_require__(11);
-
-var _Footer2 = _interopRequireDefault(_Footer);
+var _About2 = _interopRequireDefault(_About);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -187,16 +188,10 @@ var App = function (_Component) {
     key: "render",
     value: function render() {
       return _react2.default.createElement(
-        "div",
-        { className: "yesm-container" },
-        _react2.default.createElement(_Header2.default, null),
-        _react2.default.createElement(
-          "div",
-          { className: "yesm-body" },
-          _react2.default.createElement(_Main2.default, null),
-          _react2.default.createElement(_SideNav2.default, null)
-        ),
-        _react2.default.createElement(_Footer2.default, null)
+        _reactRouterDom.Switch,
+        null,
+        _react2.default.createElement(_reactRouterDom.Route, { path: "/", exact: true, component: _Home2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { path: "/about", exact: true, component: _About2.default })
       );
     }
   }]);
@@ -257,8 +252,8 @@ var SideNav = function (_Component) {
             _react2.default.createElement(
               'filter',
               { id: 'brush' },
-              _react2.default.createElement('feTurbulence', { type: 'fractalNoise', baseFrequency: '0 0.2', numOctaves: '16', result: 'warp' }),
-              _react2.default.createElement('feDisplacementMap', { xChannelSelector: 'R', yChannelSelector: 'G', scale: '10', 'in': 'SourceGraphic', in2: 'warp' })
+              _react2.default.createElement('feTurbulence', { type: 'fractalNoise', baseFrequency: '.001 0.3', numOctaves: '2', result: 'warp' }),
+              _react2.default.createElement('feDisplacementMap', { xChannelSelector: 'R', yChannelSelector: 'G', scale: '11', 'in': 'SourceGraphic', in2: 'warp' })
             )
           )
         ),
@@ -354,6 +349,8 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(13);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -372,89 +369,90 @@ var YesCube = function (_Component) {
   }
 
   _createClass(YesCube, [{
-    key: "render",
+    key: 'render',
     value: function render() {
+      var location = this.props.location;
+
+      var className = location.pathname === '/' ? 'yesm-main-cube' : 'yesm-main-cube-logo';
       return _react2.default.createElement(
-        "svg",
-        { viewBox: "-3 -8 45 33", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", className: "main-cube" },
+        'svg',
+        { viewBox: '-14 -10 43 39', xmlns: 'http://www.w3.org/2000/svg', className: className },
         _react2.default.createElement(
-          "defs",
-          null,
-          _react2.default.createElement("line", { id: "sqr-stroke", x1: "0", y1: "0", x2: "5", y2: "5", className: "sqr-stroke" }),
-          _react2.default.createElement("rect", { id: "lil-sqr1", x: "0", y: "0", width: "10", height: "10" }),
-          _react2.default.createElement("rect", { id: "lil-sqr1", x: "0", y: "0", width: "10", height: "10" }),
-          _react2.default.createElement("rect", { id: "lil-sqr2", x: "10", y: "0", width: "10", height: "10" }),
-          _react2.default.createElement("rect", { id: "lil-sqr3", x: "20", y: "0", width: "10", height: "10" })
-        ),
-        _react2.default.createElement(
-          "g",
-          { id: "layer" },
+          'g',
+          { id: 'cube', className: 'cube' },
           _react2.default.createElement(
-            "g",
-            { className: "left-side left-left-twist" },
-            _react2.default.createElement("use", { href: "#lil-sqr1" }),
-            _react2.default.createElement("use", { href: "#lil-sqr2" }),
-            _react2.default.createElement("use", { href: "#lil-sqr3" })
+            'g',
+            { id: 'top-layer-left-twist', className: 'top-layer-left-twist' },
+            _react2.default.createElement(
+              'g',
+              { id: 'right-side-left-twist', className: 'right-side left-twist-right-side' },
+              _react2.default.createElement('rect', { x: '0', y: '0', width: '10', height: '10' }),
+              _react2.default.createElement('rect', { x: '10', y: '0', width: '10', height: '10' }),
+              _react2.default.createElement('rect', { x: '20', y: '0', width: '10', height: '10' })
+            ),
+            _react2.default.createElement(
+              'g',
+              { id: 'left-side-left-twist', className: 'left-side left-twist-left-side' },
+              _react2.default.createElement('rect', { x: '0', y: '0', width: '10', height: '10' }),
+              _react2.default.createElement('rect', { x: '10', y: '0', width: '10', height: '10' }),
+              _react2.default.createElement('rect', { x: '20', y: '0', width: '10', height: '10' })
+            ),
+            _react2.default.createElement(
+              'g',
+              { id: 'top-left-twist', className: 'top-left-twist' },
+              _react2.default.createElement('path', { d: 'M 30 30 h -30 v -30 h 30 z' })
+            )
           ),
           _react2.default.createElement(
-            "g",
-            { className: "left-side left-right-twist" },
-            _react2.default.createElement("use", { href: "#lil-sqr1" }),
-            _react2.default.createElement("use", { href: "#lil-sqr2" }),
-            _react2.default.createElement("use", { href: "#lil-sqr3" })
+            'g',
+            { id: 'right-side-left-twist-bottom', className: 'right-side right-bottom' },
+            _react2.default.createElement('rect', { x: '0', y: '0', width: '10', height: '10' }),
+            _react2.default.createElement('rect', { x: '10', y: '0', width: '10', height: '10' }),
+            _react2.default.createElement('rect', { x: '20', y: '0', width: '10', height: '10' })
           ),
           _react2.default.createElement(
-            "g",
-            { className: "left-side bottom1" },
-            _react2.default.createElement("use", { href: "#lil-sqr1" }),
-            _react2.default.createElement("use", { href: "#lil-sqr2" }),
-            _react2.default.createElement("use", { href: "#lil-sqr3" })
+            'g',
+            { id: 'left-side-left-twist-bottom', className: 'left-side left-bottom' },
+            _react2.default.createElement('rect', { x: '0', y: '0', width: '10', height: '10' }),
+            _react2.default.createElement('rect', { x: '10', y: '0', width: '10', height: '10' }),
+            _react2.default.createElement('rect', { x: '20', y: '0', width: '10', height: '10' })
           ),
           _react2.default.createElement(
-            "g",
-            { className: "right-side bottom2" },
-            _react2.default.createElement("use", { href: "#lil-sqr1" }),
-            _react2.default.createElement("use", { href: "#lil-sqr2" }),
-            _react2.default.createElement("use", { href: "#lil-sqr3" })
+            'g',
+            { id: 'right-side-right-twist', className: 'right-side right-side-right-twist' },
+            _react2.default.createElement('rect', { x: '0', y: '0', width: '10', height: '10' }),
+            _react2.default.createElement('rect', { x: '10', y: '0', width: '10', height: '10' }),
+            _react2.default.createElement('rect', { x: '20', y: '0', width: '10', height: '10' })
           ),
           _react2.default.createElement(
-            "g",
-            { className: "right-side right-right-twist" },
-            _react2.default.createElement("use", { href: "#lil-sqr1" }),
-            _react2.default.createElement("use", { href: "#lil-sqr2" }),
-            _react2.default.createElement("use", { href: "#lil-sqr3" })
+            'g',
+            { id: 'left-side-right-twist', className: 'left-side left-side-right-twist' },
+            _react2.default.createElement('rect', { x: '0', y: '0', width: '10', height: '10' }),
+            _react2.default.createElement('rect', { x: '10', y: '0', width: '10', height: '10' }),
+            _react2.default.createElement('rect', { x: '20', y: '0', width: '10', height: '10' })
           ),
           _react2.default.createElement(
-            "g",
-            { className: "right-side right-left-twist" },
-            _react2.default.createElement("use", { href: "#lil-sqr1" }),
-            _react2.default.createElement("use", { href: "#lil-sqr2" }),
-            _react2.default.createElement("use", { href: "#lil-sqr3" })
+            'g',
+            { id: 'top-right-twist', className: 'top-right-twist top-right-twist-row1' },
+            _react2.default.createElement('rect', { x: '0', y: '0', width: '10', height: '10' }),
+            _react2.default.createElement('rect', { x: '10', y: '0', width: '10', height: '10' }),
+            _react2.default.createElement('rect', { x: '20', y: '0', width: '10', height: '10' })
           ),
           _react2.default.createElement(
-            "g",
-            { className: "top row1" },
-            _react2.default.createElement("use", { href: "#lil-sqr1" }),
-            _react2.default.createElement("use", { href: "#lil-sqr2" }),
-            _react2.default.createElement("use", { href: "#lil-sqr3" })
+            'g',
+            { id: 'top-right-twist', className: 'top-right-twist top-right-twist-row2' },
+            _react2.default.createElement('rect', { x: '0', y: '0', width: '10', height: '10' }),
+            _react2.default.createElement('rect', { x: '10', y: '0', width: '10', height: '10' }),
+            _react2.default.createElement('rect', { x: '20', y: '0', width: '10', height: '10' })
           ),
           _react2.default.createElement(
-            "g",
-            { className: "top row2" },
-            _react2.default.createElement("use", { href: "#lil-sqr1" }),
-            _react2.default.createElement("use", { href: "#lil-sqr2" }),
-            _react2.default.createElement("use", { href: "#lil-sqr3" })
-          ),
-          _react2.default.createElement(
-            "g",
-            { className: "top row3" },
-            _react2.default.createElement("use", { href: "#lil-sqr1" }),
-            _react2.default.createElement("use", { href: "#lil-sqr2" }),
-            _react2.default.createElement("use", { href: "#lil-sqr3" })
+            'g',
+            { id: 'top-right-twist', className: 'top-right-twist top-right-twist-row3' },
+            _react2.default.createElement('rect', { x: '0', y: '0', width: '10', height: '10' }),
+            _react2.default.createElement('rect', { x: '10', y: '0', width: '10', height: '10' }),
+            _react2.default.createElement('rect', { x: '20', y: '0', width: '10', height: '10' })
           )
-        ),
-        _react2.default.createElement("use", { href: "#sqr-stroke", className: "top-stroke1" }),
-        _react2.default.createElement("use", { href: "#sqr-stroke", className: "top-stroke2" })
+        )
       );
     }
   }]);
@@ -462,7 +460,7 @@ var YesCube = function (_Component) {
   return YesCube;
 }(_react.Component);
 
-exports.default = YesCube;
+exports.default = (0, _reactRouterDom.withRouter)(YesCube);
 
 /***/ }),
 /* 9 */
@@ -480,6 +478,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(13);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -499,50 +499,53 @@ var YesBrandName = function (_Component) {
   }
 
   _createClass(YesBrandName, [{
-    key: "render",
+    key: 'render',
     value: function render() {
+      var location = this.props.location;
+
+      var className = location.pathname === '/' ? 'yesm-bname' : 'yesm-bname-logo';
       return _react2.default.createElement(
-        "svg",
-        { viewBox: "-1 0 26 4.4", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", className: "yesm-bname" },
+        'svg',
+        { viewBox: '-5 -3 26 24.4', xmlns: 'http://www.w3.org/2000/svg', xmlnsXlink: 'http://www.w3.org/1999/xlink', width: '100%', height: '100%', className: className },
         _react2.default.createElement(
-          "defs",
+          'defs',
           null,
-          _react2.default.createElement("path", { id: "bname-lower-path", d: "M 0 3 L 4.4 3 M 3.5 3.5 L 9.3 3.5 M10 4.5 L24 4.5", className: "yesm-text-path" }),
-          _react2.default.createElement("path", { id: "bname-cap-path", d: "M 3 3 L 5 3 M9 4.5 L24 4.5", className: "yesm-text-path-part" }),
-          _react2.default.createElement("path", { id: "bname-subhead1", d: "M 0 6.5 L 9.5 6.5", className: "yesm-subhead-path" }),
-          _react2.default.createElement("path", { id: "bname-subhead2", d: "M 0 8.6 L 13 8.6", className: "yesm-subhead-path" })
+          _react2.default.createElement('path', { id: 'bname-lower-path', d: 'M 0 3 L 5.4 3 M 5.5 3.5 L 8.3 3.5 M 8.1 4.5 L26 4.5', className: 'yesm-text-path' }),
+          _react2.default.createElement('path', { id: 'bname-cap-path', d: 'M 3.6 3 L 5 3 M 8.8 4.5 L26 4.5', className: 'yesm-text-path-part' }),
+          _react2.default.createElement('path', { id: 'bname-subhead1', d: 'M -3 7.7 L 13.5 7.7', className: 'yesm-subhead-path' }),
+          _react2.default.createElement('path', { id: 'bname-subhead2', d: 'M -3 10.5 L 18 10.5', className: 'yesm-subhead-path' })
         ),
         _react2.default.createElement(
-          "text",
-          null,
+          'text',
+          { className: 'yesm-bname-text' },
           _react2.default.createElement(
-            "textPath",
-            { href: "#bname-lower-path", className: "yesm-bname-text" },
-            "YeSmart"
+            'textPath',
+            { xlinkHref: '#bname-lower-path', className: 'yesm-bname-text-path' },
+            'YeSmart'
           ),
           _react2.default.createElement(
-            "textPath",
-            { href: "#bname-subhead1", className: "yesm-bname-subhead" },
-            "\u0423\u041C\u041D\u042B\u0415 \u0420\u0415\u0428\u0415\u041D\u0418\u042F"
+            'textPath',
+            { xlinkHref: '#bname-subhead1', className: 'yesm-bname-subhead' },
+            '\u0423\u041C\u041D\u042B\u0415 \u0420\u0415\u0428\u0415\u041D\u0418\u042F'
           ),
           _react2.default.createElement(
-            "textPath",
-            { href: "#bname-subhead2", className: "yesm-bname-subhead" },
-            "\u0414\u041B\u042F \u0412\u0410\u0428\u0415\u0413\u041E \u0411\u0418\u0417\u041D\u0415\u0421\u0410"
+            'textPath',
+            { xlinkHref: '#bname-subhead2', className: 'yesm-bname-subhead yesm-bname-subhead2' },
+            '\u0414\u041B\u042F \u0412\u0410\u0428\u0415\u0413\u041E \u0411\u0418\u0417\u041D\u0415\u0421\u0410'
           )
         ),
         _react2.default.createElement(
-          "g",
+          'g',
           null,
-          _react2.default.createElement("circle", { cx: "4", cy: "2.2", r: "1.66", className: "yesm-bname-part-cover" }),
-          _react2.default.createElement("rect", { x: "10", y: "1.3", width: "12.5", height: "4.3", className: "yesm-bname-part-cover" }),
+          _react2.default.createElement('circle', { cx: '4.8', cy: '1.8', r: '1.75', className: 'yesm-bname-part-cover' }),
+          _react2.default.createElement('rect', { x: '9.7', y: '1', width: '14.5', height: '4.3', className: 'yesm-bname-part-cover' }),
           _react2.default.createElement(
-            "text",
-            { "letter-spacing": ".3" },
+            'text',
+            { className: 'yesm-bname-part-text' },
             _react2.default.createElement(
-              "textPath",
-              { href: "#bname-cap-path", className: "yesm-bname-text-part" },
-              "EMART"
+              'textPath',
+              { xlinkHref: '#bname-cap-path', className: 'yesm-bname-text-part' },
+              'EMART'
             )
           )
         )
@@ -553,7 +556,7 @@ var YesBrandName = function (_Component) {
   return YesBrandName;
 }(_react.Component);
 
-exports.default = YesBrandName;
+exports.default = (0, _reactRouterDom.withRouter)(YesBrandName);
 
 /***/ }),
 /* 10 */
@@ -571,6 +574,16 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(13);
+
+var _YesCube = __webpack_require__(8);
+
+var _YesCube2 = _interopRequireDefault(_YesCube);
+
+var _YesBrandName = __webpack_require__(9);
+
+var _YesBrandName2 = _interopRequireDefault(_YesBrandName);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -592,17 +605,37 @@ var Header = function (_Component) {
   _createClass(Header, [{
     key: "render",
     value: function render() {
+      var location = this.props.location;
+
       return _react2.default.createElement(
         "div",
         { className: "yesm-header" },
         _react2.default.createElement(
           "div",
-          { className: "yesm-about" },
-          "\u041A\u043E\u043C\u043F\u0430\u043D\u0438\u044F"
+          { className: "yesm-header1" },
+          location.pathname === '/' ? '' : _react2.default.createElement(
+            "div",
+            { className: "yesm-logo" },
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: "/" },
+              _react2.default.createElement(_YesBrandName2.default, null),
+              _react2.default.createElement(_YesCube2.default, null)
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "yesm-about" },
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: "/about", className: location.pathname === '/about' ? 'yesm-active-link' : '' },
+              "\u041A\u043E\u043C\u043F\u0430\u043D\u0438\u044F"
+            )
+          )
         ),
         _react2.default.createElement(
           "div",
-          { className: "yesm-contact" },
+          { className: "yesm-header2" },
           "\u0421\u0432\u044F\u0437\u0430\u0442\u044C\u0441\u044F"
         )
       );
@@ -612,7 +645,7 @@ var Header = function (_Component) {
   return Header;
 }(_react.Component);
 
-exports.default = Header;
+exports.default = (0, _reactRouterDom.withRouter)(Header);
 
 /***/ }),
 /* 11 */
@@ -639,6 +672,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var footerLinks = ['Privacy', 'FAQ', 'info@email', 'Terms and conditions', 'Help', '+38123456789', 'User agreement', 'YeStudio', 'Facebook'];
+
 var Footer = function (_Component) {
   _inherits(Footer, _Component);
 
@@ -649,9 +684,24 @@ var Footer = function (_Component) {
   }
 
   _createClass(Footer, [{
-    key: "render",
+    key: 'render',
     value: function render() {
-      return _react2.default.createElement("div", { className: "yesm-footer" });
+      return _react2.default.createElement(
+        'div',
+        { className: 'yesm-footer' },
+        _react2.default.createElement(
+          'div',
+          { className: 'yesm-footer-links' },
+          footerLinks.map(function (l) {
+            return _react2.default.createElement(
+              'div',
+              { key: l.toString(), className: 'yesm-footer-link' },
+              l
+            );
+          })
+        ),
+        _react2.default.createElement('div', { className: 'yesm-footer-ripe' })
+      );
     }
   }]);
 
@@ -659,6 +709,154 @@ var Footer = function (_Component) {
 }(_react.Component);
 
 exports.default = Footer;
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _SideNav = __webpack_require__(6);
+
+var _SideNav2 = _interopRequireDefault(_SideNav);
+
+var _Main = __webpack_require__(7);
+
+var _Main2 = _interopRequireDefault(_Main);
+
+var _Header = __webpack_require__(10);
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _Footer = __webpack_require__(11);
+
+var _Footer2 = _interopRequireDefault(_Footer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Home = function (_Component) {
+  _inherits(Home, _Component);
+
+  function Home() {
+    _classCallCheck(this, Home);
+
+    return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
+  }
+
+  _createClass(Home, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { className: "yesm-container" },
+        _react2.default.createElement(_Header2.default, null),
+        _react2.default.createElement(
+          "div",
+          { className: "yesm-body" },
+          _react2.default.createElement(_Main2.default, null),
+          _react2.default.createElement(_SideNav2.default, null)
+        ),
+        _react2.default.createElement(_Footer2.default, null)
+      );
+    }
+  }]);
+
+  return Home;
+}(_react.Component);
+
+exports.default = Home;
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-router-dom");
+
+/***/ }),
+/* 14 */,
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _SideNav = __webpack_require__(6);
+
+var _SideNav2 = _interopRequireDefault(_SideNav);
+
+var _Header = __webpack_require__(10);
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _Footer = __webpack_require__(11);
+
+var _Footer2 = _interopRequireDefault(_Footer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var About = function (_Component) {
+  _inherits(About, _Component);
+
+  function About() {
+    _classCallCheck(this, About);
+
+    return _possibleConstructorReturn(this, (About.__proto__ || Object.getPrototypeOf(About)).apply(this, arguments));
+  }
+
+  _createClass(About, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { className: "yesm-container" },
+        _react2.default.createElement(_Header2.default, null),
+        _react2.default.createElement(
+          "div",
+          { className: "yesm-body" },
+          _react2.default.createElement(_SideNav2.default, null)
+        ),
+        _react2.default.createElement(_Footer2.default, null)
+      );
+    }
+  }]);
+
+  return About;
+}(_react.Component);
+
+exports.default = About;
 
 /***/ })
 /******/ ]);

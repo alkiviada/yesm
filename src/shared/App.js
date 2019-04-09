@@ -1,20 +1,15 @@
 import React, { Component } from 'react'
-import SideNav from "./SideNav";
-import Main from "./Main";
-import Header from "./Header";
-import Footer from "./Footer";
+import { Link, Switch, Route } from "react-router-dom";
+import Home from "./Home";
+import About from "./About";
 
 class App extends Component {
   render() {
     return (
-      <div className="yesm-container">
-        <Header />
-        <div className="yesm-body">
-        <Main />
-        <SideNav /> 
-        </div>
-        <Footer />
-      </div>
+      <Switch>
+        <Route path="/" exact component={ Home } />
+        <Route path="/about" exact component={ About } />
+      </Switch>
     )
   }
 }

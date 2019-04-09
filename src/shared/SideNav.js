@@ -11,8 +11,8 @@ class SideNav extends Component {
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" className="svg-filters" width="0" height="0" >
       <defs>
       <filter id="brush">
-      <feTurbulence type="fractalNoise" baseFrequency="0 0.2" numOctaves="16" result="warp" />
-      <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="10" in="SourceGraphic" in2="warp" />
+      <feTurbulence type="fractalNoise" baseFrequency=".001 0.3" numOctaves="2" result="warp" />
+      <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="11" in="SourceGraphic" in2="warp" />
      </filter>
      </defs>
     </svg>

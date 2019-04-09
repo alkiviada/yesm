@@ -1,6 +1,7 @@
 import express from "express"
 import cors from "cors"
 import { renderToString } from "react-dom/server"
+import { StaticRouter } from "react-router-dom";
 import App from '../shared/App'
 import React from 'react'
 
@@ -14,8 +15,12 @@ app.use(cors())
 app.use(express.static("public"))
 
 app.get("*", (req, res, next) => {
+  const context = { };
   const markup = renderToString(
+    <StaticRouter context={ context } location={ req.url }>
+
     <App />
+        </StaticRouter>
   )
 
   res.send(`
@@ -23,7 +28,7 @@ app.get("*", (req, res, next) => {
     <html>
       <head>
         <title>YeSmart</title>
-        <link href="//fonts.googleapis.com/css?family=PT+Sans:400,700|Krona+One:400,700,900|Yanone Kaffeesatz:400" rel="stylesheet" type="text/css">
+        <link href="//fonts.googleapis.com/css?family=PT+Sans:400,700|Montserrat:400,700,900|Yanone Kaffeesatz:400" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="/main.css">
         <script src="/bundle.js" defer></script>
       </head>
