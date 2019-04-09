@@ -150,6 +150,22 @@ body {
   grid-area: about;
   justify-self: end;
   align-self: end;
+  position: relative;
+}
+
+.yesm-about::before {
+  content: '>';
+  position: absolute;
+  color: var(--off-white-color);
+  top: 1em;
+  font-size: 40px;
+  font-weight: 900;
+  transform: rotate(90deg);
+  font-family: var(--body-font);
+  display: none;
+}
+.about .yesm-about::before {
+  display: block;
 }
 
 .yesm-header2 {
@@ -202,7 +218,7 @@ body {
   width: 300%;
   height: 300%;
   left: 5em;
-  top: -.1em;
+  top: -.05em;
 }
 
 .yesm-main-cube-logo {
@@ -271,14 +287,14 @@ body {
   grid-area: side-nav;
   align-self: center;
   -webkit-align-self: center;
-  -webkit-justify-self: end;
-  justify-self: end;
+  -webkit-justify-self: end; 
+  justify-self: end; 
   color: var(--off-white-color);
   font-weight: bold;
   font-size: .9rem;
   letter-spacing: 1.05px;
   margin-top: var(--gmargin-top);
-  margin-right: 3rem;
+  margin-right: 1.6em;
 }
 
 .yesm-nav-link::before {
@@ -287,11 +303,10 @@ body {
   position: absolute;
   top: .2em;
   width: 100%;
-  margin-left: -1em;
-  padding-right: 2em;
   content: '';
   height: 80%;
   z-index: -1;
+  padding: 0 1em;
 }
 
 .bg-blue::before {
@@ -310,10 +325,12 @@ body {
   position: relative;
   margin-top: 1em;
   display: grid;
-  place-items: center;
+  align-items: center;
+  justify-items: center;
   -webkit-align-items: center;
   -webkit-justify-items: center;
   white-space: nowrap;
+  padding-left: 1em;
 }
 
 /* yesmart rubik cube */

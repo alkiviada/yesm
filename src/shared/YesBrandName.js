@@ -26,7 +26,7 @@ class YesBrandName extends Component {
         </text>
         <g>
         <circle cx="4.8" cy="1.8" r="1.75" className="yesm-bname-part-cover"/>
-        <rect x="9.7" y="1" width="14.5" height="4.3" className="yesm-bname-part-cover"/>
+        <rect x="9.6" y="1" width="14.5" height="4.3" className="yesm-bname-part-cover"/>
         <text className="yesm-bname-part-text">
         <textPath xlinkHref="#bname-cap-path" className="yesm-bname-text-part">
         EMART 
