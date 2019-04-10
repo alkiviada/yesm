@@ -747,6 +747,8 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(1);
+
 var _YesCube = __webpack_require__(3);
 
 var _YesCube2 = _interopRequireDefault(_YesCube);
@@ -754,6 +756,10 @@ var _YesCube2 = _interopRequireDefault(_YesCube);
 var _YesBrandName = __webpack_require__(4);
 
 var _YesBrandName2 = _interopRequireDefault(_YesBrandName);
+
+var _AboutMain = __webpack_require__(16);
+
+var _AboutMain2 = _interopRequireDefault(_AboutMain);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -775,19 +781,21 @@ var Main = function (_Component) {
   _createClass(Main, [{
     key: "render",
     value: function render() {
-      return _react2.default.createElement(
+      var location = this.props.location;
+
+      return location.pathname === '/' ? _react2.default.createElement(
         "div",
         { className: "yesm-main" },
         _react2.default.createElement(_YesCube2.default, null),
         _react2.default.createElement(_YesBrandName2.default, null)
-      );
+      ) : _react2.default.createElement(_AboutMain2.default, null);
     }
   }]);
 
   return Main;
 }(_react.Component);
 
-exports.default = Main;
+exports.default = (0, _reactRouterDom.withRouter)(Main);
 
 /***/ }),
 /* 14 */
@@ -809,6 +817,10 @@ var _react2 = _interopRequireDefault(_react);
 var _reactBodyClassname = __webpack_require__(15);
 
 var _reactBodyClassname2 = _interopRequireDefault(_reactBodyClassname);
+
+var _Main = __webpack_require__(13);
+
+var _Main2 = _interopRequireDefault(_Main);
 
 var _SideNav = __webpack_require__(2);
 
@@ -852,6 +864,7 @@ var About = function (_Component) {
           _react2.default.createElement(
             'div',
             { className: 'yesm-body' },
+            _react2.default.createElement(_Main2.default, null),
             _react2.default.createElement(_SideNav2.default, null)
           ),
           _react2.default.createElement(_Footer2.default, null)
@@ -870,6 +883,74 @@ exports.default = About;
 /***/ (function(module, exports) {
 
 module.exports = require("react-body-classname");
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var AboutMain = function (_Component) {
+  _inherits(AboutMain, _Component);
+
+  function AboutMain() {
+    _classCallCheck(this, AboutMain);
+
+    return _possibleConstructorReturn(this, (AboutMain.__proto__ || Object.getPrototypeOf(AboutMain)).apply(this, arguments));
+  }
+
+  _createClass(AboutMain, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { className: "yesm-main-about" },
+        _react2.default.createElement(
+          "svg",
+          { xmlns: "http://www.w3.org/2000/svg", version: "1.1", className: "svg-filters", width: "0", height: "0" },
+          _react2.default.createElement(
+            "defs",
+            null,
+            _react2.default.createElement(
+              "filter",
+              { id: "brush-main" },
+              _react2.default.createElement("feTurbulence", { type: "fractalNoise", baseFrequency: ".08 5", numOctaves: "2", result: "warp" }),
+              _react2.default.createElement("feDisplacementMap", { xChannelSelector: "R", yChannelSelector: "G", scale: "25", "in": "SourceGraphic", in2: "warp" })
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "yesm-main-about-text" },
+          "This company is the shit! \u0418\u0433\u0440\u0430\u0435\u0442 \u0431\u0430\u0441. \u0418\u0433\u0440\u0430\u0435\u0442 \u0441\u043E\u043B\u043E. \u041E\u043D\u0430 \u043F\u043E\u0435\u0442 \u043A\u0430\u043A \u043E\u043D\u0430 \u0431\u0440\u043E\u0432\u0438 \u043D\u0430\u043A\u043E\u043B\u043E\u043B\u0430"
+        )
+      );
+    }
+  }]);
+
+  return AboutMain;
+}(_react.Component);
+
+exports.default = AboutMain;
 
 /***/ })
 /******/ ]);
