@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -92,6 +92,10 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _constants = __webpack_require__(14);
+
+var _reactRouterDom = __webpack_require__(1);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -99,8 +103,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var links = ['Адреса тра ла ла', 'Автономные системы', 'Мониторинг ресурсов клиента', 'Регистрация', 'Регистрация доменов', 'IP-консалтинг'];
 
 var SideNav = function (_Component) {
   _inherits(SideNav, _Component);
@@ -114,6 +116,8 @@ var SideNav = function (_Component) {
   _createClass(SideNav, [{
     key: 'render',
     value: function render() {
+      var location = this.props.location;
+
       return _react2.default.createElement(
         'div',
         { className: 'yesm-sidenav' },
@@ -131,11 +135,15 @@ var SideNav = function (_Component) {
             )
           )
         ),
-        links.map(function (l, i) {
+        Object.keys(_constants.sideNav).map(function (sn, i) {
           return _react2.default.createElement(
             'div',
-            { key: l.toString(), className: 'yesm-nav-link ' + (i % 3 ? i % 2 ? 'bg-blue' : 'bg-yellow' : 'bg-red') },
-            l
+            { key: sn.toString(), className: 'yesm-nav-link bg-' + _constants.sideNav[sn].color },
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: '/' + _constants.sideNav[sn].pageLink, className: location.pathname === '/' + _constants.sideNav[sn].pageLink ? 'active' : '' },
+              _constants.sideNav[sn].title
+            )
           );
         })
       );
@@ -145,10 +153,83 @@ var SideNav = function (_Component) {
   return SideNav;
 }(_react.Component);
 
-exports.default = SideNav;
+exports.default = (0, _reactRouterDom.withRouter)(SideNav);
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(1);
+
+var _YesCube = __webpack_require__(4);
+
+var _YesCube2 = _interopRequireDefault(_YesCube);
+
+var _YesBrandName = __webpack_require__(5);
+
+var _YesBrandName2 = _interopRequireDefault(_YesBrandName);
+
+var _MainContent = __webpack_require__(15);
+
+var _MainContent2 = _interopRequireDefault(_MainContent);
+
+var _constants = __webpack_require__(14);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Main = function (_Component) {
+  _inherits(Main, _Component);
+
+  function Main() {
+    _classCallCheck(this, Main);
+
+    return _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).apply(this, arguments));
+  }
+
+  _createClass(Main, [{
+    key: "render",
+    value: function render() {
+      var location = this.props.location;
+
+      var page = location.pathname.substr(1);
+      console.log(page);
+      console.log(location.pathname);
+
+      return location.pathname === '/' ? _react2.default.createElement(
+        "div",
+        { className: "yesm-main" },
+        _react2.default.createElement("img", { src: "/cube.png", alt: "", className: "yesm-main-cube" }),
+        _react2.default.createElement(_YesBrandName2.default, null)
+      ) : _constants.sideNav[page] ? _react2.default.createElement(_MainContent2.default, { page: page }) : '';
+    }
+  }]);
+
+  return Main;
+}(_react.Component);
+
+exports.default = (0, _reactRouterDom.withRouter)(Main);
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -278,7 +359,7 @@ var YesCube = function (_Component) {
 exports.default = (0, _reactRouterDom.withRouter)(YesCube);
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -325,43 +406,36 @@ var YesBrandName = function (_Component) {
         _react2.default.createElement(
           'defs',
           null,
-          _react2.default.createElement('path', { id: 'bname-lower-path', d: 'M 0 3 L 5.4 3 M 5.5 3.5 L 8.3 3.5 M 8.1 4.5 L26 4.5', className: 'yesm-text-path' }),
-          _react2.default.createElement('path', { id: 'bname-cap-path', d: 'M 3.6 3 L 5 3 M 8.8 4.5 L26 4.5', className: 'yesm-text-path-part' }),
-          _react2.default.createElement('path', { id: 'bname-subhead1', d: 'M -3 7.7 L 13.5 7.7', className: 'yesm-subhead-path' }),
-          _react2.default.createElement('path', { id: 'bname-subhead2', d: 'M -3 10.5 L 18 10.5', className: 'yesm-subhead-path' })
+          _react2.default.createElement('path', { id: 'bname-lower-path', d: 'M 0 3 L 5.8 3 M 6 3.5 L 10 3.5 M 10 4.5 L26 4.5', className: 'yesm-text-path' }),
+          _react2.default.createElement('path', { id: 'bname-cap-path', d: 'M 3.9 3 L 5.3 3 M 9.2 4.5 L26 4.5', className: 'yesm-text-path-part' }),
+          _react2.default.createElement('path', { id: 'bname-subhead1', d: 'M -2.8 8.1 L 13.5 8.1', className: 'yesm-subhead-path' }),
+          _react2.default.createElement('path', { id: 'bname-subhead2', d: 'M -2.8 11.2 L 18 11.2', className: 'yesm-subhead-path' })
         ),
         _react2.default.createElement(
           'text',
-          { className: 'yesm-bname-text' },
+          { className: 'yesm-bname-text', textLength: '27' },
           _react2.default.createElement(
             'textPath',
             { xlinkHref: '#bname-lower-path', className: 'yesm-bname-text-path' },
             'YeSmart'
-          ),
+          )
+        ),
+        _react2.default.createElement(
+          'text',
+          { className: 'yesm-bname-subhead-text', textLength: '14' },
           _react2.default.createElement(
             'textPath',
             { xlinkHref: '#bname-subhead1', className: 'yesm-bname-subhead' },
             '\u0423\u041C\u041D\u042B\u0415 \u0420\u0415\u0428\u0415\u041D\u0418\u042F'
-          ),
+          )
+        ),
+        _react2.default.createElement(
+          'text',
+          { className: 'yesm-bname-subhead-text', textLength: '18' },
           _react2.default.createElement(
             'textPath',
             { xlinkHref: '#bname-subhead2', className: 'yesm-bname-subhead yesm-bname-subhead2' },
             '\u0414\u041B\u042F \u0412\u0410\u0428\u0415\u0413\u041E \u0411\u0418\u0417\u041D\u0415\u0421\u0410'
-          )
-        ),
-        _react2.default.createElement(
-          'g',
-          null,
-          _react2.default.createElement('circle', { cx: '4.8', cy: '1.8', r: '1.75', className: 'yesm-bname-part-cover' }),
-          _react2.default.createElement('rect', { x: '9.6', y: '1', width: '14.5', height: '4.3', className: 'yesm-bname-part-cover' }),
-          _react2.default.createElement(
-            'text',
-            { className: 'yesm-bname-part-text' },
-            _react2.default.createElement(
-              'textPath',
-              { xlinkHref: '#bname-cap-path', className: 'yesm-bname-text-part' },
-              'EMART'
-            )
           )
         )
       );
@@ -374,7 +448,7 @@ var YesBrandName = function (_Component) {
 exports.default = (0, _reactRouterDom.withRouter)(YesBrandName);
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -392,11 +466,11 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(1);
 
-var _YesCube = __webpack_require__(3);
+var _YesCube = __webpack_require__(4);
 
 var _YesCube2 = _interopRequireDefault(_YesCube);
 
-var _YesBrandName = __webpack_require__(4);
+var _YesBrandName = __webpack_require__(5);
 
 var _YesBrandName2 = _interopRequireDefault(_YesBrandName);
 
@@ -435,7 +509,7 @@ var Header = function (_Component) {
               _reactRouterDom.Link,
               { to: "/" },
               _react2.default.createElement(_YesBrandName2.default, null),
-              _react2.default.createElement(_YesCube2.default, null)
+              _react2.default.createElement("img", { src: "/cube.png", alt: "rubik cube", className: "yesm-main-cube-logo" })
             )
           ),
           _react2.default.createElement(
@@ -443,7 +517,7 @@ var Header = function (_Component) {
             { className: "yesm-about" },
             _react2.default.createElement(
               _reactRouterDom.Link,
-              { to: "/about", className: location.pathname === '/about' ? 'yesm-active-link' : '' },
+              { to: "/about", className: location.pathname === '/about' ? 'active' : '' },
               "\u041A\u043E\u043C\u043F\u0430\u043D\u0438\u044F"
             )
           )
@@ -463,7 +537,7 @@ var Header = function (_Component) {
 exports.default = (0, _reactRouterDom.withRouter)(Header);
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -526,25 +600,25 @@ var Footer = function (_Component) {
 exports.default = Footer;
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _express = __webpack_require__(8);
+var _express = __webpack_require__(9);
 
 var _express2 = _interopRequireDefault(_express);
 
-var _cors = __webpack_require__(9);
+var _cors = __webpack_require__(10);
 
 var _cors2 = _interopRequireDefault(_cors);
 
-var _server = __webpack_require__(10);
+var _server = __webpack_require__(11);
 
 var _reactRouterDom = __webpack_require__(1);
 
-var _App = __webpack_require__(11);
+var _App = __webpack_require__(12);
 
 var _App2 = _interopRequireDefault(_App);
 
@@ -579,25 +653,25 @@ app.listen(3000, function () {
 });
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports) {
 
 module.exports = require("express");
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports = require("cors");
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -615,13 +689,13 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(1);
 
-var _Home = __webpack_require__(12);
+var _Home = __webpack_require__(13);
 
 var _Home2 = _interopRequireDefault(_Home);
 
-var _About = __webpack_require__(14);
+var _YesmPage = __webpack_require__(16);
 
-var _About2 = _interopRequireDefault(_About);
+var _YesmPage2 = _interopRequireDefault(_YesmPage);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -647,7 +721,7 @@ var App = function (_Component) {
         _reactRouterDom.Switch,
         null,
         _react2.default.createElement(_reactRouterDom.Route, { path: "/", exact: true, component: _Home2.default }),
-        _react2.default.createElement(_reactRouterDom.Route, { path: "/about", exact: true, component: _About2.default })
+        _react2.default.createElement(_reactRouterDom.Route, { component: _YesmPage2.default })
       );
     }
   }]);
@@ -658,7 +732,7 @@ var App = function (_Component) {
 exports.default = App;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -678,15 +752,15 @@ var _SideNav = __webpack_require__(2);
 
 var _SideNav2 = _interopRequireDefault(_SideNav);
 
-var _Main = __webpack_require__(13);
+var _Main = __webpack_require__(3);
 
 var _Main2 = _interopRequireDefault(_Main);
 
-var _Header = __webpack_require__(5);
+var _Header = __webpack_require__(6);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _Footer = __webpack_require__(6);
+var _Footer = __webpack_require__(7);
 
 var _Footer2 = _interopRequireDefault(_Footer);
 
@@ -731,73 +805,6 @@ var Home = function (_Component) {
 exports.default = Home;
 
 /***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(1);
-
-var _YesCube = __webpack_require__(3);
-
-var _YesCube2 = _interopRequireDefault(_YesCube);
-
-var _YesBrandName = __webpack_require__(4);
-
-var _YesBrandName2 = _interopRequireDefault(_YesBrandName);
-
-var _AboutMain = __webpack_require__(16);
-
-var _AboutMain2 = _interopRequireDefault(_AboutMain);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Main = function (_Component) {
-  _inherits(Main, _Component);
-
-  function Main() {
-    _classCallCheck(this, Main);
-
-    return _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).apply(this, arguments));
-  }
-
-  _createClass(Main, [{
-    key: "render",
-    value: function render() {
-      var location = this.props.location;
-
-      return location.pathname === '/' ? _react2.default.createElement(
-        "div",
-        { className: "yesm-main" },
-        _react2.default.createElement(_YesCube2.default, null),
-        _react2.default.createElement(_YesBrandName2.default, null)
-      ) : _react2.default.createElement(_AboutMain2.default, null);
-    }
-  }]);
-
-  return Main;
-}(_react.Component);
-
-exports.default = (0, _reactRouterDom.withRouter)(Main);
-
-/***/ }),
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -807,6 +814,27 @@ exports.default = (0, _reactRouterDom.withRouter)(Main);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var text = 'Igraet bas. Igraet solo. Ona poet kak ona brovi nakolola.';
+
+var sideNav = exports.sideNav = {
+  'address': { 'title': 'Адреса тра ла ла', 'color': 'red', 'pageLink': 'address', 'text': text, 'pageClass': 'address' },
+  'as': { 'title': 'Автономные системы', 'color': 'blue', 'pageLink': 'as', 'text': text, 'pageClass': 'as' },
+  'monitor': { 'title': 'Мониторинг ресурсов клиента', 'color': 'yellow', 'pageLink': 'monitor', 'text': text, 'pageClass': 'monitor' },
+  'lir': { 'title': 'Регистрация LIR', 'color': 'blue', 'pageLink': 'lir', 'text': text },
+  'domain': { 'title': 'Регистрация доменов', 'color': 'red', 'pageLink': 'domain', 'text': text },
+  'cons': { 'title': 'IP-консалтинг', 'color': 'yellow', 'pageLink': 'cons', 'text': text }
+};
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -814,25 +842,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactBodyClassname = __webpack_require__(15);
+var _reactBodyClassname = __webpack_require__(17);
 
 var _reactBodyClassname2 = _interopRequireDefault(_reactBodyClassname);
 
-var _Main = __webpack_require__(13);
-
-var _Main2 = _interopRequireDefault(_Main);
-
-var _SideNav = __webpack_require__(2);
-
-var _SideNav2 = _interopRequireDefault(_SideNav);
-
-var _Header = __webpack_require__(5);
-
-var _Header2 = _interopRequireDefault(_Header);
-
-var _Footer = __webpack_require__(6);
-
-var _Footer2 = _interopRequireDefault(_Footer);
+var _constants = __webpack_require__(14);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -842,47 +856,53 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var About = function (_Component) {
-  _inherits(About, _Component);
+var MainContent = function (_Component) {
+  _inherits(MainContent, _Component);
 
-  function About() {
-    _classCallCheck(this, About);
+  function MainContent() {
+    _classCallCheck(this, MainContent);
 
-    return _possibleConstructorReturn(this, (About.__proto__ || Object.getPrototypeOf(About)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (MainContent.__proto__ || Object.getPrototypeOf(MainContent)).apply(this, arguments));
   }
 
-  _createClass(About, [{
+  _createClass(MainContent, [{
     key: 'render',
     value: function render() {
+      console.log(this.props.page);
+      console.log('main content');
+      console.log(_constants.sideNav);
+      var pageClass = _constants.sideNav[this.props.page].pageClass;
+      var text = _constants.sideNav[this.props.page].text;
       return _react2.default.createElement(
-        _reactBodyClassname2.default,
-        { className: 'about' },
+        'div',
+        { className: "yesm-main-content " + pageClass },
+        _react2.default.createElement(
+          'svg',
+          { xmlns: 'http://www.w3.org/2000/svg', version: '1.1', className: 'svg-filters', width: '0', height: '0' },
+          _react2.default.createElement(
+            'defs',
+            null,
+            _react2.default.createElement(
+              'filter',
+              { id: 'brush-main' },
+              _react2.default.createElement('feTurbulence', { type: 'fractalNoise', baseFrequency: '.01 .01', numOctaves: '8', result: 'warp' }),
+              _react2.default.createElement('feDisplacementMap', { xChannelSelector: 'R', yChannelSelector: 'G', scale: '20', 'in': 'SourceGraphic', in2: 'warp' })
+            )
+          )
+        ),
         _react2.default.createElement(
           'div',
-          { className: 'yesm-container' },
-          _react2.default.createElement(_Header2.default, null),
-          _react2.default.createElement(
-            'div',
-            { className: 'yesm-body' },
-            _react2.default.createElement(_Main2.default, null),
-            _react2.default.createElement(_SideNav2.default, null)
-          ),
-          _react2.default.createElement(_Footer2.default, null)
+          { className: 'yesm-main-text' },
+          text
         )
       );
     }
   }]);
 
-  return About;
+  return MainContent;
 }(_react.Component);
 
-exports.default = About;
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-body-classname");
+exports.default = MainContent;
 
 /***/ }),
 /* 16 */
@@ -901,6 +921,22 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _Main = __webpack_require__(3);
+
+var _Main2 = _interopRequireDefault(_Main);
+
+var _SideNav = __webpack_require__(2);
+
+var _SideNav2 = _interopRequireDefault(_SideNav);
+
+var _Header = __webpack_require__(6);
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _Footer = __webpack_require__(7);
+
+var _Footer2 = _interopRequireDefault(_Footer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -909,48 +945,43 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var AboutMain = function (_Component) {
-  _inherits(AboutMain, _Component);
+var YesmPage = function (_Component) {
+  _inherits(YesmPage, _Component);
 
-  function AboutMain() {
-    _classCallCheck(this, AboutMain);
+  function YesmPage() {
+    _classCallCheck(this, YesmPage);
 
-    return _possibleConstructorReturn(this, (AboutMain.__proto__ || Object.getPrototypeOf(AboutMain)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (YesmPage.__proto__ || Object.getPrototypeOf(YesmPage)).apply(this, arguments));
   }
 
-  _createClass(AboutMain, [{
+  _createClass(YesmPage, [{
     key: "render",
     value: function render() {
       return _react2.default.createElement(
         "div",
-        { className: "yesm-main-about" },
-        _react2.default.createElement(
-          "svg",
-          { xmlns: "http://www.w3.org/2000/svg", version: "1.1", className: "svg-filters", width: "0", height: "0" },
-          _react2.default.createElement(
-            "defs",
-            null,
-            _react2.default.createElement(
-              "filter",
-              { id: "brush-main" },
-              _react2.default.createElement("feTurbulence", { type: "fractalNoise", baseFrequency: ".08 5", numOctaves: "2", result: "warp" }),
-              _react2.default.createElement("feDisplacementMap", { xChannelSelector: "R", yChannelSelector: "G", scale: "25", "in": "SourceGraphic", in2: "warp" })
-            )
-          )
-        ),
+        { className: "yesm-container" },
+        _react2.default.createElement(_Header2.default, null),
         _react2.default.createElement(
           "div",
-          { className: "yesm-main-about-text" },
-          "This company is the shit! \u0418\u0433\u0440\u0430\u0435\u0442 \u0431\u0430\u0441. \u0418\u0433\u0440\u0430\u0435\u0442 \u0441\u043E\u043B\u043E. \u041E\u043D\u0430 \u043F\u043E\u0435\u0442 \u043A\u0430\u043A \u043E\u043D\u0430 \u0431\u0440\u043E\u0432\u0438 \u043D\u0430\u043A\u043E\u043B\u043E\u043B\u0430"
-        )
+          { className: "yesm-body" },
+          _react2.default.createElement(_Main2.default, null),
+          _react2.default.createElement(_SideNav2.default, null)
+        ),
+        _react2.default.createElement(_Footer2.default, null)
       );
     }
   }]);
 
-  return AboutMain;
+  return YesmPage;
 }(_react.Component);
 
-exports.default = AboutMain;
+exports.default = YesmPage;
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-body-classname");
 
 /***/ })
 /******/ ]);

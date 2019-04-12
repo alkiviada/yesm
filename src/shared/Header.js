@@ -8,18 +8,22 @@ class Header extends Component {
     const { location } = this.props
     return (
       <div className="yesm-header">
-      <div className="yesm-header1">
-      { location.pathname === '/' ? '' : 
-        <div className="yesm-logo">
-        <Link to="/">
-         <YesBrandName />
-         <YesCube />
-       </Link>
-       </div>
-      }
-      <div className="yesm-about"><Link to="/about" className={location.pathname === '/about' ? 'yesm-active-link' : ''}>Компания</Link></div>
+        <div className="yesm-header1">
+          { location.pathname === '/' ? '' : 
+            <div className="yesm-logo">
+              <Link to="/">
+                <YesBrandName />
+                <img src="/cube.png" alt="rubik cube" className='yesm-main-cube-logo' />
+              </Link>
+            </div>
+          }
+        <div className="yesm-about">
+          <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>
+            Компания
+          </Link>
+        </div>
       </div>
-      <div className="yesm-header2">Связаться</div>
+        <div className="yesm-header2">Связаться</div>
       </div>
     )
   }
