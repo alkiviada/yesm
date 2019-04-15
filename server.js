@@ -129,9 +129,17 @@ var SideNav = function (_Component) {
             null,
             _react2.default.createElement(
               'filter',
-              { id: 'brush' },
-              _react2.default.createElement('feTurbulence', { type: 'fractalNoise', baseFrequency: '.001 0.3', numOctaves: '2', result: 'warp' }),
-              _react2.default.createElement('feDisplacementMap', { xChannelSelector: 'R', yChannelSelector: 'G', scale: '11', 'in': 'SourceGraphic', in2: 'warp' })
+              { id: 'colorMeBlueMatrix' },
+              _react2.default.createElement('feColorMatrix', { 'in': 'SourceGraphic',
+                type: 'matrix',
+                values: '1 0 0 0 -1 0 1 0 0 .4 0 0 1 0 .6 0 0 0 .6 0' })
+            ),
+            _react2.default.createElement(
+              'filter',
+              { id: 'colorMeYellowMatrix' },
+              _react2.default.createElement('feColorMatrix', { 'in': 'SourceGraphic',
+                type: 'matrix',
+                values: '1 0 0 0 .39 0 1 0 0 .6 0 0 1 0 -.14 0 0 0 .7 0' })
             )
           )
         ),
@@ -217,7 +225,7 @@ var Main = function (_Component) {
       return location.pathname === '/' ? _react2.default.createElement(
         "div",
         { className: "yesm-main" },
-        _react2.default.createElement("img", { src: "/cube.png", alt: "", className: "yesm-main-cube" }),
+        _react2.default.createElement("img", { src: "/cube-main.png", alt: "", className: "yesm-main-cube" }),
         _react2.default.createElement(_YesBrandName2.default, null)
       ) : _constants.sideNav[page] ? _react2.default.createElement(_MainContent2.default, { page: page }) : '';
     }
@@ -408,8 +416,8 @@ var YesBrandName = function (_Component) {
           null,
           _react2.default.createElement('path', { id: 'bname-lower-path', d: 'M 0 3 L 5.8 3 M 6 3.5 L 10 3.5 M 10 4.5 L26 4.5', className: 'yesm-text-path' }),
           _react2.default.createElement('path', { id: 'bname-cap-path', d: 'M 3.9 3 L 5.3 3 M 9.2 4.5 L26 4.5', className: 'yesm-text-path-part' }),
-          _react2.default.createElement('path', { id: 'bname-subhead1', d: 'M -2.8 8.1 L 13.5 8.1', className: 'yesm-subhead-path' }),
-          _react2.default.createElement('path', { id: 'bname-subhead2', d: 'M -2.8 11.2 L 18 11.2', className: 'yesm-subhead-path' })
+          _react2.default.createElement('path', { id: 'bname-subhead1', d: 'M -1.4 8.1 L 13.5 8.1', className: 'yesm-subhead-path' }),
+          _react2.default.createElement('path', { id: 'bname-subhead2', d: 'M -1.4 11.2 L 18 11.2', className: 'yesm-subhead-path' })
         ),
         _react2.default.createElement(
           'text',
@@ -645,7 +653,7 @@ app.get("*", function (req, res, next) {
     _react2.default.createElement(_App2.default, null)
   ));
 
-  res.send("\n    <!DOCTYPE html>\n    <html>\n      <head>\n        <title>YeSmart</title>\n        <link href=\"//fonts.googleapis.com/css?family=PT+Sans:400,700,900|Montserrat:400,700,900|Yanone Kaffeesatz:400\" rel=\"stylesheet\" type=\"text/css\">\n        <link rel=\"stylesheet\" href=\"/main.css\">\n        <script src=\"/bundle.js\" defer></script>\n      </head>\n\n      <body>\n        <div id=\"app\">" + markup + "</div>\n      </body>\n    </html>\n  ");
+  res.send("\n    <!DOCTYPE html>\n    <html>\n      <head>\n        <title>YeSmart</title>\n        <link href=\"//fonts.googleapis.com/css?family=Open+Sans:400,700,900|Montserrat:400,700,900|Yanone+Kaffeesatz:400|Architects+Daughter:400\" rel=\"stylesheet\" type=\"text/css\">\n        <link rel=\"stylesheet\" href=\"/main.css\">\n        <script src=\"/bundle.js\" defer></script>\n      </head>\n\n      <body>\n        <div id=\"app\">" + markup + "</div>\n      </body>\n    </html>\n  ");
 });
 
 app.listen(3000, function () {
@@ -820,7 +828,7 @@ var sideNav = exports.sideNav = {
   'address': { 'title': 'Адреса тра ла ла', 'color': 'red', 'pageLink': 'address', 'text': text, 'pageClass': 'address' },
   'as': { 'title': 'Автономные системы', 'color': 'blue', 'pageLink': 'as', 'text': text, 'pageClass': 'as' },
   'monitor': { 'title': 'Мониторинг ресурсов клиента', 'color': 'yellow', 'pageLink': 'monitor', 'text': text, 'pageClass': 'monitor' },
-  'lir': { 'title': 'Регистрация LIR', 'color': 'blue', 'pageLink': 'lir', 'text': text },
+  'lir': { 'title': 'Регистрация LIR', 'color': 'blue', 'pageLink': 'lir', 'text': text, 'pageClass': 'lir' },
   'domain': { 'title': 'Регистрация доменов', 'color': 'red', 'pageLink': 'domain', 'text': text },
   'cons': { 'title': 'IP-консалтинг', 'color': 'yellow', 'pageLink': 'cons', 'text': text }
 };
@@ -876,20 +884,6 @@ var MainContent = function (_Component) {
       return _react2.default.createElement(
         'div',
         { className: "yesm-main-content " + pageClass },
-        _react2.default.createElement(
-          'svg',
-          { xmlns: 'http://www.w3.org/2000/svg', version: '1.1', className: 'svg-filters', width: '0', height: '0' },
-          _react2.default.createElement(
-            'defs',
-            null,
-            _react2.default.createElement(
-              'filter',
-              { id: 'brush-main' },
-              _react2.default.createElement('feTurbulence', { type: 'fractalNoise', baseFrequency: '.01 .01', numOctaves: '8', result: 'warp' }),
-              _react2.default.createElement('feDisplacementMap', { xChannelSelector: 'R', yChannelSelector: 'G', scale: '20', 'in': 'SourceGraphic', in2: 'warp' })
-            )
-          )
-        ),
         _react2.default.createElement(
           'div',
           { className: 'yesm-main-text' },

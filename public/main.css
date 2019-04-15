@@ -2,10 +2,11 @@
   --bg-color: #333;
   --title-font: Montserrat;
   --subtitle-font: Yanone Kaffeesatz;
-  --body-font: PT Sans;
-  --blue-color: #318198;
-  --red-color: #C11731;
-  --yellow-color: #be8c0d;
+  --body-font: Open Sans;
+  --studio-font: Architects Daughter;
+  --blue-color: #1b80b4;
+  --red-color: #cc0033;
+  --yellow-color: #d7a30f;
   --footer-color: #535554;
   --off-white-color: #FDF6EC;
   --light-grey-color: #D6D6D6;
@@ -190,25 +191,25 @@ body {
 }
 
 .yesm-main-content::before {
-  -webkit-filter: url("#brush-main");
-  filter: url("#brush-main");
   position: absolute;
   top: 4em;
-  width: 100%;
   content: '';
-  height: 70%;
   z-index: -1;
-  padding: 0 1em;
+  width: 100%;
+  height: 80%;
+  background-size: 100% 100%;
+  background-image: url(text-bg-red.png);
 }
 
 .address::before {
-  background: var(--red-color);
-  opacity: .4;
 }
 
 .as::before {
-  background: var(--blue-color);
-  opacity: .4;
+  filter: url("#colorMeBlueMatrix");
+}
+
+.monitor::before {
+  filter: url("#colorMeYellowMatrix");
 }
 
 .yesm-main-text {
@@ -257,7 +258,7 @@ body {
   position: absolute;
   width: 300%;
   height: 300%;
-  left: 4em;
+  left: 3em;
   top: -.3em;
 }
 
@@ -350,22 +351,22 @@ body {
   justify-self: end; 
   color: var(--off-white-color);
   font-weight: 900;
-  font-size: 1.1rem;
+  font-size: 1rem;
   letter-spacing: 1.05px;
   margin-top: var(--gmargin-top);
-  margin-right: 1.6em;
+  margin-right: .5em;
 }
 
 .yesm-nav-link::before {
-  -webkit-filter: url("#brush");
-  filter: url("#brush");
+  /*filter: url("#brush");*/
   position: absolute;
-  top: .2em;
-  width: 100%;
+  top: .1em;
   content: '';
-  height: 80%;
+  width: 110%;
+  height: 100%;
+  background-size: 100% 100%;
+  background-image: url(red-sidenav.png);
   z-index: -1;
-  padding: 0 1em;
 }
 
 .yesm-nav-link .active::after {
@@ -387,16 +388,19 @@ body {
   color: var(--blue-color);
 }
 
+.bg-yellow .active::after {
+  color: var(--yellow-color);
+}
+
 .bg-blue::before {
-  background: var(--blue-color);
+  filter: url("#colorMeBlueMatrix");
 }
 
 .bg-red::before {
-  background: var(--red-color);
 }
 
 .bg-yellow::before {
-  background: var(--yellow-color);
+  filter: url("#colorMeYellowMatrix");
 }
 
 .yesm-nav-link {

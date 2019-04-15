@@ -14,7 +14,7 @@ class Main extends Component {
 
     return location.pathname === '/' ? (
       <div className="yesm-main">
-        <img src="/cube.png" alt="" className='yesm-main-cube' />
+        <img src="/cube-main.png" alt="" className='yesm-main-cube' />
         <YesBrandName /> 
       </div>) : 
       sideNav[page] ? (<MainContent page={page} />) : ''

@@ -28,7 +28,7 @@ app.get("*", (req, res, next) => {
     <html>
       <head>
         <title>YeSmart</title>
-        <link href="//fonts.googleapis.com/css?family=PT+Sans:400,700,900|Montserrat:400,700,900|Yanone Kaffeesatz:400" rel="stylesheet" type="text/css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700,900|Montserrat:400,700,900|Yanone+Kaffeesatz:400|Architects+Daughter:400" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="/main.css">
         <script src="/bundle.js" defer></script>
       </head>
