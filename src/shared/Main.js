@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import YesCube from "./YesCube";
 import YesBrandName from "./YesBrandName";
 import MainContent from "./MainContent";
-import { sideNav } from './constants'
+import { sideNav, headerNav, footerNav } from './constants'
 
 class Main extends Component {
   render() {
@@ -17,7 +17,7 @@ class Main extends Component {
         <img src="/cube-main.png" alt="" className='yesm-main-cube' />
         <YesBrandName /> 
       </div>) : 
-      sideNav[page] ? (<MainContent page={page} />) : ''
+      sideNav[page] || headerNav[page] || footerNav[page] ? (<MainContent page={page} />) : ''
   }
 }
 

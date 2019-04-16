@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
+import { footerNav } from './constants'
 
-const footerLinks = [
-  'Privacy', 'FAQ', 'info@email', 
-  'Terms and conditions', 'Help', '+38123456789', 
-  'User agreement', 'YeStudio', 'Facebook'
+const footerArr = [
+  'privacy', 'faq', 'email', 
+  'terms', 'help', 'tel', 
+  'user', 'copyright', 'fb'
 ]
 
 class Footer extends Component {
@@ -11,7 +12,12 @@ class Footer extends Component {
     return (
       <div className="yesm-footer">
         <div className="yesm-footer-links">
-        { footerLinks.map(l => <div key={l.toString()} className="yesm-footer-link">{l}</div>) }
+        {
+          footerArr.map(l => {
+            const FooterComponent = footerNav[l].component
+            return <div key={l.toString()} className="yesm-footer-link"><FooterComponent what={l} how={footerNav[l]} /></div>
+          }) 
+        }
         </div>
         <div className="yesm-footer-ripe">
         </div>

@@ -25,6 +25,14 @@ class SideNav extends Component {
                 0 0 1 0 -.14
                 0 0 0 .7 0" />
   </filter>
+       <filter id="colorMeFleshMatrix">
+    <feColorMatrix in="SourceGraphic"
+        type="matrix"
+        values="1 0 0 0 .33
+                0 1 0 0 .6
+                0 0 1 0 .4
+                0 0 0 1.9 0" />
+  </filter>
      </defs>
     </svg>
       { Object.keys(sideNav).map((sn, i) => 
