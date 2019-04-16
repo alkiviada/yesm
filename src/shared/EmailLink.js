@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 class EmailLink extends Component {
   render() {
+    const { what, how } = this.props
     return (
-          <Link to={'/'}>
-          </Link>
+      <a href={'mailto:' + how.title}>{how.title}</a>
     )
   }
 }

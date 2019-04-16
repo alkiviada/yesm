@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 class ExternalLink extends Component {
   render() {
+    const { what, how } = this.props
     return (
-      <Link to={'/'}>
-      </Link>
+      <a href={how.to} target='_blank'>{how.title}</a>
     )
   }
 }

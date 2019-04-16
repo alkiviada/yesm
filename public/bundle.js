@@ -1595,7 +1595,7 @@ var footerNav = exports.footerNav = {
   'faq': { 'title': 'FAQ', 'text': text, 'pageClass': 'help', 'component': _YesmLink2.default },
   'email': { 'title': 'info@yesm.com', 'component': _EmailLink2.default },
   'tel': { 'title': '123456789', 'component': _TelLink2.default },
-  'fb': { 'title': 'Facebook', 'component': _ExternalLink2.default },
+  'fb': { 'title': 'Facebook', 'component': _ExternalLink2.default, 'to': 'http://myfb/yesm' },
   'copyright': { 'component': _YesmStudio2.default }
 };
 
@@ -15906,7 +15906,15 @@ var TelLink = function (_Component) {
   _createClass(TelLink, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(_reactRouterDom.Link, { to: '/' });
+      var _props = this.props,
+          what = _props.what,
+          how = _props.how;
+
+      return _react2.default.createElement(
+        'a',
+        { href: 'tel:' + how.title },
+        how.title
+      );
     }
   }]);
 
@@ -15954,7 +15962,15 @@ var EmailLink = function (_Component) {
   _createClass(EmailLink, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(_reactRouterDom.Link, { to: '/' });
+      var _props = this.props,
+          what = _props.what,
+          how = _props.how;
+
+      return _react2.default.createElement(
+        'a',
+        { href: 'mailto:' + how.title },
+        how.title
+      );
     }
   }]);
 
@@ -16002,7 +16018,15 @@ var ExternalLink = function (_Component) {
   _createClass(ExternalLink, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(_reactRouterDom.Link, { to: '/' });
+      var _props = this.props,
+          what = _props.what,
+          how = _props.how;
+
+      return _react2.default.createElement(
+        'a',
+        { href: how.to, target: '_blank' },
+        how.title
+      );
     }
   }]);
 

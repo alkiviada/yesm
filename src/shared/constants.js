@@ -28,7 +28,7 @@ export const footerNav = {
  'faq': { 'title': 'FAQ', 'text': text, 'pageClass': 'help', 'component': YesmLink }, 
  'email': { 'title': 'info@yesm.com', 'component': EmailLink }, 
  'tel': { 'title': '123456789', 'component': TelLink }, 
- 'fb': { 'title': 'Facebook', 'component': ExternalLink }, 
+ 'fb': { 'title': 'Facebook', 'component': ExternalLink, 'to': 'http://myfb/yesm'}, 
  'copyright': { 'component': YesmStudio }, 
 }
 

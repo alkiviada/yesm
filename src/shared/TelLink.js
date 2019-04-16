@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 class TelLink extends Component {
   render() {
+    const { what, how } = this.props
     return (
-          <Link to={'/' }>
-          </Link>
+      <a href={'tel:' + how.title}>{how.title}</a>
     )
   }
 }
