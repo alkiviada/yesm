@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { footerNav } from './constants'
+import RipeMemberSVG from './RipeMemberSVG'
 
 const footerArr = [
   'privacy', 'faq', 'email', 
@@ -21,6 +22,7 @@ class Footer extends Component {
         }
         </div>
         <div className="yesm-footer-ripe">
+        <RipeMemberSVG />
         </div>
       </div>
     )

@@ -123,11 +123,18 @@ body {
   position: relative;
   grid-area: bottom;
   display: grid;
-  grid-template-columns: 1fr 5em;
+  grid-template-columns: 1fr 6em;
   grid-template-areas: "links ripe-member";
   background: var(--footer-color);
   margin-bottom: .5em;
   margin-top: 1.6em;
+}
+
+.yesm-footer-ripe {
+  margin-top: 4em;
+  margin-right: .6em;
+  grid-area: ripe-member;
+  align-self: end;
 }
 
 .yesm-footer-links {
@@ -200,6 +207,10 @@ body {
   font-weight: 900;
   transform: rotate(90deg);
   font-family: var(--body-font);
+}
+
+.yesm-about .active::before {
+  right: 0;
 }
 
 .yesm-header2 {
@@ -508,3 +519,14 @@ body {
   top: .2em;
 }
 
+.st0 { 
+  fill:#FFFFFF;
+}
+
+.yesm-is-ripe-member {
+  font-size: 75px; 
+  letter-spacing: 25px;
+  fill: white;
+  font-weight: 900;
+  font-family: var(--title-font);
+}
