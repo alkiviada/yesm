@@ -322,7 +322,7 @@ body {
 
 .yesm-main-cube {
   position: absolute;
-  margin-top: 2.5em;
+  margin-top: 2em;
   grid-area: cube;
   width: 120%;
   height: auto;
@@ -332,7 +332,7 @@ body {
   overflow: visible;
   grid-area: title;
   position: absolute;
-  margin-top: 7em; 
+  margin-top: 5em; 
   width: 80%;
   height: auto;
 }
