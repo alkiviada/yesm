@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react'
-import { withRouter } from "react-router-dom";
 import YesCube from "./YesCube";
 import YesBrandName from "./YesBrandName";
 import MainContent from "./MainContent";
@@ -7,18 +6,16 @@ import { sideNav, headerNav, footerNav } from './constants'
 
 class Main extends Component {
   render() {
-    const { location } = this.props
-    const page = location.pathname.substr(1)
+    const { page, lang } = this.props
     console.log(page)
-    console.log(location.pathname)
-
-    return location.pathname === '/' ? (
+    
+    return !page ? (
       <div className="yesm-main">
-        <img src="/cube-main.png" alt="" className='yesm-main-cube' />
-        <YesBrandName /> 
+        <img src="/cube-main.png" alt="" title="YeSmart" className='yesm-main-cube' />
+        <YesBrandName page={page} /> 
       </div>) : 
-      sideNav[page] || headerNav[page] || footerNav[page] ? (<MainContent page={page} />) : ''
+      sideNav[page] || headerNav[page] || footerNav[page] ? (<MainContent page={page} lang={lang} />) : ''
   }
 }
 
-export default withRouter(Main)
+export default Main

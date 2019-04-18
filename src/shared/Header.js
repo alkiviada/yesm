@@ -1,32 +1,42 @@
 import React, { Component, } from 'react'
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import YesCube from "./YesCube";
+import YesmLink from "./YesmLink";
 import YesBrandName from "./YesBrandName";
+import { headerNav, langs } from './constants'
 
 class Header extends Component {
   render() {
-    const { location } = this.props
+    const { lang, page } = this.props 
+    console.log(page)
     return (
       <div className="yesm-header">
         <div className="yesm-header1">
-          { location.pathname === '/' ? '' : 
+          { !page ? '' : 
             <div className="yesm-logo">
-              <Link to="/">
-                <YesBrandName />
-                <img src="/cube.png" alt="rubik cube" className='yesm-main-cube-logo' />
+              <Link to={'/' + lang}>
+                <YesBrandName page={page} lang={lang} />
+                <img src="/cube.png" alt=""  title="YeSmart" className='yesm-main-cube-logo' />
               </Link>
             </div>
           }
         <div className="yesm-about">
-          <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>
-            Компания
-          </Link>
+        <YesmLink what='about' how={{'title': headerNav['about'].title[lang] }} lang={lang} />
         </div>
       </div>
-        <div className="yesm-header2">Связаться</div>
+        <div className="yesm-header2">
+        <div className="yesm-contact">
+        <YesmLink what='contact' how={{'title': headerNav['contact'].title[lang] }} lang={lang} />
+        </div>
+        <div className="yesm-localize">
+          { langs.filter(l => l != lang).map(l => 
+              <Link to={page ? ('/' + page + '/' + l) : ('/' + l) } className="yesm-localize-link">{l}</Link>)
+          }
+        </div>
+        </div>
       </div>
     )
   }
 }
 
-export default withRouter(Header)
+export default Header

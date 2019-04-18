@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { withRouter } from "react-router-dom";
 
 class YesBrandName extends Component {
   render() {
-    const { location } = this.props
-    const className = location.pathname === '/' ? 'yesm-bname' : 'yesm-bname-logo' 
+    const { page } = this.props
+    const className = !page ? 'yesm-bname' : 'yesm-bname-logo' 
     return (
       <svg viewBox="-5 -3 26 24.4" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="100%" height="100%" className={className}> 
         <defs>
@@ -33,4 +32,4 @@ class YesBrandName extends Component {
   }
 }
 
-export default withRouter(YesBrandName)
+export default YesBrandName

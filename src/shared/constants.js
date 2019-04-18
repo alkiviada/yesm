@@ -4,20 +4,54 @@ import EmailLink from './EmailLink'
 import ExternalLink from './ExternalLink'
 import YesmStudio from './YesmStudio'
 
-const text = 'Igraet bas. Igraet solo. Ona poet kak ona brovi nakolola. В тясяча девятьсот шестидесятом году. Именно эту дату вы прочитали на каменной лавке'
+const text = 'Tis a consummation devoutly to be wished. Nymph, in your orisons, you might say I am a dreamer.'
+const text_ru = 'Федор Михайлович Достоевский переворачивается. Играет бас, играет соло. Она поет как она брови наколола'
+const text_ua = 'Товарищ, верь! Остров Крым. В тясяча девятьсот шестидесятом году. Именно эту дату вы прочитали на каменной лавке'
 
 export const sideNav = {
- 'address': { 'title': 'Адреса тра ла ла', 'color': 'red', 'pageLink': 'address', 'text': text, 'pageClass': 'address' }, 
- 'as': { 'title': 'Автономные системы', 'color': 'blue', 'pageLink': 'as', 'text': text, 'pageClass': 'as' }, 
- 'monitor': { 'title': 'Мониторинг ресурсов клиента', 'color': 'yellow', 'pageLink': 'monitor', 'text': text, 'pageClass': 'monitor' }, 
- 'lir': {'title': 'Регистрация LIR', 'color': 'blue', 'pageLink': 'lir', 'text': text, 'pageClass': 'lir' }, 
- 'domain': {'title': 'Регистрация доменов', 'color': 'red', 'pageLink': 'domain', 'text': text, 'pageClass': 'domain' }, 
- 'cons': { 'title': 'IP-консалтинг', 'color': 'yellow', 'pageLink': 'cons', 'text': text, 'pageClass': 'cons' }, 
+  'address': { 
+    'title': {'en': 'Address is ',
+              'ru': 'Адреса тра ла ла', 
+               'ua': 'Adresa UA', },
+    'color': 'red', 
+    'text': {'en': text, 'ru': text_ru, 'ua': text_ua }, 
+    'pageClass': 'address' }, 
+  'as': { 
+    'title': { 'ru': 'Автономные системы', 'en': 'Autonomous Systems', 'ua': 'UA Atonomy' },
+    'color': 'blue', 
+    'text': {'en': text, 'ru': text_ru, 'ua': text_ua }, 
+    'pageClass': 'as' }, 
+  'monitor': { 
+    'title': { 'ru': 'Мониторинг ресурсов клиента', 'en': 'Monitoring of resources', 'ua': 'Мониторинг ресурсов клиента UA' },
+    'color': 'yellow', 
+    'text': {'en': text, 'ru': text_ru, 'ua': text_ua }, 
+    'pageClass': 'monitor' }, 
+  'lir': {
+    'title': {'ru': 'Регистрация LIR', 'en': 'Registration LIR', 'ua': 'Регiстрацiя' },
+    'color': 'blue', 
+    'text': {'en': text, 'ru': text_ru, 'ua': text_ua }, 
+    'pageClass': 'lir' }, 
+  'domain': {
+    'title': {'ru': 'Регистрация доменов', 'en': 'DOmain registration', 'ua': 'UA DOmain' },
+    'color': 'red', 
+    'text': {'en': text, 'ru': text_ru, 'ua': text_ua }, 
+    'pageClass': 'domain' }, 
+  'cons': { 
+    'title': {'ru': 'IP-консалтинг', 'ua': 'UA Consulting', 'en': 'IP-consulting' },
+    'color': 'yellow', 
+    'text': {'en': text, 'ru': text_ru, 'ua': text_ua }, 
+    'pageClass': 'cons' }, 
 }
 
 export const headerNav = {
- 'about': { 'text': text, 'pageClass': 'about' }, 
- 'contact': { 'title': 'Автономные системы', 'color': 'blue', 'pageLink': 'as', 'text': text, 'pageClass': 'as' }, 
+  'about': { 
+    'title': {'ru': 'Компания', 'en': 'About', 'ua': 'ABout UA' },
+    'text': {'en': text, 'ru': text_ru, 'ua': text_ua }, 
+    'pageClass': 'about' }, 
+  'contact': { 
+    'title': {'ru': 'Связаться', 'en': 'Contact', 'ua': 'Contact UA'},
+    'text': {'en': text, 'ru': text_ru, 'ua': text_ua }, 
+    'pageClass': 'contact' }, 
 }
 
 export const footerNav = {
@@ -32,3 +66,5 @@ export const footerNav = {
  'copyright': { 'component': YesmStudio }, 
 }
 
+
+export const langs = ['ru', 'en', 'ua']

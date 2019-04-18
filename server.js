@@ -85,7 +85,7 @@ module.exports = require("react-router-dom");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.footerNav = exports.headerNav = exports.sideNav = undefined;
+exports.langs = exports.footerNav = exports.headerNav = exports.sideNav = undefined;
 
 var _YesmLink = __webpack_require__(15);
 
@@ -109,20 +109,54 @@ var _YesmStudio2 = _interopRequireDefault(_YesmStudio);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var text = 'Igraet bas. Igraet solo. Ona poet kak ona brovi nakolola. В тясяча девятьсот шестидесятом году. Именно эту дату вы прочитали на каменной лавке';
+var text = 'Tis a consummation devoutly to be wished. Nymph, in your orisons, you might say I am a dreamer.';
+var text_ru = 'Федор Михайлович Достоевский переворачивается. Играет бас, играет соло. Она поет как она брови наколола';
+var text_ua = 'Товарищ, верь! Остров Крым. В тясяча девятьсот шестидесятом году. Именно эту дату вы прочитали на каменной лавке';
 
 var sideNav = exports.sideNav = {
-  'address': { 'title': 'Адреса тра ла ла', 'color': 'red', 'pageLink': 'address', 'text': text, 'pageClass': 'address' },
-  'as': { 'title': 'Автономные системы', 'color': 'blue', 'pageLink': 'as', 'text': text, 'pageClass': 'as' },
-  'monitor': { 'title': 'Мониторинг ресурсов клиента', 'color': 'yellow', 'pageLink': 'monitor', 'text': text, 'pageClass': 'monitor' },
-  'lir': { 'title': 'Регистрация LIR', 'color': 'blue', 'pageLink': 'lir', 'text': text, 'pageClass': 'lir' },
-  'domain': { 'title': 'Регистрация доменов', 'color': 'red', 'pageLink': 'domain', 'text': text, 'pageClass': 'domain' },
-  'cons': { 'title': 'IP-консалтинг', 'color': 'yellow', 'pageLink': 'cons', 'text': text, 'pageClass': 'cons' }
+  'address': {
+    'title': { 'en': 'Address is ',
+      'ru': 'Адреса тра ла ла',
+      'ua': 'Adresa UA' },
+    'color': 'red',
+    'text': { 'en': text, 'ru': text_ru, 'ua': text_ua },
+    'pageClass': 'address' },
+  'as': {
+    'title': { 'ru': 'Автономные системы', 'en': 'Autonomous Systems', 'ua': 'UA Atonomy' },
+    'color': 'blue',
+    'text': { 'en': text, 'ru': text_ru, 'ua': text_ua },
+    'pageClass': 'as' },
+  'monitor': {
+    'title': { 'ru': 'Мониторинг ресурсов клиента', 'en': 'Monitoring of resources', 'ua': 'Мониторинг ресурсов клиента UA' },
+    'color': 'yellow',
+    'text': { 'en': text, 'ru': text_ru, 'ua': text_ua },
+    'pageClass': 'monitor' },
+  'lir': {
+    'title': { 'ru': 'Регистрация LIR', 'en': 'Registration LIR', 'ua': 'Регiстрацiя' },
+    'color': 'blue',
+    'text': { 'en': text, 'ru': text_ru, 'ua': text_ua },
+    'pageClass': 'lir' },
+  'domain': {
+    'title': { 'ru': 'Регистрация доменов', 'en': 'DOmain registration', 'ua': 'UA DOmain' },
+    'color': 'red',
+    'text': { 'en': text, 'ru': text_ru, 'ua': text_ua },
+    'pageClass': 'domain' },
+  'cons': {
+    'title': { 'ru': 'IP-консалтинг', 'ua': 'UA Consulting', 'en': 'IP-consulting' },
+    'color': 'yellow',
+    'text': { 'en': text, 'ru': text_ru, 'ua': text_ua },
+    'pageClass': 'cons' }
 };
 
 var headerNav = exports.headerNav = {
-  'about': { 'text': text, 'pageClass': 'about' },
-  'contact': { 'title': 'Автономные системы', 'color': 'blue', 'pageLink': 'as', 'text': text, 'pageClass': 'as' }
+  'about': {
+    'title': { 'ru': 'Компания', 'en': 'About', 'ua': 'ABout UA' },
+    'text': { 'en': text, 'ru': text_ru, 'ua': text_ua },
+    'pageClass': 'about' },
+  'contact': {
+    'title': { 'ru': 'Связаться', 'en': 'Contact', 'ua': 'Contact UA' },
+    'text': { 'en': text, 'ru': text_ru, 'ua': text_ua },
+    'pageClass': 'contact' }
 };
 
 var footerNav = exports.footerNav = {
@@ -136,6 +170,8 @@ var footerNav = exports.footerNav = {
   'fb': { 'title': 'Facebook', 'component': _ExternalLink2.default, 'to': 'http://myfb/yesm' },
   'copyright': { 'component': _YesmStudio2.default }
 };
+
+var langs = exports.langs = ['ru', 'en', 'ua'];
 
 /***/ }),
 /* 3 */
@@ -156,7 +192,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _constants = __webpack_require__(2);
 
-var _reactRouterDom = __webpack_require__(1);
+var _YesmLink = __webpack_require__(15);
+
+var _YesmLink2 = _interopRequireDefault(_YesmLink);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -178,7 +216,9 @@ var SideNav = function (_Component) {
   _createClass(SideNav, [{
     key: 'render',
     value: function render() {
-      var location = this.props.location;
+      var _props = this.props,
+          page = _props.page,
+          lang = _props.lang;
 
       return _react2.default.createElement(
         'div',
@@ -192,23 +232,23 @@ var SideNav = function (_Component) {
             _react2.default.createElement(
               'filter',
               { id: 'colorMeBlueMatrix' },
-              _react2.default.createElement('feColorMatrix', { 'in': 'SourceGraphic',
+              _react2.default.createElement('feColorMatrix', { 'in': 'SourceGraphic', colorInterpolationFilters: 'sRGB',
                 type: 'matrix',
                 values: '1 0 0 0 -1 0 1 0 0 .4 0 0 1 0 .6 0 0 0 .6 0' })
             ),
             _react2.default.createElement(
               'filter',
               { id: 'colorMeYellowMatrix' },
-              _react2.default.createElement('feColorMatrix', { 'in': 'SourceGraphic',
+              _react2.default.createElement('feColorMatrix', { 'in': 'SourceGraphic', colorInterpolationFilters: 'sRGB',
                 type: 'matrix',
-                values: '1 0 0 0 .39 0 1 0 0 .6 0 0 1 0 -.14 0 0 0 .7 0' })
+                values: '1 0 0 0 -.01 0 1 0 0 .5 0 0 1 0 -.1 0 0 0 1 0' })
             ),
             _react2.default.createElement(
               'filter',
               { id: 'colorMeFleshMatrix' },
-              _react2.default.createElement('feColorMatrix', { 'in': 'SourceGraphic',
+              _react2.default.createElement('feColorMatrix', { 'in': 'SourceGraphic', colorInterpolationFilters: 'sRGB',
                 type: 'matrix',
-                values: '1 0 0 0 .33 0 1 0 0 .6 0 0 1 0 .4 0 0 0 1.9 0' })
+                values: '1 0 0 0 .38 0 1 0 0 .8 0 0 1 0 .54 0 0 0 1.9 0' })
             )
           )
         ),
@@ -216,11 +256,7 @@ var SideNav = function (_Component) {
           return _react2.default.createElement(
             'div',
             { key: sn.toString(), className: 'yesm-nav-link bg-' + _constants.sideNav[sn].color },
-            _react2.default.createElement(
-              _reactRouterDom.Link,
-              { to: '/' + _constants.sideNav[sn].pageLink, className: location.pathname === '/' + _constants.sideNav[sn].pageLink ? 'active' : '' },
-              _constants.sideNav[sn].title
-            )
+            _react2.default.createElement(_YesmLink2.default, { what: sn, how: { 'title': _constants.sideNav[sn].title[lang] }, lang: lang })
           );
         })
       );
@@ -230,7 +266,7 @@ var SideNav = function (_Component) {
   return SideNav;
 }(_react.Component);
 
-exports.default = (0, _reactRouterDom.withRouter)(SideNav);
+exports.default = SideNav;
 
 /***/ }),
 /* 4 */
@@ -248,8 +284,6 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(1);
 
 var _YesCube = __webpack_require__(5);
 
@@ -285,25 +319,25 @@ var Main = function (_Component) {
   _createClass(Main, [{
     key: "render",
     value: function render() {
-      var location = this.props.location;
+      var _props = this.props,
+          page = _props.page,
+          lang = _props.lang;
 
-      var page = location.pathname.substr(1);
       console.log(page);
-      console.log(location.pathname);
 
-      return location.pathname === '/' ? _react2.default.createElement(
+      return !page ? _react2.default.createElement(
         "div",
         { className: "yesm-main" },
-        _react2.default.createElement("img", { src: "/cube-main.png", alt: "", className: "yesm-main-cube" }),
-        _react2.default.createElement(_YesBrandName2.default, null)
-      ) : _constants.sideNav[page] || _constants.headerNav[page] || _constants.footerNav[page] ? _react2.default.createElement(_MainContent2.default, { page: page }) : '';
+        _react2.default.createElement("img", { src: "/cube-main.png", alt: "", title: "YeSmart", className: "yesm-main-cube" }),
+        _react2.default.createElement(_YesBrandName2.default, { page: page })
+      ) : _constants.sideNav[page] || _constants.headerNav[page] || _constants.footerNav[page] ? _react2.default.createElement(_MainContent2.default, { page: page, lang: lang }) : '';
     }
   }]);
 
   return Main;
 }(_react.Component);
 
-exports.default = (0, _reactRouterDom.withRouter)(Main);
+exports.default = Main;
 
 /***/ }),
 /* 5 */
@@ -452,8 +486,6 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(1);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -474,9 +506,9 @@ var YesBrandName = function (_Component) {
   _createClass(YesBrandName, [{
     key: 'render',
     value: function render() {
-      var location = this.props.location;
+      var page = this.props.page;
 
-      var className = location.pathname === '/' ? 'yesm-bname' : 'yesm-bname-logo';
+      var className = !page ? 'yesm-bname' : 'yesm-bname-logo';
       return _react2.default.createElement(
         'svg',
         { viewBox: '-5 -3 26 24.4', xmlns: 'http://www.w3.org/2000/svg', xmlnsXlink: 'http://www.w3.org/1999/xlink', width: '100%', height: '100%', className: className },
@@ -522,7 +554,7 @@ var YesBrandName = function (_Component) {
   return YesBrandName;
 }(_react.Component);
 
-exports.default = (0, _reactRouterDom.withRouter)(YesBrandName);
+exports.default = YesBrandName;
 
 /***/ }),
 /* 7 */
@@ -547,9 +579,15 @@ var _YesCube = __webpack_require__(5);
 
 var _YesCube2 = _interopRequireDefault(_YesCube);
 
+var _YesmLink = __webpack_require__(15);
+
+var _YesmLink2 = _interopRequireDefault(_YesmLink);
+
 var _YesBrandName = __webpack_require__(6);
 
 var _YesBrandName2 = _interopRequireDefault(_YesBrandName);
+
+var _constants = __webpack_require__(2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -571,38 +609,54 @@ var Header = function (_Component) {
   _createClass(Header, [{
     key: "render",
     value: function render() {
-      var location = this.props.location;
+      var _props = this.props,
+          lang = _props.lang,
+          page = _props.page;
 
+      console.log(page);
       return _react2.default.createElement(
         "div",
         { className: "yesm-header" },
         _react2.default.createElement(
           "div",
           { className: "yesm-header1" },
-          location.pathname === '/' ? '' : _react2.default.createElement(
+          !page ? '' : _react2.default.createElement(
             "div",
             { className: "yesm-logo" },
             _react2.default.createElement(
               _reactRouterDom.Link,
-              { to: "/" },
-              _react2.default.createElement(_YesBrandName2.default, null),
-              _react2.default.createElement("img", { src: "/cube.png", alt: "rubik cube", className: "yesm-main-cube-logo" })
+              { to: '/' + lang },
+              _react2.default.createElement(_YesBrandName2.default, { page: page, lang: lang }),
+              _react2.default.createElement("img", { src: "/cube.png", alt: "", title: "YeSmart", className: "yesm-main-cube-logo" })
             )
           ),
           _react2.default.createElement(
             "div",
             { className: "yesm-about" },
-            _react2.default.createElement(
-              _reactRouterDom.Link,
-              { to: "/about", className: location.pathname === '/about' ? 'active' : '' },
-              "\u041A\u043E\u043C\u043F\u0430\u043D\u0438\u044F"
-            )
+            _react2.default.createElement(_YesmLink2.default, { what: "about", how: { 'title': _constants.headerNav['about'].title[lang] }, lang: lang })
           )
         ),
         _react2.default.createElement(
           "div",
           { className: "yesm-header2" },
-          "\u0421\u0432\u044F\u0437\u0430\u0442\u044C\u0441\u044F"
+          _react2.default.createElement(
+            "div",
+            { className: "yesm-contact" },
+            _react2.default.createElement(_YesmLink2.default, { what: "contact", how: { 'title': _constants.headerNav['contact'].title[lang] }, lang: lang })
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "yesm-localize" },
+            _constants.langs.filter(function (l) {
+              return l != lang;
+            }).map(function (l) {
+              return _react2.default.createElement(
+                _reactRouterDom.Link,
+                { to: page ? '/' + page + '/' + l : '/' + l, className: "yesm-localize-link" },
+                l
+              );
+            })
+          )
         )
       );
     }
@@ -611,7 +665,7 @@ var Header = function (_Component) {
   return Header;
 }(_react.Component);
 
-exports.default = (0, _reactRouterDom.withRouter)(Header);
+exports.default = Header;
 
 /***/ }),
 /* 8 */
@@ -725,7 +779,7 @@ app.get("*", function (req, res, next) {
     _react2.default.createElement(_App2.default, null)
   ));
 
-  res.send("\n    <!DOCTYPE html>\n    <html>\n      <head>\n        <title>YeSmart</title>\n        <link href=\"//fonts.googleapis.com/css?family=Open+Sans:400,700,900|Montserrat:400,700,900|Yanone+Kaffeesatz:400|Architects+Daughter:400\" rel=\"stylesheet\" type=\"text/css\">\n        <link rel=\"stylesheet\" href=\"/main.css\">\n        <script src=\"/bundle.js\" defer></script>\n      </head>\n\n      <body>\n        <div id=\"app\">" + markup + "</div>\n      </body>\n    </html>\n  ");
+  res.send("\n    <!DOCTYPE html>\n    <html>\n      <head>\n        <title>YeSmart</title>\n        <link href=\"//fonts.googleapis.com/css?family=Open+Sans:300,400,700,900|Montserrat:400,700,900|Yanone+Kaffeesatz:400|Architects+Daughter:400\" rel=\"stylesheet\" type=\"text/css\">\n        <link rel=\"stylesheet\" href=\"/main.css\">\n        <script src=\"/bundle.js\" defer></script>\n      </head>\n\n      <body>\n        <div id=\"app\">" + markup + "</div>\n      </body>\n    </html>\n  ");
 });
 
 app.listen(3000, function () {
@@ -800,8 +854,7 @@ var App = function (_Component) {
       return _react2.default.createElement(
         _reactRouterDom.Switch,
         null,
-        _react2.default.createElement(_reactRouterDom.Route, { path: "/", exact: true, component: _Home2.default }),
-        _react2.default.createElement(_reactRouterDom.Route, { component: _YesmPage2.default })
+        _react2.default.createElement(_reactRouterDom.Route, { path: "/:lang?", component: _YesmPage2.default })
       );
     }
   }]);
@@ -831,6 +884,10 @@ var _react2 = _interopRequireDefault(_react);
 var _SideNav = __webpack_require__(3);
 
 var _SideNav2 = _interopRequireDefault(_SideNav);
+
+var _YesmLink = __webpack_require__(15);
+
+var _YesmLink2 = _interopRequireDefault(_YesmLink);
 
 var _Main = __webpack_require__(4);
 
@@ -868,6 +925,7 @@ var Home = function (_Component) {
         "div",
         { className: "yesm-container" },
         _react2.default.createElement(_Header2.default, null),
+        _react2.default.createElement(_YesmLink2.default, { what: "login", how: { 'title': 'Login', 'className': 'yesm-login' } }),
         _react2.default.createElement(
           "div",
           { className: "yesm-body" },
@@ -926,12 +984,14 @@ var YesmLink = function (_Component) {
       var _props = this.props,
           what = _props.what,
           how = _props.how,
-          location = _props.location;
+          location = _props.location,
+          lang = _props.lang;
 
-      console.log(what);
+      var where = '/' + what + '/' + lang;
+      var className = how.className || '';
       return _react2.default.createElement(
         _reactRouterDom.Link,
-        { to: '/' + what, className: location.pathname === '/' + what ? 'active' : '' },
+        { to: where, className: location.pathname === '/' + what || location.pathname === where ? className + (className ? ' ' : '') + 'active' : className },
         how.title
       );
     }
@@ -1227,15 +1287,19 @@ var MainContent = function (_Component) {
   _createClass(MainContent, [{
     key: 'render',
     value: function render() {
-      var _this2 = this;
+      var _props = this.props,
+          page = _props.page,
+          lang = _props.lang;
 
-      console.log('i ma main content');
+      console.log(lang);
       var linkMap = [_constants.sideNav, _constants.footerNav, _constants.headerNav].find(function (m) {
-        return m[_this2.props.page];
+        return m[page];
       });
-      var pageClass = linkMap[this.props.page].pageClass;
-      var text = linkMap[this.props.page].text;
+      var pageClass = linkMap[page].pageClass;
+      var text = linkMap[page].text[lang];
+
       console.log(text);
+
       console.log(pageClass);
       return _react2.default.createElement(
         _reactBodyClassname2.default,
@@ -1281,9 +1345,15 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(1);
+
 var _Main = __webpack_require__(4);
 
 var _Main2 = _interopRequireDefault(_Main);
+
+var _YesmLink = __webpack_require__(15);
+
+var _YesmLink2 = _interopRequireDefault(_YesmLink);
 
 var _SideNav = __webpack_require__(3);
 
@@ -1317,15 +1387,43 @@ var YesmPage = function (_Component) {
   _createClass(YesmPage, [{
     key: "render",
     value: function render() {
+      var page = void 0,
+          lang = '';
+
+      var location = this.props.location;
+
+      var stringLocation = location.pathname.substr(1);
+      var params = stringLocation.split('/');
+
+      if (stringLocation) {
+        // we are on some page - not ROOT page
+        if (!params[0].match('^(en|ru|ua)$')) {
+          // we are on a NOT home page
+          page = params[0];
+          if (params[1]) {
+            lang = params[1];
+          } else lang = 'en';
+        } else {
+          // we are on HOME page
+          // the language was supplied in the url
+          lang = params[0];
+        }
+      } else {
+        // let us default to 'english' language
+        // the page must be a HOME page
+        lang = 'en';
+      }
+
       return _react2.default.createElement(
         "div",
         { className: "yesm-container" },
-        _react2.default.createElement(_Header2.default, null),
+        _react2.default.createElement(_Header2.default, { page: page, lang: lang }),
+        _react2.default.createElement(_YesmLink2.default, { what: "login", how: { 'title': 'Login', 'className': 'yesm-login' }, lang: lang }),
         _react2.default.createElement(
           "div",
           { className: "yesm-body" },
-          _react2.default.createElement(_Main2.default, null),
-          _react2.default.createElement(_SideNav2.default, null)
+          _react2.default.createElement(_Main2.default, { page: page, lang: lang }),
+          _react2.default.createElement(_SideNav2.default, { page: page, lang: lang })
         ),
         _react2.default.createElement(_Footer2.default, null)
       );
@@ -1335,7 +1433,7 @@ var YesmPage = function (_Component) {
   return YesmPage;
 }(_react.Component);
 
-exports.default = YesmPage;
+exports.default = (0, _reactRouterDom.withRouter)(YesmPage);
 
 /***/ })
 /******/ ]);

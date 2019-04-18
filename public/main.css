@@ -5,12 +5,12 @@
   --body-font: Open Sans;
   --studio-font: Architects Daughter;
   --blue-color: #1b80b4;
-  --red-color: #cc0033;
-  --yellow-color: #d7a30f;
+  --red-color: #c21731;
+  --yellow-color: #be8d10;
   --footer-color: #535554;
   --off-white-color: #FDF6EC;
   --light-grey-color: #D6D6D6;
-  --flesh-color: #F0DBBE;
+  --flesh-color: #ece0c0;
   --gmargin-top: 2.6rem;
 }
 
@@ -84,12 +84,39 @@ body {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: 2.5em 1fr 9.5em;
+  grid-template-rows: 2.5em 1.5em 1fr 9.5em;
   grid-template-columns: .1fr 2fr .1fr;
   grid-template-areas: 
     "top top top"
+    ". login ."
     ". middle ."
     ". bottom ."
+}
+
+.yesm-login {
+  grid-area: login;
+  display: flex;
+  justify-content: flex-end;
+  align-content: flex-end;
+  position: relative;
+  padding: .4em 2em 0 0;
+  font-size: .7em;
+  font-weight: 700;
+  text-transform: lowercase;
+  font-variant: small-caps;
+}
+
+.yesm-login::before {
+  position: absolute;
+  top: .4em;
+  right: -.1em;
+  content: '';
+  z-index: -1;
+  width: 10%;
+  height: 120%;
+  background-size: 100% 100%;
+  background-image: url(login.png);
+
 }
 
 .yesm-footer {
@@ -138,10 +165,10 @@ body {
   grid-area: top;
   background: var(--blue-color);
   display: grid;
-  column-gap: 3em;
-  grid-column-gap: 3em;
-  -webkit-column-gap: 3em;
-  -moz-column-gap: 3em;
+  column-gap: 2em;
+  grid-column-gap: 2em;
+  -webkit-column-gap: 2em;
+  -moz-column-gap: 2em;
   -moz-column-count: 2;
   -webkit-column-count: 2;
   grid-template-columns: 50% 50%;
@@ -164,7 +191,7 @@ body {
   position: relative;
 }
 
-.yesm-about .active::before {
+.yesm-about .active::before, .yesm-contact .active::before {
   content: '>';
   position: absolute;
   color: var(--flesh-color);
@@ -176,8 +203,36 @@ body {
 }
 
 .yesm-header2 {
+  display: grid;
+  grid-template-columns: 1fr 9em;
+  grid-template-areas: "contact localize";
+}
+
+.yesm-contact {
+  grid-area: contact;
   justify-self: start;
   align-self: end;
+  position: relative;
+}
+
+.yesm-localize {
+  grid-area: localize;
+  justify-self: start;
+  align-self: end;
+  position: relative;
+  padding-right: 2.5em;
+  font-weight: 300;
+  font-size: .7rem;
+}
+
+.yesm-localize-link {
+  text-transform: uppercase;
+  padding: 0 .5em 0 .5em;
+  border-right: 1px solid white;
+}
+.yesm-localize-link:last-child {
+  border-right: none;
+
 }
 
 .yesm-body {
@@ -196,6 +251,7 @@ body {
 .yesm-main-content::before {
   position: absolute;
   top: 3em;
+  left: 1em;
   content: '';
   z-index: -1;
   width: 100%;
@@ -204,7 +260,7 @@ body {
   background-image: url(text-bg-red.png);
 }
 
-.about .yesm-main-content::before {
+.about .yesm-main-content::before, .contact .yesm-main-content::before {
   filter: url("#colorMeFleshMatrix");
 }
 
@@ -240,15 +296,15 @@ body {
   position: absolute;
   top: 6em;
   left: 3em;
-  right: 3em;
+  line-height: 1.3;
+  font-size: 1rem;
   margin: 1em auto;
   color: var(--off-white-color); 
-  font-size: .9em;
   text-align: center;
   opacity: .6;
 }
 
-.monitor .yesm-main-text, .cons .yesm-main-text, .about .yesm-main-text {
+.monitor .yesm-main-text, .cons .yesm-main-text, .about .yesm-main-text, .contact .yesm-main-text {
   color: var(--bg-color); 
   opacity: 1;
 }
@@ -266,7 +322,7 @@ body {
 
 .yesm-main-cube {
   position: absolute;
-  margin-top: 4em;
+  margin-top: 2.5em;
   grid-area: cube;
   width: 120%;
   height: auto;
@@ -367,7 +423,7 @@ body {
   font-weight: 900;
   font-size: 1rem;
   letter-spacing: 1.05px;
-  margin-top: var(--gmargin-top);
+  margin-top: .5em;
   margin-right: .5em;
 }
 
@@ -385,7 +441,7 @@ body {
 
 .yesm-nav-link .active::after {
   content: '>';
-  left: -1.5em;
+  left: -1.2em;
   position: absolute;
   color: var(--off-white-color);
   font-size: 40px;

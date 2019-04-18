@@ -7,8 +7,7 @@ class App extends Component {
   render() {
     return (
       <Switch>
-        <Route path="/" exact component={ Home } />
-        <Route component={ YesmPage } />
+        <Route path="/:lang?" component={ YesmPage } />
       </Switch>
     )
   }

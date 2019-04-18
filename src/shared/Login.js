@@ -3,12 +3,12 @@ import { withRouter, Link } from "react-router-dom";
 
 class YesmLink extends Component {
   render() {
-    const { what, how, location, lang } = this.props
-    const where = '/' + what + '/' + lang
+    const { what, how, location } = this.props
     const className = how.className || ''
+    console.log(className)
+    console.log(what)
     return (
-      <Link to={where} className={(location.pathname === '/' + what || location.pathname === where) ? 
-        className + (className ? ' ' : '') + 'active' : className }>
+      <Link to={'/' + what} className={location.pathname === '/' + what ? className + (className ? ' ' : '') + 'active' : className }>
       {how.title}
       </Link>
     )

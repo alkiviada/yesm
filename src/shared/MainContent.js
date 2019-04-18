@@ -4,11 +4,14 @@ import { sideNav, headerNav, footerNav } from './constants'
 
 class MainContent extends Component {
   render() {
-    console.log('i ma main content')
-    const linkMap = [sideNav, footerNav, headerNav].find(m => m[this.props.page])
-    const pageClass = linkMap[this.props.page].pageClass
-    const text = linkMap[this.props.page].text
+    const { page, lang } = this.props
+    console.log(lang)
+    const linkMap = [sideNav, footerNav, headerNav].find(m => m[page])
+    const pageClass = linkMap[page].pageClass
+    const text = linkMap[page].text[lang]
+
     console.log(text)
+
     console.log(pageClass)
     return (
       <BodyClassName className={pageClass}>
