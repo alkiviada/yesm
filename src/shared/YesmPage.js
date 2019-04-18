@@ -45,7 +45,7 @@ class YesmPage extends Component {
         <Main page={page} lang={lang} />
         <SideNav page={page} lang={lang} /> 
         </div>
-        <Footer />
+        <Footer lang={lang} />
      </div>
     )
   }

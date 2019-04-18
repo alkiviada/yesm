@@ -9,13 +9,14 @@ const footerArr = [
 
 class Footer extends Component {
   render() {
+    const { lang } = this.props 
     return (
       <div className="yesm-footer">
         <div className="yesm-footer-links">
         {
           footerArr.map(l => {
             const FooterComponent = footerNav[l].component
-            return <div key={l.toString()} className="yesm-footer-link"><FooterComponent what={l} how={footerNav[l]} /></div>
+            return <div key={l.toString()} className="yesm-footer-link"><FooterComponent what={l} how={footerNav[l]} lang={lang} /></div>
           }) 
         }
         </div>

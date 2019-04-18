@@ -8,7 +8,6 @@ import { headerNav, langs } from './constants'
 class Header extends Component {
   render() {
     const { lang, page } = this.props 
-    console.log(page)
     return (
       <div className="yesm-header">
         <div className="yesm-header1">
@@ -30,7 +29,7 @@ class Header extends Component {
         </div>
         <div className="yesm-localize">
           { langs.filter(l => l != lang).map(l => 
-              <Link to={page ? ('/' + page + '/' + l) : ('/' + l) } className="yesm-localize-link">{l}</Link>)
+              <Link key={l.toString()} to={page ? ('/' + page + '/' + l) : ('/' + l) } className="yesm-localize-link">{l}</Link>)
           }
         </div>
         </div>

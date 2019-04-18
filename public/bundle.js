@@ -3361,7 +3361,6 @@ var Header = function (_Component) {
           lang = _props.lang,
           page = _props.page;
 
-      console.log(page);
       return _react2.default.createElement(
         "div",
         { className: "yesm-header" },
@@ -3400,7 +3399,7 @@ var Header = function (_Component) {
             }).map(function (l) {
               return _react2.default.createElement(
                 _reactRouterDom.Link,
-                { to: page ? '/' + page + '/' + l : '/' + l, className: "yesm-localize-link" },
+                { key: l.toString(), to: page ? '/' + page + '/' + l : '/' + l, className: "yesm-localize-link" },
                 l
               );
             })
@@ -3456,6 +3455,8 @@ var Footer = function (_Component) {
   _createClass(Footer, [{
     key: 'render',
     value: function render() {
+      var lang = this.props.lang;
+
       return _react2.default.createElement(
         'div',
         { className: 'yesm-footer' },
@@ -3467,7 +3468,7 @@ var Footer = function (_Component) {
             return _react2.default.createElement(
               'div',
               { key: l.toString(), className: 'yesm-footer-link' },
-              _react2.default.createElement(FooterComponent, { what: l, how: _constants.footerNav[l] })
+              _react2.default.createElement(FooterComponent, { what: l, how: _constants.footerNav[l], lang: lang })
             );
           })
         ),
@@ -16629,7 +16630,7 @@ var YesmPage = function (_Component) {
           _react2.default.createElement(_Main2.default, { page: page, lang: lang }),
           _react2.default.createElement(_SideNav2.default, { page: page, lang: lang })
         ),
-        _react2.default.createElement(_Footer2.default, null)
+        _react2.default.createElement(_Footer2.default, { lang: lang })
       );
     }
   }]);
