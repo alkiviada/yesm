@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withRouter } from "react-router-dom";
 import Main from "./Main";
 import YesmLink from "./YesmLink";
+import YesmSVGFilters from "./YesmSVGFilters";
 import SideNav from "./SideNav";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -39,6 +40,7 @@ class YesmPage extends Component {
 
     return (
       <div className="yesm-container">
+        <YesmSVGFilters />
         <Header page={page} lang={lang} />
         <YesmLink what='login' how={{'title': 'Login', 'className': 'yesm-login'}} lang={lang} />
         <div className="yesm-body">

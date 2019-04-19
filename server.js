@@ -223,35 +223,6 @@ var SideNav = function (_Component) {
       return _react2.default.createElement(
         'div',
         { className: 'yesm-sidenav' },
-        _react2.default.createElement(
-          'svg',
-          { xmlns: 'http://www.w3.org/2000/svg', version: '1.1', className: 'svg-filters', width: '0', height: '0' },
-          _react2.default.createElement(
-            'defs',
-            null,
-            _react2.default.createElement(
-              'filter',
-              { id: 'colorMeBlueMatrix' },
-              _react2.default.createElement('feColorMatrix', { 'in': 'SourceGraphic', colorInterpolationFilters: 'sRGB',
-                type: 'matrix',
-                values: '1 0 0 0 -1 0 1 0 0 .4 0 0 1 0 .6 0 0 0 .6 0' })
-            ),
-            _react2.default.createElement(
-              'filter',
-              { id: 'colorMeYellowMatrix' },
-              _react2.default.createElement('feColorMatrix', { 'in': 'SourceGraphic', colorInterpolationFilters: 'sRGB',
-                type: 'matrix',
-                values: '1 0 0 0 -.01 0 1 0 0 .5 0 0 1 0 -.1 0 0 0 1 0' })
-            ),
-            _react2.default.createElement(
-              'filter',
-              { id: 'colorMeFleshMatrix' },
-              _react2.default.createElement('feColorMatrix', { 'in': 'SourceGraphic', colorInterpolationFilters: 'sRGB',
-                type: 'matrix',
-                values: '1 0 0 0 .38 0 1 0 0 .8 0 0 1 0 .54 0 0 0 1.9 0' })
-            )
-          )
-        ),
         Object.keys(_constants.sideNav).map(function (sn, i) {
           return _react2.default.createElement(
             'div',
@@ -1369,6 +1340,10 @@ var _YesmLink = __webpack_require__(15);
 
 var _YesmLink2 = _interopRequireDefault(_YesmLink);
 
+var _YesmSVGFilters = __webpack_require__(25);
+
+var _YesmSVGFilters2 = _interopRequireDefault(_YesmSVGFilters);
+
 var _SideNav = __webpack_require__(3);
 
 var _SideNav2 = _interopRequireDefault(_SideNav);
@@ -1431,6 +1406,7 @@ var YesmPage = function (_Component) {
       return _react2.default.createElement(
         "div",
         { className: "yesm-container" },
+        _react2.default.createElement(_YesmSVGFilters2.default, null),
         _react2.default.createElement(_Header2.default, { page: page, lang: lang }),
         _react2.default.createElement(_YesmLink2.default, { what: "login", how: { 'title': 'Login', 'className': 'yesm-login' }, lang: lang }),
         _react2.default.createElement(
@@ -1542,6 +1518,80 @@ var RipeMemberSVG = function (_Component) {
 }(_react.Component);
 
 exports.default = RipeMemberSVG;
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var YesmSVGFilters = function (_Component) {
+  _inherits(YesmSVGFilters, _Component);
+
+  function YesmSVGFilters() {
+    _classCallCheck(this, YesmSVGFilters);
+
+    return _possibleConstructorReturn(this, (YesmSVGFilters.__proto__ || Object.getPrototypeOf(YesmSVGFilters)).apply(this, arguments));
+  }
+
+  _createClass(YesmSVGFilters, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "svg",
+        { xmlns: "http://www.w3.org/2000/svg", version: "1.1", className: "svg-filters", width: "0", height: "0" },
+        _react2.default.createElement(
+          "defs",
+          null,
+          _react2.default.createElement(
+            "filter",
+            { id: "colorMeBlueMatrix" },
+            _react2.default.createElement("feColorMatrix", { "in": "SourceGraphic", colorInterpolationFilters: "sRGB",
+              type: "matrix",
+              values: "1 0 0 0 -1 0 1 0 0 .4 0 0 1 0 .6 0 0 0 .6 0" })
+          ),
+          _react2.default.createElement(
+            "filter",
+            { id: "colorMeYellowMatrix" },
+            _react2.default.createElement("feColorMatrix", { "in": "SourceGraphic", colorInterpolationFilters: "sRGB",
+              type: "matrix",
+              values: "1 0 0 0 -.01 0 1 0 0 .5 0 0 1 0 -.1 0 0 0 1 0" })
+          ),
+          _react2.default.createElement(
+            "filter",
+            { id: "colorMeFleshMatrix" },
+            _react2.default.createElement("feColorMatrix", { "in": "SourceGraphic", colorInterpolationFilters: "sRGB",
+              type: "matrix",
+              values: "1 0 0 0 .38 0 1 0 0 .8 0 0 1 0 .54 0 0 0 1.9 0" })
+          )
+        )
+      );
+    }
+  }]);
+
+  return YesmSVGFilters;
+}(_react.Component);
+
+exports.default = YesmSVGFilters;
 
 /***/ })
 /******/ ]);
