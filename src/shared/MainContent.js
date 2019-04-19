@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import BodyClassName from 'react-body-classname';
 import { sideNav, headerNav, footerNav } from './constants'
+import RipeMemberSVG from './RipeMemberSVG'
 
 class MainContent extends Component {
   render() {
@@ -19,6 +20,7 @@ class MainContent extends Component {
         <div className="yesm-main-text">
          {text}
         </div>
+        { page == 'about' ? <RipeMemberSVG /> : '' }
       </div>
      </BodyClassName>
     )

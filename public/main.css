@@ -262,7 +262,7 @@ body {
 .yesm-main-content::before {
   position: absolute;
   top: 3em;
-  left: 1em;
+  left: 0;
   content: '';
   z-index: -1;
   width: 100%;
@@ -305,11 +305,11 @@ body {
 
 .yesm-main-text {
   position: absolute;
-  top: 6em;
-  left: 3em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   line-height: 1.3;
   font-size: 1rem;
-  margin: 1em auto;
   color: var(--off-white-color); 
   text-align: center;
   opacity: .6;
@@ -519,9 +519,13 @@ body {
   top: .2em;
 }
 
-.st0 { 
+.yesm-footer .st0, .yesm-footer .st1, .yesm-footer .st2 { 
   fill:#FFFFFF;
 }
+
+.st0{fill:#25316A;}
+.st1{fill:url(#SVGID_1_);}
+.st2{fill:#5B5C87;}
 
 .yesm-is-ripe-member {
   font-size: 75px; 
@@ -529,4 +533,16 @@ body {
   fill: white;
   font-weight: 900;
   font-family: var(--title-font);
+}
+.yesm-main-content .yesm-is-ripe-member {
+  display: none;
+}
+
+.yesm-main-content .yesm-ripe-member {
+  width: 25%;
+  height: auto;
+  position: absolute;
+  left: 7%;
+  bottom: -.6em;
+  
 }
