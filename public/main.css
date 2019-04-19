@@ -333,7 +333,7 @@ body {
 
 .yesm-main-cube {
   position: absolute;
-  margin-top: 2em;
+  margin-top: 1em;
   grid-area: cube;
   width: 120%;
   height: auto;
@@ -434,8 +434,8 @@ body {
   font-weight: 900;
   font-size: 1rem;
   letter-spacing: 1.05px;
-  margin-top: .5em;
-  margin-right: .5em;
+  margin-top: 1em;
+  margin-right: 1em;
 }
 
 .yesm-nav-link::before {
