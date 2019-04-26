@@ -6,13 +6,15 @@ class SideNav extends Component {
   render() {
     const { page, lang } = this.props
     return (
-      <div className="yesm-sidenav">
-      { Object.keys(sideNav).map((sn, i) => 
-          <div key={sn.toString()} className={'yesm-nav-link bg-' + sideNav[sn].color }>
-            <YesmLink what={sn} how={{'title': sideNav[sn].title[lang]}} lang={lang} />
-          </div>) 
-      }
-      </div>
+      <nav className="yesm-sidenav" role="navigation" aroa-label="Yesmart List of Services">
+        <ul>
+        { Object.keys(sideNav).map((sn, i) => 
+            <li key={sn.toString()} className={'yesm-nav-link bg-' + sideNav[sn].color }>
+              <YesmLink what={sn} how={{'title': sideNav[sn].title[lang]}} lang={lang} onClickFn={this.props.onClickFn}/>
+            </li>) 
+        }
+        </ul>
+      </nav>
     )
   }
 }

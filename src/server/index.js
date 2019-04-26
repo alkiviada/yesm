@@ -2,7 +2,9 @@ import express from "express"
 import cors from "cors"
 import { renderToString } from "react-dom/server"
 import { StaticRouter } from "react-router-dom";
+import { Provider } from 'react-redux'
 import App from '../shared/App'
+import store from "../shared/store";
 import React from 'react'
 
 const app = express()
@@ -17,10 +19,11 @@ app.use(express.static("public"))
 app.get("*", (req, res, next) => {
   const context = { };
   const markup = renderToString(
-    <StaticRouter context={ context } location={ req.url }>
-
-    <App />
-        </StaticRouter>
+    <Provider store={store}>
+      <StaticRouter context={ context } location={ req.url }>
+        <App />
+      </StaticRouter>
+    </Provider>
   )
 
   res.send(`

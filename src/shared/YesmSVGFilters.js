@@ -8,17 +8,17 @@ class YesmSVGFilters extends Component {
        <filter id="colorMeBlueMatrix">
     <feColorMatrix in="SourceGraphic" colorInterpolationFilters="sRGB"
         type="matrix"
-        values="1 0 0 0 -1
-                0 1 0 0 .4
-                0 0 1 0 .6
+        values="1 0 0 0 -.57
+                0 1 0 0 .42
+                0 0 1 0 .404
                 0 0 0 .6 0" />
   </filter>
        <filter id="colorMeYellowMatrix">
     <feColorMatrix in="SourceGraphic" colorInterpolationFilters="sRGB"
         type="matrix"
-        values="1 0 0 0 -.01
-                0 1 0 0 .5
-                0 0 1 0 -.1
+        values="1 0 0 0 -.0157
+                0 1 0 0 .462
+                0 0 1 0 -.13
                 0 0 0 1 0" />
   </filter>
        <filter id="colorMeFleshMatrix">

@@ -2,12 +2,34 @@ import React, { Component } from 'react'
 import { withRouter } from "react-router-dom";
 import Main from "./Main";
 import YesmLink from "./YesmLink";
+import { moveOffMain } from './actions/mainActions';
 import YesmSVGFilters from "./YesmSVGFilters";
 import SideNav from "./SideNav";
 import Header from "./Header";
 import Footer from "./Footer";
+import { connect } from 'react-redux';
 
 class YesmPage extends Component {
+  constructor(props) { 
+    super(props)
+    this.onClick = this.onClick.bind(this) 
+  }
+
+  onClick(e, to) {
+    e.preventDefault()
+    const { onMain } = this.props
+    if (onMain) {
+      console.log(to)
+      console.log('moving off')
+      this.props.moveOffMain()
+      this.timeout = setTimeout(() => {
+        this.props.history.push(to);
+      }, 1000);
+    }
+    else
+      this.props.history.push(to);
+  };
+
   render() {
     let page, lang = '';
 
@@ -41,16 +63,21 @@ class YesmPage extends Component {
     return (
       <div className="yesm-container">
         <YesmSVGFilters />
-        <Header page={page} lang={lang} />
+        <Header page={page} lang={lang} onClickFn={this.onClick} />
         <YesmLink what='login' how={{'title': 'Login', 'className': 'yesm-login'}} lang={lang} />
-        <div className="yesm-body">
+        <section className="yesm-body">
         <Main page={page} lang={lang} />
-        <SideNav page={page} lang={lang} /> 
-        </div>
+        <SideNav page={page} lang={lang} onClickFn={this.onClick} /> 
+        </section>
         <Footer lang={lang} />
      </div>
     )
   }
 }
 
-export default withRouter(YesmPage)
+const mapStateToProps = state => ({
+  onMain: state.main.onMain,
+  offMain: state.main.offMain,
+});
+
+export default withRouter(connect(mapStateToProps, { moveOffMain })(YesmPage))

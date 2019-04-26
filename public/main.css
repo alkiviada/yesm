@@ -4,7 +4,9 @@
   --subtitle-font: Yanone Kaffeesatz;
   --body-font: Open Sans;
   --studio-font: Architects Daughter;
-  --blue-color: #1b80b4;
+  --blue-color: #318198;
+  --header-blue-color: #5daebb;
+  --footer-blue-color: #aedfe4;
   --red-color: #c21731;
   --yellow-color: #be8d10;
   --footer-color: #535554;
@@ -34,7 +36,6 @@ a:visited {
 }
 
 .active {
-  cursor: none;
   color: var(--light-grey-color);
 }
 
@@ -157,7 +158,7 @@ body {
   content: '';
   width: 11em;
   height: .15em;
-  background: var(--blue-color);
+  background: var(--footer-blue-color);
 }
 
 .yesm-footer-link:nth-child(3n-1)::before {
@@ -170,7 +171,7 @@ body {
 
 .yesm-header {
   grid-area: top;
-  background: var(--blue-color);
+  background: var(--header-blue-color);
   display: grid;
   column-gap: 2em;
   grid-column-gap: 2em;
@@ -324,7 +325,6 @@ body {
 .yesm-main {
   overflow: visible;
   grid-area: center-content;
-  position: relative;
   display: grid;
   grid-template-columns: 40% 60%;
   grid-template-areas: 
@@ -333,18 +333,31 @@ body {
 
 .yesm-main-cube {
   position: absolute;
-  margin-top: 1em;
-  grid-area: cube;
-  width: 120%;
+  top: 15%;
+  left: 7%;
+  width: 25%;
   height: auto;
+}
+
+@keyframes bye-cube {
+  from {
+    transform: scale(1) translate(0%, 0%);
+  }
+  to {
+    transform: scale(.5) translate(-105%, -113%);
+  }
+}
+
+.yesm-main-cube-animate {
+ animation: bye-cube 1s linear forwards; 
 }
 
 .yesm-bname {
   overflow: visible;
-  grid-area: title;
   position: absolute;
-  margin-top: 5em; 
-  width: 80%;
+  width: 25%;
+  top: 25%;
+  right: 48%;
   height: auto;
 }
 
@@ -545,4 +558,32 @@ body {
   left: 7%;
   bottom: -.6em;
   
+}
+
+@media(max-width: 900px) {
+  .yesm-body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-area: middle;
+    grid-template-rows: repeat(8, auto);
+    grid-template-areas: "." "." "." "." "." "." "." ".";
+  }
+  .yesm-sidenav {
+    grid-area: content;
+    align-self: center;
+    -webkit-align-self: center;
+    -webkit-justify-self: center; 
+    justify-self: center; 
+    margin-top: 1em;
+    margin-right: 1em;
+  }
+  .yesm-nav-link::before {
+    width: 150%;
+  }
+  .yesm-nav-link::after {
+    content: '';
+  }
+  .cons .yesm-main-content {
+    grid-row: 7/8;
+  }
 }

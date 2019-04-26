@@ -9,31 +9,31 @@ class Header extends Component {
   render() {
     const { lang, page } = this.props 
     return (
-      <div className="yesm-header">
+      <header className="yesm-header">
         <div className="yesm-header1">
           { !page ? '' : 
             <div className="yesm-logo">
-              <Link to={'/' + lang}>
+              <a href={'/' + lang} onClick={(e) => this.props.onClickFn(e, '/')}>
                 <YesBrandName page={page} lang={lang} />
-                <img src="/cube.png" alt=""  title="YeSmart" className='yesm-main-cube-logo' />
-              </Link>
+                <img src="/cube.png" alt="small rubik cube"  title="Link to YeSmart Main Page" className='yesm-main-cube-logo' />
+              </a>
             </div>
           }
-        <div className="yesm-about">
-        <YesmLink what='about' how={{'title': headerNav['about'].title[lang] }} lang={lang} />
-        </div>
+        <h2 className="yesm-about">
+        <YesmLink what='about' how={{'title': headerNav['about'].title[lang] }} lang={lang} onClick={(e) => this.props.onClickFn(e, 'about')}/>
+        </h2>
       </div>
         <div className="yesm-header2">
-        <div className="yesm-contact">
-        <YesmLink what='contact' how={{'title': headerNav['contact'].title[lang] }} lang={lang} />
-        </div>
+        <h2 className="yesm-contact">
+        <YesmLink what='contact' how={{'title': headerNav['contact'].title[lang] }} lang={lang} onClick={(e) => this.props.onClickFn(e, 'contact')} />
+        </h2>
         <div className="yesm-localize">
           { langs.filter(l => l != lang).map(l => 
               <Link key={l.toString()} to={page ? ('/' + page + '/' + l) : ('/' + l) } className="yesm-localize-link">{l}</Link>)
           }
         </div>
         </div>
-      </div>
+      </header>
     )
   }
 }

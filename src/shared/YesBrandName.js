@@ -9,7 +9,7 @@ class YesBrandName extends Component {
         <defs>
         <path id="bname-lower-path" d="M 0 3 L 5.8 3 M 6 3.5 L 10 3.5 M 10 4.5 L26 4.5" className="yesm-text-path"/>
         <path id="bname-cap-path" d="M 3.9 3 L 5.3 3 M 9.2 4.5 L26 4.5" className="yesm-text-path-part"/>
-        <path id="bname-subhead1" d="M -1 8.1 L 13.5 8.1" className="yesm-subhead-path"/>
+        <path id="bname-subhead1" d="M -1 8.1 L 16.5 8.1" className="yesm-subhead-path"/>
         <path id="bname-subhead2" d="M -1 11.2 L 18 11.2" className="yesm-subhead-path"/>
         </defs>
         <text className="yesm-bname-text" textLength="27">
