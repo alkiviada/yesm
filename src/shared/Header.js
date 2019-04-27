@@ -15,7 +15,7 @@ class Header extends Component {
             <div className="yesm-logo">
               <a href={'/' + lang} onClick={(e) => this.props.onClickFn(e, '/')}>
                 <YesBrandName page={page} lang={lang} />
-                <img src="/cube.png" alt="small rubik cube"  title="Link to YeSmart Main Page" className='yesm-main-cube-logo' />
+                <img src="/cube-logo.png" alt="small rubik cube"  title="Link to YeSmart Main Page" className='yesm-main-cube-logo' />
               </a>
             </div>
           }

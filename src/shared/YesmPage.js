@@ -24,7 +24,7 @@ class YesmPage extends Component {
       this.props.moveOffMain()
       this.timeout = setTimeout(() => {
         this.props.history.push(to);
-      }, 1000);
+      }, 500);
     }
     else
       this.props.history.push(to);

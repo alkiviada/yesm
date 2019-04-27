@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 15);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -91,19 +91,19 @@ var _YesmLink = __webpack_require__(3);
 
 var _YesmLink2 = _interopRequireDefault(_YesmLink);
 
-var _TelLink = __webpack_require__(19);
+var _TelLink = __webpack_require__(21);
 
 var _TelLink2 = _interopRequireDefault(_TelLink);
 
-var _EmailLink = __webpack_require__(20);
+var _EmailLink = __webpack_require__(22);
 
 var _EmailLink2 = _interopRequireDefault(_EmailLink);
 
-var _ExternalLink = __webpack_require__(21);
+var _ExternalLink = __webpack_require__(23);
 
 var _ExternalLink2 = _interopRequireDefault(_ExternalLink);
 
-var _YesmStudio = __webpack_require__(22);
+var _YesmStudio = __webpack_require__(24);
 
 var _YesmStudio2 = _interopRequireDefault(_YesmStudio);
 
@@ -340,7 +340,7 @@ var _YesBrandName = __webpack_require__(8);
 
 var _YesBrandName2 = _interopRequireDefault(_YesBrandName);
 
-var _MainContent = __webpack_require__(23);
+var _MainContent = __webpack_require__(25);
 
 var _MainContent2 = _interopRequireDefault(_MainContent);
 
@@ -348,7 +348,7 @@ var _constants = __webpack_require__(2);
 
 var _reactRedux = __webpack_require__(4);
 
-var _mainActions = __webpack_require__(32);
+var _mainActions = __webpack_require__(10);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -728,6 +728,58 @@ exports.default = RipeMemberSVG;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.setOnMain = exports.clearOffMain = exports.moveOffMain = undefined;
+
+var _types = __webpack_require__(11);
+
+var moveOffMain = exports.moveOffMain = function moveOffMain() {
+  return function (dispatch) {
+    dispatch({
+      type: _types.OFF_MAIN
+    });
+  };
+};
+
+var clearOffMain = exports.clearOffMain = function clearOffMain() {
+  return function (dispatch) {
+    dispatch({
+      type: _types.CLEAR_OFF_MAIN
+    });
+  };
+};
+
+var setOnMain = exports.setOnMain = function setOnMain() {
+  return function (dispatch) {
+    dispatch({
+      type: _types.ON_MAIN
+    });
+  };
+};
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var OFF_MAIN = exports.OFF_MAIN = 'OFF_MAIN';
+var ON_MAIN = exports.ON_MAIN = 'ON_MAIN';
+var CLEAR_OFF_MAIN = exports.CLEAR_OFF_MAIN = 'CLEAR_OFF_MAIN';
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -792,7 +844,7 @@ var Header = function (_Component) {
                   return _this2.props.onClickFn(e, '/');
                 } },
               _react2.default.createElement(_YesBrandName2.default, { page: page, lang: lang }),
-              _react2.default.createElement("img", { src: "/cube.png", alt: "small rubik cube", title: "Link to YeSmart Main Page", className: "yesm-main-cube-logo" })
+              _react2.default.createElement("img", { src: "/cube-logo.png", alt: "small rubik cube", title: "Link to YeSmart Main Page", className: "yesm-main-cube-logo" })
             )
           ),
           _react2.default.createElement(
@@ -837,7 +889,7 @@ var Header = function (_Component) {
 exports.default = Header;
 
 /***/ }),
-/* 11 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -913,37 +965,37 @@ var Footer = function (_Component) {
 exports.default = Footer;
 
 /***/ }),
-/* 12 */
+/* 14 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux");
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _express = __webpack_require__(14);
+var _express = __webpack_require__(16);
 
 var _express2 = _interopRequireDefault(_express);
 
-var _cors = __webpack_require__(15);
+var _cors = __webpack_require__(17);
 
 var _cors2 = _interopRequireDefault(_cors);
 
-var _server = __webpack_require__(16);
+var _server = __webpack_require__(18);
 
 var _reactRouterDom = __webpack_require__(1);
 
 var _reactRedux = __webpack_require__(4);
 
-var _App = __webpack_require__(17);
+var _App = __webpack_require__(19);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _store = __webpack_require__(27);
+var _store = __webpack_require__(29);
 
 var _store2 = _interopRequireDefault(_store);
 
@@ -982,25 +1034,25 @@ app.listen(3000, function () {
 });
 
 /***/ }),
-/* 14 */
+/* 16 */
 /***/ (function(module, exports) {
 
 module.exports = require("express");
 
 /***/ }),
-/* 15 */
+/* 17 */
 /***/ (function(module, exports) {
 
 module.exports = require("cors");
 
 /***/ }),
-/* 16 */
+/* 18 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 17 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1018,11 +1070,11 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(1);
 
-var _Home = __webpack_require__(18);
+var _Home = __webpack_require__(20);
 
 var _Home2 = _interopRequireDefault(_Home);
 
-var _YesmPage = __webpack_require__(25);
+var _YesmPage = __webpack_require__(27);
 
 var _YesmPage2 = _interopRequireDefault(_YesmPage);
 
@@ -1060,7 +1112,7 @@ var App = function (_Component) {
 exports.default = App;
 
 /***/ }),
-/* 18 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1088,11 +1140,11 @@ var _Main = __webpack_require__(6);
 
 var _Main2 = _interopRequireDefault(_Main);
 
-var _Header = __webpack_require__(10);
+var _Header = __webpack_require__(12);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _Footer = __webpack_require__(11);
+var _Footer = __webpack_require__(13);
 
 var _Footer2 = _interopRequireDefault(_Footer);
 
@@ -1138,7 +1190,7 @@ var Home = function (_Component) {
 exports.default = Home;
 
 /***/ }),
-/* 19 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1194,7 +1246,7 @@ var TelLink = function (_Component) {
 exports.default = TelLink;
 
 /***/ }),
-/* 20 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1250,7 +1302,7 @@ var EmailLink = function (_Component) {
 exports.default = EmailLink;
 
 /***/ }),
-/* 21 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1306,7 +1358,7 @@ var ExternalLink = function (_Component) {
 exports.default = ExternalLink;
 
 /***/ }),
-/* 22 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1380,7 +1432,7 @@ var YesmStudio = function (_Component) {
 exports.default = YesmStudio;
 
 /***/ }),
-/* 23 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1396,7 +1448,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactBodyClassname = __webpack_require__(24);
+var _reactBodyClassname = __webpack_require__(26);
 
 var _reactBodyClassname2 = _interopRequireDefault(_reactBodyClassname);
 
@@ -1463,13 +1515,13 @@ var MainContent = function (_Component) {
 exports.default = MainContent;
 
 /***/ }),
-/* 24 */
+/* 26 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-body-classname");
 
 /***/ }),
-/* 25 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1495,9 +1547,9 @@ var _YesmLink = __webpack_require__(3);
 
 var _YesmLink2 = _interopRequireDefault(_YesmLink);
 
-var _mainActions = __webpack_require__(32);
+var _mainActions = __webpack_require__(10);
 
-var _YesmSVGFilters = __webpack_require__(26);
+var _YesmSVGFilters = __webpack_require__(28);
 
 var _YesmSVGFilters2 = _interopRequireDefault(_YesmSVGFilters);
 
@@ -1505,11 +1557,11 @@ var _SideNav = __webpack_require__(5);
 
 var _SideNav2 = _interopRequireDefault(_SideNav);
 
-var _Header = __webpack_require__(10);
+var _Header = __webpack_require__(12);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _Footer = __webpack_require__(11);
+var _Footer = __webpack_require__(13);
 
 var _Footer2 = _interopRequireDefault(_Footer);
 
@@ -1549,7 +1601,7 @@ var YesmPage = function (_Component) {
         this.props.moveOffMain();
         this.timeout = setTimeout(function () {
           _this2.props.history.push(to);
-        }, 1000);
+        }, 500);
       } else this.props.history.push(to);
     }
   }, {
@@ -1612,7 +1664,7 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, { moveOffMain: _mainActions.moveOffMain })(YesmPage));
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1686,7 +1738,7 @@ var YesmSVGFilters = function (_Component) {
 exports.default = YesmSVGFilters;
 
 /***/ }),
-/* 27 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1696,13 +1748,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _redux = __webpack_require__(12);
+var _redux = __webpack_require__(14);
 
-var _reduxThunk = __webpack_require__(28);
+var _reduxThunk = __webpack_require__(30);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _reducers = __webpack_require__(29);
+var _reducers = __webpack_require__(31);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
@@ -1715,13 +1767,13 @@ var store = (0, _redux.createStore)(_reducers2.default, (0, _redux.compose)(_red
 exports.default = store;
 
 /***/ }),
-/* 28 */
+/* 30 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux-thunk");
 
 /***/ }),
-/* 29 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1731,9 +1783,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _redux = __webpack_require__(12);
+var _redux = __webpack_require__(14);
 
-var _mainReducers = __webpack_require__(30);
+var _mainReducers = __webpack_require__(32);
 
 var _mainReducers2 = _interopRequireDefault(_mainReducers);
 
@@ -1744,7 +1796,7 @@ exports.default = (0, _redux.combineReducers)({
 });
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1777,63 +1829,11 @@ exports.default = function () {
   }
 };
 
-var _types = __webpack_require__(31);
+var _types = __webpack_require__(11);
 
 var initialState = {
   onMain: 0,
   offMain: 0
-};
-
-/***/ }),
-/* 31 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var OFF_MAIN = exports.OFF_MAIN = 'OFF_MAIN';
-var ON_MAIN = exports.ON_MAIN = 'ON_MAIN';
-var CLEAR_OFF_MAIN = exports.CLEAR_OFF_MAIN = 'CLEAR_OFF_MAIN';
-
-/***/ }),
-/* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.setOnMain = exports.clearOffMain = exports.moveOffMain = undefined;
-
-var _types = __webpack_require__(31);
-
-var moveOffMain = exports.moveOffMain = function moveOffMain() {
-  return function (dispatch) {
-    dispatch({
-      type: _types.OFF_MAIN
-    });
-  };
-};
-
-var clearOffMain = exports.clearOffMain = function clearOffMain() {
-  return function (dispatch) {
-    dispatch({
-      type: _types.CLEAR_OFF_MAIN
-    });
-  };
-};
-
-var setOnMain = exports.setOnMain = function setOnMain() {
-  return function (dispatch) {
-    dispatch({
-      type: _types.ON_MAIN
-    });
-  };
 };
 
 /***/ })
