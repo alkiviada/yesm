@@ -12,7 +12,7 @@ class Footer extends Component {
   render() {
     const { lang } = this.props 
     return (
-      <div className="yesm-footer">
+      <footer className="yesm-footer">
         <div className="yesm-footer-links">
         {
           footerArr.map(l => {
@@ -24,7 +24,7 @@ class Footer extends Component {
         <div className="yesm-footer-ripe">
         <RipeMemberSVG />
         </div>
-      </div>
+      </footer>
     )
   }
 }

@@ -4124,6 +4124,11 @@ var YesBrandName = function (_Component) {
         'svg',
         { viewBox: '-5 -3 26 24.4', xmlns: 'http://www.w3.org/2000/svg', xmlnsXlink: 'http://www.w3.org/1999/xlink', width: '100%', height: '100%', className: className },
         _react2.default.createElement(
+          'title',
+          null,
+          'YeSmart'
+        ),
+        _react2.default.createElement(
           'defs',
           null,
           _react2.default.createElement('path', { id: 'bname-lower-path', d: 'M 0 3 L 5.8 3 M 6 3.5 L 10 3.5 M 10 4.5 L26 4.5', className: 'yesm-text-path' }),
@@ -5050,7 +5055,7 @@ var Header = function (_Component) {
           "div",
           { className: "yesm-header1" },
           !page ? '' : _react2.default.createElement(
-            "div",
+            "h1",
             { className: "yesm-logo" },
             _react2.default.createElement(
               "a",
@@ -5058,15 +5063,13 @@ var Header = function (_Component) {
                   return _this2.props.onClickFn(e, '/');
                 } },
               _react2.default.createElement(_YesBrandName2.default, { page: page, lang: lang }),
-              _react2.default.createElement("img", { src: "/cube-logo.png", alt: "small rubik cube", title: "Link to YeSmart Main Page", className: "yesm-main-cube-logo" })
+              _react2.default.createElement("img", { src: "/cube-logo.png", alt: "small rubic cube", title: "YeSmart Main Page", className: "yesm-main-cube-logo" })
             )
           ),
           _react2.default.createElement(
             "h2",
             { className: "yesm-about" },
-            _react2.default.createElement(_YesmLink2.default, { what: "about", how: { 'title': _constants.headerNav['about'].title[lang] }, lang: lang, onClick: function onClick(e) {
-                return _this2.props.onClickFn(e, 'about');
-              } })
+            _react2.default.createElement(_YesmLink2.default, { what: "about", how: { 'title': _constants.headerNav['about'].title[lang] }, lang: lang, onClickFn: this.props.onClickFn })
           )
         ),
         _react2.default.createElement(
@@ -5075,9 +5078,7 @@ var Header = function (_Component) {
           _react2.default.createElement(
             "h2",
             { className: "yesm-contact" },
-            _react2.default.createElement(_YesmLink2.default, { what: "contact", how: { 'title': _constants.headerNav['contact'].title[lang] }, lang: lang, onClick: function onClick(e) {
-                return _this2.props.onClickFn(e, 'contact');
-              } })
+            _react2.default.createElement(_YesmLink2.default, { what: "contact", how: { 'title': _constants.headerNav['contact'].title[lang] }, lang: lang, onClickFn: this.props.onClickFn })
           ),
           _react2.default.createElement(
             "div",
@@ -5150,7 +5151,7 @@ var Footer = function (_Component) {
       var lang = this.props.lang;
 
       return _react2.default.createElement(
-        'div',
+        'footer',
         { className: 'yesm-footer' },
         _react2.default.createElement(
           'div',

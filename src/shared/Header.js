@@ -12,20 +12,20 @@ class Header extends Component {
       <header className="yesm-header">
         <div className="yesm-header1">
           { !page ? '' : 
-            <div className="yesm-logo">
+            <h1 className="yesm-logo">
               <a href={'/' + lang} onClick={(e) => this.props.onClickFn(e, '/')}>
                 <YesBrandName page={page} lang={lang} />
-                <img src="/cube-logo.png" alt="small rubik cube"  title="Link to YeSmart Main Page" className='yesm-main-cube-logo' />
+                <img src="/cube-logo.png" alt="small rubic cube"  title="YeSmart Main Page" className='yesm-main-cube-logo' />
               </a>
-            </div>
+            </h1>
           }
         <h2 className="yesm-about">
-        <YesmLink what='about' how={{'title': headerNav['about'].title[lang] }} lang={lang} onClick={(e) => this.props.onClickFn(e, 'about')}/>
+        <YesmLink what='about' how={{'title': headerNav['about'].title[lang] }} lang={lang} onClickFn={this.props.onClickFn}/>
         </h2>
       </div>
         <div className="yesm-header2">
         <h2 className="yesm-contact">
-        <YesmLink what='contact' how={{'title': headerNav['contact'].title[lang] }} lang={lang} onClick={(e) => this.props.onClickFn(e, 'contact')} />
+        <YesmLink what='contact' how={{'title': headerNav['contact'].title[lang] }} lang={lang} onClickFn={this.props.onClickFn} />
         </h2>
         <div className="yesm-localize">
           { langs.filter(l => l != lang).map(l => 

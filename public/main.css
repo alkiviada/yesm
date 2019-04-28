@@ -8,10 +8,11 @@
   --header-blue-color: #5daebb;
   --footer-blue-color: #aedfe4;
   --red-color: #c21731;
+  --red-subhead-color: #ee4342;
   --yellow-color: #be8d10;
   --footer-color: #535554;
   --off-white-color: #FDF6EC;
-  --light-grey-color: #D6D6D6;
+  --black-color: #3e3636;
   --flesh-color: #ece0c0;
   --gmargin-top: 2.6rem;
 }
@@ -27,15 +28,19 @@ a {
 }
 
 *:hover, a:hover, .active {
-  color: var(--light-grey-color);
+  color: var(--black-color);
 }
 
 h2 {
  font-size: 1.1rem;
 }
 
+h1 {
+ font-size: 1rem;
+}
+
 a:visited {
-  color: var(--light-grey-color);
+/*  color: var(--light-grey-color); */
 }
 
 .active {
@@ -364,15 +369,58 @@ width: 100%;
 .yesm-bname {
   overflow: visible;
   position: absolute;
-  width: 25%;
+  width: 300px;
   top: 25%;
-  right: 48%;
+  left: 28%;
+  padding-right: 1em;
   height: auto;
+}
+
+@media(max-width: 1190px) {
+  .yesm-bname {
+    width: 290px;
+    top: 30%;
+    left: 32%;
+  }
+  .yesm-main-cube {
+    top: 20%;
+    width: 320px;
+  }
+  .yesm-main-cube-animate {
+    position: absolute;
+    top: -.2em;
+    left:0;
+    width: 120px;
+    height: auto;
+    transition: all .5s ease-out;
+  }
+}
+
+@media(max-width: 1070px) {
+  .yesm-bname {
+    width: 250px;
+    top: 30%;
+    left: 27%;
+  }
+  .yesm-main-cube {
+    top: 20%;
+    left: 2%;
+    width: 300px;
+  }
+  .yesm-main-cube-animate {
+    position: absolute;
+    top: -.2em;
+    left:0;
+    width: 120px;
+    height: auto;
+    transition: all .5s ease-out;
+  }
 }
 
 .yesm-logo {
   position: relative;
   overflow: visible;
+  pointer-events: none; 
 }
 
 .yesm-bname-logo {
@@ -381,6 +429,7 @@ width: 100%;
   height: 300%;
   left: 2.8em;
   top: -.2em;
+  pointer-events: fill; 
 }
 
 .yesm-main-cube-logo {
@@ -390,13 +439,6 @@ width: 100%;
   height: auto;
 }
 
-.yesm-bname-part-cover { 
-  fill: var(--bg-color);
-}
-
-.yesm-bname-logo .yesm-bname-part-cover { 
-  fill: var(--blue-color);
-}
 
 .yesm-bname-logo .yesm-bname-subhead {
   font-size: 2px; 
@@ -407,7 +449,7 @@ width: 100%;
 
 .yesm-bname-subhead {
   font-size: 2.5px; 
-  fill: var(--red-color);
+  fill: var(--red-subhead-color);
   font-family: var(--subtitle-font);
 }
 
@@ -415,16 +457,11 @@ width: 100%;
   letter-spacing: .1px;
 }
 
-.yesm-bname-part-text {
-  letter-spacing: 1px;
-  stroke-width: .2;
-  stroke: var(--off-white-color);
-}
-
 .yesm-bname-text {
   stroke-width: .1;
   stroke: var(--off-white-color);
 }
+
 
 .yesm-bname-text {
   letter-spacing: 1px;
@@ -443,6 +480,13 @@ width: 100%;
   font-family: var(--title-font);
 }
 
+.yesm-bname-logo .yesm-bname-text-path:hover {
+  fill: var(--black-color);
+}
+
+.yesm-bname-logo .yesm-bname-text:hover {
+  stroke: var(--black-color);
+}
   
 /* side navingation */
 
@@ -539,6 +583,10 @@ width: 100%;
   font-size: .5rem;
   position: absolute;
   top: .2em;
+}
+
+footer a:hover {
+  color: #dac9c9;
 }
 
 .yesm-footer .st0, .yesm-footer .st1, .yesm-footer .st2 { 
