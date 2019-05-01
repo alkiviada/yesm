@@ -37,7 +37,7 @@ app.get("*", (req, res, next) => {
       </head>
 
       <body>
-        <div id="app">${markup}</div>
+        <div id="app" class="yesm-container">${markup}</div>
       </body>
     </html>
   `)

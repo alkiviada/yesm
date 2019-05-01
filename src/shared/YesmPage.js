@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { withRouter } from "react-router-dom";
 import Main from "./Main";
 import YesmLink from "./YesmLink";
@@ -19,8 +19,6 @@ class YesmPage extends Component {
     e.preventDefault()
     const { onMain } = this.props
     if (onMain) {
-      console.log(to)
-      console.log('moving off')
       this.props.moveOffMain()
       this.timeout = setTimeout(() => {
         this.props.history.push(to);
@@ -61,7 +59,7 @@ class YesmPage extends Component {
     }
 
     return (
-      <div className="yesm-container">
+      <Fragment>
         <YesmSVGFilters />
         <Header page={page} lang={lang} onClickFn={this.onClick} />
         <YesmLink what='login' how={{'title': 'Login', 'className': 'yesm-login'}} lang={lang} />
@@ -69,8 +67,8 @@ class YesmPage extends Component {
         <Main page={page} lang={lang} />
         <SideNav page={page} lang={lang} onClickFn={this.onClick} /> 
         </section>
-        <Footer lang={lang} />
-     </div>
+        <Footer lang={lang} onClickFn={this.onClick} />
+      </Fragment>
     )
   }
 }

@@ -3836,10 +3836,10 @@ var SideNav = function (_Component) {
 
       return _react2.default.createElement(
         'nav',
-        { className: 'yesm-sidenav', role: 'navigation', 'aroa-label': 'Yesmart List of Services' },
+        { className: 'yesm-sidenav', role: 'navigation', 'area-label': 'Yesmart List of Services' },
         _react2.default.createElement(
           'ul',
-          null,
+          { className: 'yesm-nav-ul' },
           Object.keys(_constants.sideNav).map(function (sn, i) {
             return _react2.default.createElement(
               'li',
@@ -3892,6 +3892,10 @@ var _reactRedux = __webpack_require__(17);
 
 var _mainActions = __webpack_require__(41);
 
+var _reactBodyClassname = __webpack_require__(90);
+
+var _reactBodyClassname2 = _interopRequireDefault(_reactBodyClassname);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3918,8 +3922,6 @@ var Main = function (_Component) {
           offMain = _props.offMain,
           onMain = _props.onMain;
 
-      console.log(onMain);
-      console.log(offMain);
       var mainCubeClass = 'yesm-main-cube';
 
       if (!page) {
@@ -3928,10 +3930,14 @@ var Main = function (_Component) {
         }
 
         return _react2.default.createElement(
-          "main",
-          { role: "main", className: "yesm-main" },
-          _react2.default.createElement("img", { src: "/cube-main.png", alt: "rubik cube", title: "YeSmart Main Page", className: mainCubeClass, id: "yesm-main-cube" }),
-          _react2.default.createElement(_YesBrandName2.default, { page: page })
+          _reactBodyClassname2.default,
+          { className: lang },
+          _react2.default.createElement(
+            "main",
+            { role: "main", className: "yesm-main" },
+            _react2.default.createElement("img", { src: "/cube-main.png", alt: "rubik cube", title: "YeSmart Main Page", className: mainCubeClass, id: "yesm-main-cube" }),
+            _react2.default.createElement(_YesBrandName2.default, { page: page })
+          )
         );
       } else this.props.clearOffMain();
       return _constants.sideNav[page] || _constants.headerNav[page] || _constants.footerNav[page] ? _react2.default.createElement(_MainContent2.default, { page: page, lang: lang }) : '';
@@ -4485,14 +4491,14 @@ function connectAdvanced(
 /*
   selectorFactory is a func that is responsible for returning the selector function used to
   compute new props from state, props, and dispatch. For example:
-     export default connectAdvanced((dispatch, options) => (state, props) => ({
+      export default connectAdvanced((dispatch, options) => (state, props) => ({
       thing: state.things[props.thingId],
       saveThing: fields => dispatch(actionCreators.saveThing(props.thingId, fields)),
     }))(YourComponent)
-   Access to dispatch is provided to the factory so selectorFactories can bind actionCreators
+    Access to dispatch is provided to the factory so selectorFactories can bind actionCreators
   outside of their selector as an optimization. Options passed to connectAdvanced are passed to
   the selectorFactory, along with displayName and WrappedComponent, as the second argument.
-   Note that selectorFactory is responsible for all caching/memoization of inbound and outbound
+    Note that selectorFactory is responsible for all caching/memoization of inbound and outbound
   props. Do not use connectAdvanced directly without memoizing results between calls to your
   selector, otherwise the Connect component will re-render on every state or props change.
 */
@@ -4640,6 +4646,7 @@ _ref) {
       var lastChildProps = (0, _react.useRef)();
       var lastWrapperProps = (0, _react.useRef)(wrapperProps);
       var childPropsFromStoreUpdate = (0, _react.useRef)();
+      var renderIsScheduled = (0, _react.useRef)(false);
       var actualChildProps = usePureOnlyMemo(function () {
         // Tricky logic here:
         // - This render may have been triggered by a Redux store update that produced new child props
@@ -4663,7 +4670,8 @@ _ref) {
       useIsomorphicLayoutEffect(function () {
         // We want to capture the wrapper props and child props we used for later comparisons
         lastWrapperProps.current = wrapperProps;
-        lastChildProps.current = actualChildProps; // If the render was from a store update, clear out that reference and cascade the subscriber update
+        lastChildProps.current = actualChildProps;
+        renderIsScheduled.current = false; // If the render was from a store update, clear out that reference and cascade the subscriber update
 
         if (childPropsFromStoreUpdate.current) {
           childPropsFromStoreUpdate.current = null;
@@ -4703,14 +4711,17 @@ _ref) {
 
 
           if (newChildProps === lastChildProps.current) {
-            notifyNestedSubs();
+            if (!renderIsScheduled.current) {
+              notifyNestedSubs();
+            }
           } else {
             // Save references to the new child props.  Note that we track the "child props from store update"
             // as a ref instead of a useState/useReducer because we need a way to determine if that value has
             // been processed.  If this went into useState/useReducer, we couldn't clear out the value without
             // forcing another re-render, which we don't want.
             lastChildProps.current = newChildProps;
-            childPropsFromStoreUpdate.current = newChildProps; // If the child props _did_ change (or we caught an error), this wrapper component needs to re-render
+            childPropsFromStoreUpdate.current = newChildProps;
+            renderIsScheduled.current = true; // If the child props _did_ change (or we caught an error), this wrapper component needs to re-render
 
             forceComponentUpdateDispatch({
               type: 'STORE_UPDATED',
@@ -5050,7 +5061,7 @@ var Header = function (_Component) {
 
       return _react2.default.createElement(
         "header",
-        { className: "yesm-header" },
+        { className: "yesm-header", role: "banner" },
         _react2.default.createElement(
           "div",
           { className: "yesm-header1" },
@@ -5060,7 +5071,7 @@ var Header = function (_Component) {
             _react2.default.createElement(
               "a",
               { href: '/' + lang, onClick: function onClick(e) {
-                  return _this2.props.onClickFn(e, '/');
+                  return _this2.props.onClickFn(e, '/' + lang);
                 } },
               _react2.default.createElement(_YesBrandName2.default, { page: page, lang: lang }),
               _react2.default.createElement("img", { src: "/cube-logo.png", alt: "small rubic cube", title: "YeSmart Main Page", className: "yesm-main-cube-logo" })
@@ -5148,11 +5159,13 @@ var Footer = function (_Component) {
   _createClass(Footer, [{
     key: 'render',
     value: function render() {
-      var lang = this.props.lang;
+      var _props = this.props,
+          lang = _props.lang,
+          onClickFn = _props.onClickFn;
 
       return _react2.default.createElement(
         'footer',
-        { className: 'yesm-footer' },
+        { className: 'yesm-footer', role: 'contentinfo' },
         _react2.default.createElement(
           'div',
           { className: 'yesm-footer-links' },
@@ -5161,7 +5174,7 @@ var Footer = function (_Component) {
             return _react2.default.createElement(
               'div',
               { key: l.toString(), className: 'yesm-footer-link' },
-              _react2.default.createElement(FooterComponent, { what: l, how: _constants.footerNav[l], lang: lang })
+              _react2.default.createElement(FooterComponent, { what: l, how: _constants.footerNav[l], lang: lang, onClickFn: onClickFn })
             );
           })
         ),
@@ -17826,16 +17839,12 @@ var MainContent = function (_Component) {
           page = _props.page,
           lang = _props.lang;
 
-      console.log(lang);
       var linkMap = [_constants.sideNav, _constants.footerNav, _constants.headerNav].find(function (m) {
         return m[page];
       });
-      var pageClass = linkMap[page].pageClass;
+      var pageClass = linkMap[page].pageClass + ' ' + lang;
       var text = linkMap[page].text[lang];
 
-      console.log(text);
-
-      console.log(pageClass);
       return _react2.default.createElement(
         _reactBodyClassname2.default,
         { className: pageClass },
@@ -19074,8 +19083,6 @@ var YesmPage = function (_Component) {
       var onMain = this.props.onMain;
 
       if (onMain) {
-        console.log(to);
-        console.log('moving off');
         this.props.moveOffMain();
         this.timeout = setTimeout(function () {
           _this2.props.history.push(to);
@@ -19113,8 +19120,8 @@ var YesmPage = function (_Component) {
       }
 
       return _react2.default.createElement(
-        "div",
-        { className: "yesm-container" },
+        _react.Fragment,
+        null,
         _react2.default.createElement(_YesmSVGFilters2.default, null),
         _react2.default.createElement(_Header2.default, { page: page, lang: lang, onClickFn: this.onClick }),
         _react2.default.createElement(_YesmLink2.default, { what: "login", how: { 'title': 'Login', 'className': 'yesm-login' }, lang: lang }),
@@ -19124,7 +19131,7 @@ var YesmPage = function (_Component) {
           _react2.default.createElement(_Main2.default, { page: page, lang: lang }),
           _react2.default.createElement(_SideNav2.default, { page: page, lang: lang, onClickFn: this.onClick })
         ),
-        _react2.default.createElement(_Footer2.default, { lang: lang })
+        _react2.default.createElement(_Footer2.default, { lang: lang, onClickFn: this.onClick })
       );
     }
   }]);
@@ -19203,7 +19210,7 @@ var YesmSVGFilters = function (_Component) {
             { id: "colorMeFleshMatrix" },
             _react2.default.createElement("feColorMatrix", { "in": "SourceGraphic", colorInterpolationFilters: "sRGB",
               type: "matrix",
-              values: "1 0 0 0 .38 0 1 0 0 .8 0 0 1 0 .54 0 0 0 1.9 0" })
+              values: "1 0 0 0 .2275 0 1 0 0 .8745 0 0 1 0 .7373 0 0 0 1.9 0" })
           )
         )
       );

@@ -294,10 +294,10 @@ var SideNav = function (_Component) {
 
       return _react2.default.createElement(
         'nav',
-        { className: 'yesm-sidenav', role: 'navigation', 'aroa-label': 'Yesmart List of Services' },
+        { className: 'yesm-sidenav', role: 'navigation', 'area-label': 'Yesmart List of Services' },
         _react2.default.createElement(
           'ul',
-          null,
+          { className: 'yesm-nav-ul' },
           Object.keys(_constants.sideNav).map(function (sn, i) {
             return _react2.default.createElement(
               'li',
@@ -350,6 +350,10 @@ var _reactRedux = __webpack_require__(4);
 
 var _mainActions = __webpack_require__(10);
 
+var _reactBodyClassname = __webpack_require__(26);
+
+var _reactBodyClassname2 = _interopRequireDefault(_reactBodyClassname);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -376,8 +380,6 @@ var Main = function (_Component) {
           offMain = _props.offMain,
           onMain = _props.onMain;
 
-      console.log(onMain);
-      console.log(offMain);
       var mainCubeClass = 'yesm-main-cube';
 
       if (!page) {
@@ -386,10 +388,14 @@ var Main = function (_Component) {
         }
 
         return _react2.default.createElement(
-          "main",
-          { role: "main", className: "yesm-main" },
-          _react2.default.createElement("img", { src: "/cube-main.png", alt: "rubik cube", title: "YeSmart Main Page", className: mainCubeClass, id: "yesm-main-cube" }),
-          _react2.default.createElement(_YesBrandName2.default, { page: page })
+          _reactBodyClassname2.default,
+          { className: lang },
+          _react2.default.createElement(
+            "main",
+            { role: "main", className: "yesm-main" },
+            _react2.default.createElement("img", { src: "/cube-main.png", alt: "rubik cube", title: "YeSmart Main Page", className: mainCubeClass, id: "yesm-main-cube" }),
+            _react2.default.createElement(_YesBrandName2.default, { page: page })
+          )
         );
       } else this.props.clearOffMain();
       return _constants.sideNav[page] || _constants.headerNav[page] || _constants.footerNav[page] ? _react2.default.createElement(_MainContent2.default, { page: page, lang: lang }) : '';
@@ -836,7 +842,7 @@ var Header = function (_Component) {
 
       return _react2.default.createElement(
         "header",
-        { className: "yesm-header" },
+        { className: "yesm-header", role: "banner" },
         _react2.default.createElement(
           "div",
           { className: "yesm-header1" },
@@ -846,7 +852,7 @@ var Header = function (_Component) {
             _react2.default.createElement(
               "a",
               { href: '/' + lang, onClick: function onClick(e) {
-                  return _this2.props.onClickFn(e, '/');
+                  return _this2.props.onClickFn(e, '/' + lang);
                 } },
               _react2.default.createElement(_YesBrandName2.default, { page: page, lang: lang }),
               _react2.default.createElement("img", { src: "/cube-logo.png", alt: "small rubic cube", title: "YeSmart Main Page", className: "yesm-main-cube-logo" })
@@ -934,11 +940,13 @@ var Footer = function (_Component) {
   _createClass(Footer, [{
     key: 'render',
     value: function render() {
-      var lang = this.props.lang;
+      var _props = this.props,
+          lang = _props.lang,
+          onClickFn = _props.onClickFn;
 
       return _react2.default.createElement(
         'footer',
-        { className: 'yesm-footer' },
+        { className: 'yesm-footer', role: 'contentinfo' },
         _react2.default.createElement(
           'div',
           { className: 'yesm-footer-links' },
@@ -947,7 +955,7 @@ var Footer = function (_Component) {
             return _react2.default.createElement(
               'div',
               { key: l.toString(), className: 'yesm-footer-link' },
-              _react2.default.createElement(FooterComponent, { what: l, how: _constants.footerNav[l], lang: lang })
+              _react2.default.createElement(FooterComponent, { what: l, how: _constants.footerNav[l], lang: lang, onClickFn: onClickFn })
             );
           })
         ),
@@ -1027,7 +1035,7 @@ app.get("*", function (req, res, next) {
     )
   ));
 
-  res.send("\n    <!DOCTYPE html>\n    <html>\n      <head>\n        <title>YeSmart</title>\n        <link href=\"//fonts.googleapis.com/css?family=Open+Sans:300,400,700,900|Montserrat:400,700,900|Yanone+Kaffeesatz:400|Architects+Daughter:400\" rel=\"stylesheet\" type=\"text/css\">\n        <link rel=\"stylesheet\" href=\"/main.css\">\n        <script src=\"/bundle.js\" defer></script>\n      </head>\n\n      <body>\n        <div id=\"app\">" + markup + "</div>\n      </body>\n    </html>\n  ");
+  res.send("\n    <!DOCTYPE html>\n    <html>\n      <head>\n        <title>YeSmart</title>\n        <link href=\"//fonts.googleapis.com/css?family=Open+Sans:300,400,700,900|Montserrat:400,700,900|Yanone+Kaffeesatz:400|Architects+Daughter:400\" rel=\"stylesheet\" type=\"text/css\">\n        <link rel=\"stylesheet\" href=\"/main.css\">\n        <script src=\"/bundle.js\" defer></script>\n      </head>\n\n      <body>\n        <div id=\"app\" class=\"yesm-container\">" + markup + "</div>\n      </body>\n    </html>\n  ");
 });
 
 app.listen(3000, function () {
@@ -1483,16 +1491,12 @@ var MainContent = function (_Component) {
           page = _props.page,
           lang = _props.lang;
 
-      console.log(lang);
       var linkMap = [_constants.sideNav, _constants.footerNav, _constants.headerNav].find(function (m) {
         return m[page];
       });
-      var pageClass = linkMap[page].pageClass;
+      var pageClass = linkMap[page].pageClass + ' ' + lang;
       var text = linkMap[page].text[lang];
 
-      console.log(text);
-
-      console.log(pageClass);
       return _react2.default.createElement(
         _reactBodyClassname2.default,
         { className: pageClass },
@@ -1597,8 +1601,6 @@ var YesmPage = function (_Component) {
       var onMain = this.props.onMain;
 
       if (onMain) {
-        console.log(to);
-        console.log('moving off');
         this.props.moveOffMain();
         this.timeout = setTimeout(function () {
           _this2.props.history.push(to);
@@ -1636,8 +1638,8 @@ var YesmPage = function (_Component) {
       }
 
       return _react2.default.createElement(
-        "div",
-        { className: "yesm-container" },
+        _react.Fragment,
+        null,
         _react2.default.createElement(_YesmSVGFilters2.default, null),
         _react2.default.createElement(_Header2.default, { page: page, lang: lang, onClickFn: this.onClick }),
         _react2.default.createElement(_YesmLink2.default, { what: "login", how: { 'title': 'Login', 'className': 'yesm-login' }, lang: lang }),
@@ -1647,7 +1649,7 @@ var YesmPage = function (_Component) {
           _react2.default.createElement(_Main2.default, { page: page, lang: lang }),
           _react2.default.createElement(_SideNav2.default, { page: page, lang: lang, onClickFn: this.onClick })
         ),
-        _react2.default.createElement(_Footer2.default, { lang: lang })
+        _react2.default.createElement(_Footer2.default, { lang: lang, onClickFn: this.onClick })
       );
     }
   }]);
@@ -1726,7 +1728,7 @@ var YesmSVGFilters = function (_Component) {
             { id: "colorMeFleshMatrix" },
             _react2.default.createElement("feColorMatrix", { "in": "SourceGraphic", colorInterpolationFilters: "sRGB",
               type: "matrix",
-              values: "1 0 0 0 .38 0 1 0 0 .8 0 0 1 0 .54 0 0 0 1.9 0" })
+              values: "1 0 0 0 .2275 0 1 0 0 .8745 0 0 1 0 .7373 0 0 0 1.9 0" })
           )
         )
       );

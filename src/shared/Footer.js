@@ -10,14 +10,17 @@ const footerArr = [
 
 class Footer extends Component {
   render() {
-    const { lang } = this.props 
+    const { lang, onClickFn } = this.props 
     return (
-      <footer className="yesm-footer">
+      <footer className="yesm-footer" role="contentinfo">
         <div className="yesm-footer-links">
         {
           footerArr.map(l => {
             const FooterComponent = footerNav[l].component
-            return <div key={l.toString()} className="yesm-footer-link"><FooterComponent what={l} how={footerNav[l]} lang={lang} /></div>
+            return (
+              <div key={l.toString()} className="yesm-footer-link">
+                <FooterComponent what={l} how={footerNav[l]} lang={lang} onClickFn={onClickFn} />
+              </div>)
           }) 
         }
         </div>

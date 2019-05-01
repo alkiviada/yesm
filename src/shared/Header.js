@@ -9,11 +9,11 @@ class Header extends Component {
   render() {
     const { lang, page } = this.props 
     return (
-      <header className="yesm-header">
+      <header className="yesm-header" role="banner">
         <div className="yesm-header1">
           { !page ? '' : 
             <h1 className="yesm-logo">
-              <a href={'/' + lang} onClick={(e) => this.props.onClickFn(e, '/')}>
+              <a href={'/' + lang} onClick={(e) => this.props.onClickFn(e, '/' + lang)}>
                 <YesBrandName page={page} lang={lang} />
                 <img src="/cube-logo.png" alt="small rubic cube"  title="YeSmart Main Page" className='yesm-main-cube-logo' />
               </a>

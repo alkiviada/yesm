@@ -24,9 +24,9 @@ class YesmSVGFilters extends Component {
        <filter id="colorMeFleshMatrix">
     <feColorMatrix in="SourceGraphic" colorInterpolationFilters="sRGB"
         type="matrix"
-        values="1 0 0 0 .38
-                0 1 0 0 .8
-                0 0 1 0 .54
+        values="1 0 0 0 .2275
+                0 1 0 0 .8745
+                0 0 1 0 .7373
                 0 0 0 1.9 0" />
   </filter>
      </defs>
