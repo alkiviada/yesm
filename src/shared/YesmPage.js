@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import ReactDOM from "react-dom";
 import { withRouter } from "react-router-dom";
 import Main from "./Main";
 import YesmLink from "./YesmLink";
@@ -13,12 +14,14 @@ class YesmPage extends Component {
   constructor(props) { 
     super(props)
     this.onClick = this.onClick.bind(this) 
+    this.mainRef = React.createRef();
   }
 
   onClick(e, to) {
     e.preventDefault()
     const { onMain } = this.props
     if (onMain) {
+      window.scrollTo(0, 0)
       this.props.moveOffMain()
       this.timeout = setTimeout(() => {
         this.props.history.push(to);
@@ -26,6 +29,8 @@ class YesmPage extends Component {
     }
     else
       this.props.history.push(to);
+    const domNode = ReactDOM.findDOMNode(this.mainRef.current)
+    console.log(domNode)
   };
 
   render() {
@@ -64,7 +69,7 @@ class YesmPage extends Component {
         <Header page={page} lang={lang} onClickFn={this.onClick} />
         <YesmLink what='login' how={{'title': 'Login', 'className': 'yesm-login'}} lang={lang} />
         <section className="yesm-body">
-        <Main page={page} lang={lang} />
+        <Main page={page} lang={lang} mainref={this.mainRef} />
         <SideNav page={page} lang={lang} onClickFn={this.onClick} /> 
         </section>
         <Footer lang={lang} onClickFn={this.onClick} />

@@ -3922,6 +3922,7 @@ var Main = function (_Component) {
           offMain = _props.offMain,
           onMain = _props.onMain;
 
+      console.log(this.props);
       var mainCubeClass = 'yesm-main-cube';
 
       if (!page) {
@@ -3940,7 +3941,7 @@ var Main = function (_Component) {
           )
         );
       } else this.props.clearOffMain();
-      return _constants.sideNav[page] || _constants.headerNav[page] || _constants.footerNav[page] ? _react2.default.createElement(_MainContent2.default, { page: page, lang: lang }) : '';
+      return _constants.sideNav[page] || _constants.headerNav[page] || _constants.footerNav[page] ? _react2.default.createElement(_MainContent2.default, { page: page, lang: lang, mainref: this.props.mainref }) : '';
     }
   }]);
 
@@ -4491,14 +4492,14 @@ function connectAdvanced(
 /*
   selectorFactory is a func that is responsible for returning the selector function used to
   compute new props from state, props, and dispatch. For example:
-      export default connectAdvanced((dispatch, options) => (state, props) => ({
+     export default connectAdvanced((dispatch, options) => (state, props) => ({
       thing: state.things[props.thingId],
       saveThing: fields => dispatch(actionCreators.saveThing(props.thingId, fields)),
     }))(YourComponent)
-    Access to dispatch is provided to the factory so selectorFactories can bind actionCreators
+   Access to dispatch is provided to the factory so selectorFactories can bind actionCreators
   outside of their selector as an optimization. Options passed to connectAdvanced are passed to
   the selectorFactory, along with displayName and WrappedComponent, as the second argument.
-    Note that selectorFactory is responsible for all caching/memoization of inbound and outbound
+   Note that selectorFactory is responsible for all caching/memoization of inbound and outbound
   props. Do not use connectAdvanced directly without memoizing results between calls to your
   selector, otherwise the Connect component will re-render on every state or props change.
 */
@@ -4646,7 +4647,6 @@ _ref) {
       var lastChildProps = (0, _react.useRef)();
       var lastWrapperProps = (0, _react.useRef)(wrapperProps);
       var childPropsFromStoreUpdate = (0, _react.useRef)();
-      var renderIsScheduled = (0, _react.useRef)(false);
       var actualChildProps = usePureOnlyMemo(function () {
         // Tricky logic here:
         // - This render may have been triggered by a Redux store update that produced new child props
@@ -4670,8 +4670,7 @@ _ref) {
       useIsomorphicLayoutEffect(function () {
         // We want to capture the wrapper props and child props we used for later comparisons
         lastWrapperProps.current = wrapperProps;
-        lastChildProps.current = actualChildProps;
-        renderIsScheduled.current = false; // If the render was from a store update, clear out that reference and cascade the subscriber update
+        lastChildProps.current = actualChildProps; // If the render was from a store update, clear out that reference and cascade the subscriber update
 
         if (childPropsFromStoreUpdate.current) {
           childPropsFromStoreUpdate.current = null;
@@ -4711,17 +4710,14 @@ _ref) {
 
 
           if (newChildProps === lastChildProps.current) {
-            if (!renderIsScheduled.current) {
-              notifyNestedSubs();
-            }
+            notifyNestedSubs();
           } else {
             // Save references to the new child props.  Note that we track the "child props from store update"
             // as a ref instead of a useState/useReducer because we need a way to determine if that value has
             // been processed.  If this went into useState/useReducer, we couldn't clear out the value without
             // forcing another re-render, which we don't want.
             lastChildProps.current = newChildProps;
-            childPropsFromStoreUpdate.current = newChildProps;
-            renderIsScheduled.current = true; // If the child props _did_ change (or we caught an error), this wrapper component needs to re-render
+            childPropsFromStoreUpdate.current = newChildProps; // If the child props _did_ change (or we caught an error), this wrapper component needs to re-render
 
             forceComponentUpdateDispatch({
               type: 'STORE_UPDATED',
@@ -17833,12 +17829,20 @@ var MainContent = function (_Component) {
   }
 
   _createClass(MainContent, [{
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      console.log('i mounterd');
+      window.scrollTo(0, 0);
+      console.log('ha i mounterd');
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _props = this.props,
           page = _props.page,
           lang = _props.lang;
 
+      console.log(this.props.mainref);
       var linkMap = [_constants.sideNav, _constants.footerNav, _constants.headerNav].find(function (m) {
         return m[page];
       });
@@ -17850,7 +17854,7 @@ var MainContent = function (_Component) {
         { className: pageClass },
         _react2.default.createElement(
           'div',
-          { className: 'yesm-main-content' },
+          { className: 'yesm-main-content', mainref: this.props.mainref },
           _react2.default.createElement(
             'div',
             { className: 'yesm-main-text' },
@@ -19024,6 +19028,10 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactDom = __webpack_require__(22);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
 var _reactRouterDom = __webpack_require__(3);
 
 var _Main = __webpack_require__(30);
@@ -19071,6 +19079,7 @@ var YesmPage = function (_Component) {
     var _this = _possibleConstructorReturn(this, (YesmPage.__proto__ || Object.getPrototypeOf(YesmPage)).call(this, props));
 
     _this.onClick = _this.onClick.bind(_this);
+    _this.mainRef = _react2.default.createRef();
     return _this;
   }
 
@@ -19083,11 +19092,14 @@ var YesmPage = function (_Component) {
       var onMain = this.props.onMain;
 
       if (onMain) {
+        window.scrollTo(0, 0);
         this.props.moveOffMain();
         this.timeout = setTimeout(function () {
           _this2.props.history.push(to);
         }, 500);
       } else this.props.history.push(to);
+      var domNode = _reactDom2.default.findDOMNode(this.mainRef.current);
+      console.log(domNode);
     }
   }, {
     key: "render",
@@ -19128,7 +19140,7 @@ var YesmPage = function (_Component) {
         _react2.default.createElement(
           "section",
           { className: "yesm-body" },
-          _react2.default.createElement(_Main2.default, { page: page, lang: lang }),
+          _react2.default.createElement(_Main2.default, { page: page, lang: lang, mainref: this.mainRef }),
           _react2.default.createElement(_SideNav2.default, { page: page, lang: lang, onClickFn: this.onClick })
         ),
         _react2.default.createElement(_Footer2.default, { lang: lang, onClickFn: this.onClick })

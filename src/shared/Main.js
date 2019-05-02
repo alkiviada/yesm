@@ -10,6 +10,7 @@ import BodyClassName from 'react-body-classname';
 class Main extends Component {
   render() {
     const { page, lang, offMain, onMain} = this.props
+    console.log(this.props)
     let mainCubeClass = 'yesm-main-cube'
 
     if (!page) {
@@ -30,7 +31,7 @@ class Main extends Component {
     }
     else 
       this.props.clearOffMain() 
-      return sideNav[page] || headerNav[page] || footerNav[page] ? <MainContent page={page} lang={lang} /> : '' 
+      return sideNav[page] || headerNav[page] || footerNav[page] ? <MainContent page={page} lang={lang} mainref={this.props.mainref} /> : '' 
   }
 }
 

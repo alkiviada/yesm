@@ -380,6 +380,7 @@ var Main = function (_Component) {
           offMain = _props.offMain,
           onMain = _props.onMain;
 
+      console.log(this.props);
       var mainCubeClass = 'yesm-main-cube';
 
       if (!page) {
@@ -398,7 +399,7 @@ var Main = function (_Component) {
           )
         );
       } else this.props.clearOffMain();
-      return _constants.sideNav[page] || _constants.headerNav[page] || _constants.footerNav[page] ? _react2.default.createElement(_MainContent2.default, { page: page, lang: lang }) : '';
+      return _constants.sideNav[page] || _constants.headerNav[page] || _constants.footerNav[page] ? _react2.default.createElement(_MainContent2.default, { page: page, lang: lang, mainref: this.props.mainref }) : '';
     }
   }]);
 
@@ -1485,12 +1486,20 @@ var MainContent = function (_Component) {
   }
 
   _createClass(MainContent, [{
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      console.log('i mounterd');
+      window.scrollTo(0, 0);
+      console.log('ha i mounterd');
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _props = this.props,
           page = _props.page,
           lang = _props.lang;
 
+      console.log(this.props.mainref);
       var linkMap = [_constants.sideNav, _constants.footerNav, _constants.headerNav].find(function (m) {
         return m[page];
       });
@@ -1502,7 +1511,7 @@ var MainContent = function (_Component) {
         { className: pageClass },
         _react2.default.createElement(
           'div',
-          { className: 'yesm-main-content' },
+          { className: 'yesm-main-content', mainref: this.props.mainref },
           _react2.default.createElement(
             'div',
             { className: 'yesm-main-text' },
@@ -1541,6 +1550,10 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(33);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _reactRouterDom = __webpack_require__(1);
 
@@ -1589,6 +1602,7 @@ var YesmPage = function (_Component) {
     var _this = _possibleConstructorReturn(this, (YesmPage.__proto__ || Object.getPrototypeOf(YesmPage)).call(this, props));
 
     _this.onClick = _this.onClick.bind(_this);
+    _this.mainRef = _react2.default.createRef();
     return _this;
   }
 
@@ -1601,11 +1615,14 @@ var YesmPage = function (_Component) {
       var onMain = this.props.onMain;
 
       if (onMain) {
+        window.scrollTo(0, 0);
         this.props.moveOffMain();
         this.timeout = setTimeout(function () {
           _this2.props.history.push(to);
         }, 500);
       } else this.props.history.push(to);
+      var domNode = _reactDom2.default.findDOMNode(this.mainRef.current);
+      console.log(domNode);
     }
   }, {
     key: "render",
@@ -1646,7 +1663,7 @@ var YesmPage = function (_Component) {
         _react2.default.createElement(
           "section",
           { className: "yesm-body" },
-          _react2.default.createElement(_Main2.default, { page: page, lang: lang }),
+          _react2.default.createElement(_Main2.default, { page: page, lang: lang, mainref: this.mainRef }),
           _react2.default.createElement(_SideNav2.default, { page: page, lang: lang, onClickFn: this.onClick })
         ),
         _react2.default.createElement(_Footer2.default, { lang: lang, onClickFn: this.onClick })
@@ -1838,6 +1855,12 @@ var initialState = {
   onMain: 0,
   offMain: 0
 };
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-dom");
 
 /***/ })
 /******/ ]);
