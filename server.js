@@ -382,9 +382,13 @@ var Main = function (_Component) {
 
       console.log(this.props);
       var mainCubeClass = 'yesm-main-cube';
+      var mainBNameClass = 'yesm-bname';
 
       if (!page) {
-        if (offMain) mainCubeClass += ' yesm-main-cube-animate';else if (!onMain) {
+        if (offMain) {
+          mainCubeClass += ' yesm-main-cube-animate';
+          mainBNameClass += ' yesm-bname-animate';
+        } else if (!onMain) {
           this.props.setOnMain();
         }
 
@@ -394,8 +398,8 @@ var Main = function (_Component) {
           _react2.default.createElement(
             "main",
             { role: "main", className: "yesm-main" },
-            _react2.default.createElement("img", { src: "/cube-main.png", alt: "rubik cube", title: "YeSmart Main Page", className: mainCubeClass, id: "yesm-main-cube" }),
-            _react2.default.createElement(_YesBrandName2.default, { page: page })
+            _react2.default.createElement("img", { src: "/cube-main.png", alt: "Rubik cube", title: "YeSmart Main Page", className: mainCubeClass, id: "yesm-main-cube" }),
+            _react2.default.createElement(_YesBrandName2.default, { page: page, bnameClassName: mainBNameClass })
           )
         );
       } else this.props.clearOffMain();
@@ -582,9 +586,12 @@ var YesBrandName = function (_Component) {
   _createClass(YesBrandName, [{
     key: 'render',
     value: function render() {
-      var page = this.props.page;
+      var _props = this.props,
+          page = _props.page,
+          bnameClassName = _props.bnameClassName;
 
-      var className = !page ? 'yesm-bname' : 'yesm-bname-logo';
+      console.log(bnameClassName);
+      var className = bnameClassName ? bnameClassName : !page ? 'yesm-bname' : 'yesm-bname-logo';
       return _react2.default.createElement(
         'svg',
         { viewBox: '-5 -3 26 24.4', xmlns: 'http://www.w3.org/2000/svg', xmlnsXlink: 'http://www.w3.org/1999/xlink', width: '100%', height: '100%', className: className },
@@ -681,7 +688,7 @@ var RipeMemberSVG = function (_Component) {
 				_react2.default.createElement("style", { type: "text/css" }),
 				_react2.default.createElement(
 					"text",
-					{ x: "272", y: "180", className: "yesm-is-ripe-member" },
+					{ x: "272", y: "180", className: "yesm-is-ripe-member", textLength: "550" },
 					"YESMART"
 				),
 				_react2.default.createElement(

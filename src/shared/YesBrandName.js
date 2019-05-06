@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 
 class YesBrandName extends Component {
   render() {
-    const { page } = this.props
-    const className = !page ? 'yesm-bname' : 'yesm-bname-logo' 
+    const { page, bnameClassName } = this.props
+    console.log(bnameClassName)
+    const className = bnameClassName ? bnameClassName : !page ? 'yesm-bname' : 'yesm-bname-logo' 
     return (
       <svg viewBox="-5 -3 26 24.4" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="100%" height="100%" className={className}> 
         <title>YeSmart</title>

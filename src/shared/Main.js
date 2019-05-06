@@ -12,10 +12,13 @@ class Main extends Component {
     const { page, lang, offMain, onMain} = this.props
     console.log(this.props)
     let mainCubeClass = 'yesm-main-cube'
+    let mainBNameClass = 'yesm-bname'
 
     if (!page) {
-      if (offMain) 
+      if (offMain) {
         mainCubeClass += ' yesm-main-cube-animate'
+        mainBNameClass += ' yesm-bname-animate'
+      }
       
       else if (!onMain) {
         this.props.setOnMain() 
@@ -24,8 +27,8 @@ class Main extends Component {
       return (
         <BodyClassName className={lang}>
         <main role="main" className="yesm-main">
-          <img src="/cube-main.png" alt="rubik cube" title="YeSmart Main Page" className={mainCubeClass} id="yesm-main-cube" />
-          <YesBrandName page={page} /> 
+          <img src="/cube-main.png" alt="Rubik cube" title="YeSmart Main Page" className={mainCubeClass} id="yesm-main-cube" />
+          <YesBrandName page={page} bnameClassName={mainBNameClass} /> 
         </main>
      </BodyClassName>)
     }

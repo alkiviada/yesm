@@ -403,25 +403,14 @@ width: 100%;
     width: 37%;
     top: 7%
   }
-.yesm-main-cube-animate {
-  position: absolute;
-  top: -.2em;
-  left:0;
-  width: 120px;
-  height: auto;
-  transition: all .5s ease-out;
-}
-}
-
-
-
-@keyframes bye-cube {
-  from {
-    transform: scale(1) translate(0%, 0%);
-  }
-  to {
-    transform: scale(.4) translate(-130%, -185%);
-  }
+  .yesm-main-cube-animate {
+   position: absolute;
+   top: -.2em;
+   left:0;
+   width: 120px;
+   height: auto;
+   transition: all .5s ease-out;
+ }
 }
 
 .yesm-main-cube-animate {
@@ -432,6 +421,7 @@ width: 100%;
   height: auto;
   transition: all .5s ease-out;
 }
+
 
 .yesm-bname {
   overflow: visible;
@@ -440,6 +430,15 @@ width: 100%;
   top: 29%;
   left: 33%;
   height: auto;
+}
+
+.yesm-bname-animate {
+  position: absolute;
+  width: 140px;
+  height: auto;
+  left: 4.5em;
+  top: .3em;
+  transition: all .5s ease-out;
 }
 
 @media(max-width: 900px) {
@@ -499,11 +498,17 @@ width: 100%;
 }
 
 
-.yesm-bname-logo .yesm-bname-subhead {
+.yesm-bname-logo .yesm-bname-subhead, .yesm-bname-animate .yesm-bname-subhead {
   font-size: 2px; 
 }
-.yesm-bname-logo .yesm-bname-subhead-text {
+
+
+.yesm-bname-logo .yesm-bname-subhead-text, .yesm-bname-animate .yesm-bname-subhead-text {
   letter-spacing: .3px;
+}
+
+.yesm-bname-animate * {
+  transition: all .5s ease-out;
 }
 
 .yesm-bname-subhead {
@@ -530,6 +535,10 @@ width: 100%;
   display: none;
 }
 
+.yesm-bname-animate .yesm-bname-subhead2 {
+  opacity: 0;
+  fill-opacity: 0;
+}
 
 .yesm-bname-text-path {
   font-size: 5px; 
@@ -667,8 +676,12 @@ footer a:hover {
 
 
 .yesm-ripe-member {
-  bottom: 1em;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  padding-bottom: 1em;
 }
+
 .st0{fill:#25316A;}
 .st1{fill:url(#SVGID_1_);}
 .st2{fill:#5B5C87;}

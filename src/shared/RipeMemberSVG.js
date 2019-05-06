@@ -7,7 +7,7 @@ class RipeMemberSVG extends Component {
 	 viewBox="0 0 841.9 595.3" xmlSpace="preserve" className="yesm-ripe-member" width="100%" height="100%">
 <style type="text/css">
 </style>
-<text x="272" y="180" className="yesm-is-ripe-member">YESMART</text>
+<text x="272" y="180" className="yesm-is-ripe-member" textLength="550">YESMART</text>
 <g>
 	<path className="st0" d="M323.3,297.9l-17-30.4h-9.8v30.4h-21.6v-86.1h37.7c8.6,0,15.2,1.8,20.6,5.8c6.6,4.8,10.1,12.8,10.1,21.4
 		c0,10.5-5.1,20.8-16.3,25.4l19.8,33.6H323.3z M309.7,228.7h-13.4v22.8h13.4c7.7,0,12.6-4.5,12.6-11.5
