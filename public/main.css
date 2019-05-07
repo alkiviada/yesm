@@ -400,10 +400,11 @@ width: 100%;
 
 @media(max-width: 900px) {
   .ru .yesm-main-cube, .ua .yesm-main-cube, .en .yesm-main-cube, .yesm-main-cube {
-    width: 37%;
-    top: 7%
+    width: 40%;
+    top: 7%;
+    left: 13%;
   }
-  .yesm-main-cube-animate {
+  .ru .yesm-main-cube-animate, .ua .yesm-main-cube-animate, .en .yesm-main-cube-animate .yesm-main-cube-animate {
    position: absolute;
    top: -.2em;
    left:0;
@@ -441,21 +442,7 @@ width: 100%;
   transition: all .5s ease-out;
 }
 
-@media(max-width: 900px) {
-  .yesm-bname, .yesm-bname {
-    width: 17%;
-    top: 24%;
-    left: 30%;
-  }
-}
 
-@media(max-width: 1150px) {
-  .ru .yesm-bname, .ua .yesm-bname {
-    width: 17%;
-    top: 24%;
-    left: 30%;
-  }
-}
 
 @media(max-width: 1250px) {
   .ru .yesm-bname, .ua .yesm-bname {
@@ -463,6 +450,36 @@ width: 100%;
     width: 18%;
     left: 31%;
   }
+}
+@media(max-width: 1150px) {
+  .ru .yesm-bname, .ua .yesm-bname {
+    width: 17%;
+    top: 24%;
+    left: 30%;
+  }
+}
+@media(max-width: 900px) {
+  .ru .yesm-bname, .ua .yesm-bname, .en .yesm-bname, .yesm-bname {
+    width: 25%;
+    top: 20%;
+    left: 50%;
+  }
+  .ru .yesm-bname-animate, .ua .yesm-bname-animate, .en .yesm-bname-animate, .yesm-bname-animate {
+  position: absolute;
+  width: 140px;
+  height: auto;
+  left: 4.5em;
+  top: .3em;
+  transition: all .5s ease-out;
+ }
+.yesm-bname-animate .yesm-bname-subhead2 {
+  opacity: 0;
+  fill-opacity: 0;
+}
+.yesm-bname-animate * {
+  transition: all 2s ease-out;
+}
+
 }
 
 
@@ -538,6 +555,38 @@ width: 100%;
 .yesm-bname-animate .yesm-bname-subhead2 {
   opacity: 0;
   fill-opacity: 0;
+}
+@media(max-width: 900px) {
+  .ru .yesm-bname, .ua .yesm-bname, .en .yesm-bname, .yesm-bname {
+    width: 25%;
+    top: 20%;
+    left: 50%;
+  }
+  .ru .yesm-bname-animate, .ua .yesm-bname-animate, .en .yesm-bname-animate, .yesm-bname-animate {
+  position: absolute;
+  width: 140px;
+  height: auto;
+  left: 4.5em;
+  top: .3em;
+  transition: all .5s ease-out;
+ }
+.yesm-bname-animate .yesm-bname-subhead2 {
+  opacity: 0;
+  fill-opacity: 0;
+}
+.yesm-bname-animate .yesm-bname-subhead {
+  font-size: 2px; 
+}
+
+
+.yesm-bname-animate .yesm-bname-subhead-text {
+  letter-spacing: .3px;
+}
+
+.yesm-bname-animate * {
+  transition: all .5s ease-out;
+}
+
 }
 
 .yesm-bname-text-path {
