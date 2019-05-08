@@ -946,6 +946,8 @@ app.use(_express2.default.static("public"));
 
 app.get("*", function (req, res, next) {
   var context = {};
+  console.log(_store2.default.getState());
+
   var markup = (0, _server.renderToString)(_react2.default.createElement(
     _reactRedux.Provider,
     { store: _store2.default },
@@ -1402,12 +1404,11 @@ var YesmBrandName = function (_Component) {
           page = _props.page,
           bnameClassName = _props.bnameClassName;
 
-      console.log(bnameClassName);
       var className = bnameClassName ? bnameClassName : !page ? 'yesm-bname' : 'yesm-bname-logo';
       var descr = bnameClassName == 'yesm-bname' ? 'yesm-descr' : '';
       return _react2.default.createElement(
         'svg',
-        { viewBox: '-2 -13 390 50', xmlns: 'http://www.w3.org/2000/svg', xmlnsXlink: 'http://www.w3.org/1999/xlink', width: '50%', height: '50%', className: className, 'aria-describedby': descr },
+        { viewBox: '-2 -13 80 50', xmlns: 'http://www.w3.org/2000/svg', xmlnsXlink: 'http://www.w3.org/1999/xlink', width: '50%', height: '50%', className: className, 'aria-describedby': descr },
         _react2.default.createElement(
           'desc',
           { id: 'timeline-desc' },

@@ -3,11 +3,10 @@ import React, { Component } from 'react'
 class YesmBrandName extends Component {
   render() {
     const { page, bnameClassName } = this.props
-    console.log(bnameClassName)
     const className = bnameClassName ? bnameClassName : !page ? 'yesm-bname' : 'yesm-bname-logo' 
     const descr = bnameClassName == 'yesm-bname' ? 'yesm-descr' : ''
     return (
-      <svg viewBox="-2 -13 390 50" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="50%" height="50%" className={className} aria-describedby={descr}> 
+      <svg viewBox="-2 -13 80 50" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="50%" height="50%" className={className} aria-describedby={descr}> 
         <desc id="timeline-desc">Yesmart is smart decisions for your business</desc>
         <text className="yesm-bname-text" role="presentation">
           <tspan x="0" y="0" className="yesm-bname-main">Ye</tspan>

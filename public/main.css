@@ -278,7 +278,7 @@ width: 100%;
 
 .yesm-body {
   display: grid;
-  grid-template-columns: 55% 45%;
+  grid-template-columns: 1fr 1fr;
   grid-area: middle;
   grid-template-areas: 
     "center-content side-nav"
@@ -396,7 +396,7 @@ width: 100%;
 
 .yesm-bname {
   position: absolute;
-  width: 90%;
+  width: 20%;
   top: 35%;
   left: 36%;
   height: auto;
@@ -426,25 +426,25 @@ width: 100%;
 
 .yesm-bname-animate {
   position: absolute;
-  width: 760px;
+  width: 150px;
   height: auto;
-  left: 5.5em;
-  top: .7em;
+  left: 5.7em;
+  top: .6em;
   transition: all .5s ease-out;
 }
 
 @media(max-width: 900px) {
   .yesm-bname {
-    width: 125%;
+    width: 35%;
     top: 22%;
     left: 51%;
   }
   .yesm-bname-animate {
     position: absolute;
-    width: 760px;
+    width: 150px;
     height: auto;
-    left: 5.5em;
-    top: .7em;
+    left: 5.7em;
+    top: .6em;
     transition: all .5s ease-out;
   }
   .yesm-bname-animate .yesm-bname-subhead2 {
@@ -464,7 +464,7 @@ width: 100%;
 
 .yesm-bname-logo {
   position: absolute;
-  width: 750%;
+  width: 150%;
   height: auto;
   left: 7.5em;
   top: .8em;

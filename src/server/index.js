@@ -18,6 +18,8 @@ app.use(express.static("public"))
 
 app.get("*", (req, res, next) => {
   const context = { };
+  console.log(store.getState())
+
   const markup = renderToString(
     <Provider store={store}>
       <StaticRouter context={ context } location={ req.url }>
