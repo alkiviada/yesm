@@ -336,11 +336,11 @@ var _YesCube = __webpack_require__(7);
 
 var _YesCube2 = _interopRequireDefault(_YesCube);
 
-var _YesBrandName = __webpack_require__(8);
+var _YesmBrandName = __webpack_require__(25);
 
-var _YesBrandName2 = _interopRequireDefault(_YesBrandName);
+var _YesmBrandName2 = _interopRequireDefault(_YesmBrandName);
 
-var _MainContent = __webpack_require__(25);
+var _MainContent = __webpack_require__(26);
 
 var _MainContent2 = _interopRequireDefault(_MainContent);
 
@@ -350,7 +350,7 @@ var _reactRedux = __webpack_require__(4);
 
 var _mainActions = __webpack_require__(10);
 
-var _reactBodyClassname = __webpack_require__(26);
+var _reactBodyClassname = __webpack_require__(8);
 
 var _reactBodyClassname2 = _interopRequireDefault(_reactBodyClassname);
 
@@ -399,7 +399,7 @@ var Main = function (_Component) {
             "main",
             { role: "main", className: "yesm-main" },
             _react2.default.createElement("img", { src: "/cube-main.png", alt: "Rubik cube", title: "YeSmart Main Page", className: mainCubeClass, id: "yesm-main-cube" }),
-            _react2.default.createElement(_YesBrandName2.default, { page: page, bnameClassName: mainBNameClass })
+            _react2.default.createElement(_YesmBrandName2.default, { page: page, bnameClassName: mainBNameClass })
           )
         );
       } else this.props.clearOffMain();
@@ -551,98 +551,9 @@ exports.default = (0, _reactRouterDom.withRouter)(YesCube);
 
 /***/ }),
 /* 8 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var YesBrandName = function (_Component) {
-  _inherits(YesBrandName, _Component);
-
-  function YesBrandName() {
-    _classCallCheck(this, YesBrandName);
-
-    return _possibleConstructorReturn(this, (YesBrandName.__proto__ || Object.getPrototypeOf(YesBrandName)).apply(this, arguments));
-  }
-
-  _createClass(YesBrandName, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          page = _props.page,
-          bnameClassName = _props.bnameClassName;
-
-      console.log(bnameClassName);
-      var className = bnameClassName ? bnameClassName : !page ? 'yesm-bname' : 'yesm-bname-logo';
-      return _react2.default.createElement(
-        'svg',
-        { viewBox: '-5 -3 26 24.4', xmlns: 'http://www.w3.org/2000/svg', xmlnsXlink: 'http://www.w3.org/1999/xlink', width: '100%', height: '100%', className: className },
-        _react2.default.createElement(
-          'title',
-          null,
-          'YeSmart'
-        ),
-        _react2.default.createElement(
-          'defs',
-          null,
-          _react2.default.createElement('path', { id: 'bname-lower-path', d: 'M 0 3 L 5.8 3 M 6 3.5 L 10 3.5 M 10 4.5 L26 4.5', className: 'yesm-text-path' }),
-          _react2.default.createElement('path', { id: 'bname-cap-path', d: 'M 3.9 3 L 5.3 3 M 9.2 4.5 L26 4.5', className: 'yesm-text-path-part' }),
-          _react2.default.createElement('path', { id: 'bname-subhead1', d: 'M -1 8.1 L 16.5 8.1', className: 'yesm-subhead-path' }),
-          _react2.default.createElement('path', { id: 'bname-subhead2', d: 'M -1 11.2 L 18 11.2', className: 'yesm-subhead-path' })
-        ),
-        _react2.default.createElement(
-          'text',
-          { className: 'yesm-bname-text', textLength: '27' },
-          _react2.default.createElement(
-            'textPath',
-            { xlinkHref: '#bname-lower-path', className: 'yesm-bname-text-path' },
-            'YeSmart'
-          )
-        ),
-        _react2.default.createElement(
-          'text',
-          { className: 'yesm-bname-subhead-text', textLength: '14' },
-          _react2.default.createElement(
-            'textPath',
-            { xlinkHref: '#bname-subhead1', className: 'yesm-bname-subhead' },
-            '\u0423\u041C\u041D\u042B\u0415 \u0420\u0415\u0428\u0415\u041D\u0418\u042F'
-          )
-        ),
-        _react2.default.createElement(
-          'text',
-          { className: 'yesm-bname-subhead-text', textLength: '19' },
-          _react2.default.createElement(
-            'textPath',
-            { xlinkHref: '#bname-subhead2', className: 'yesm-bname-subhead yesm-bname-subhead2' },
-            '\u0414\u041B\u042F \u0412\u0410\u0428\u0415\u0413\u041E \u0411\u0418\u0417\u041D\u0415\u0421\u0410'
-          )
-        )
-      );
-    }
-  }]);
-
-  return YesBrandName;
-}(_react.Component);
-
-exports.default = YesBrandName;
+module.exports = require("react-body-classname");
 
 /***/ }),
 /* 9 */
@@ -816,9 +727,9 @@ var _YesmLink = __webpack_require__(3);
 
 var _YesmLink2 = _interopRequireDefault(_YesmLink);
 
-var _YesBrandName = __webpack_require__(8);
+var _YesmBrandName = __webpack_require__(25);
 
-var _YesBrandName2 = _interopRequireDefault(_YesBrandName);
+var _YesmBrandName2 = _interopRequireDefault(_YesmBrandName);
 
 var _constants = __webpack_require__(2);
 
@@ -861,9 +772,9 @@ var Header = function (_Component) {
               "a",
               { href: '/' + lang, onClick: function onClick(e) {
                   return _this2.props.onClickFn(e, '/' + lang);
-                } },
-              _react2.default.createElement(_YesBrandName2.default, { page: page, lang: lang }),
-              _react2.default.createElement("img", { src: "/cube-logo.png", alt: "small rubic cube", title: "YeSmart Main Page", className: "yesm-main-cube-logo" })
+                }, title: "YeSmart Main Page link" },
+              _react2.default.createElement(_YesmBrandName2.default, { page: page, lang: lang }),
+              _react2.default.createElement("img", { src: "/cube-logo.png", alt: "", className: "yesm-main-cube-logo" })
             )
           ),
           _react2.default.createElement(
@@ -1012,7 +923,7 @@ var _App = __webpack_require__(19);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _store = __webpack_require__(29);
+var _store = __webpack_require__(31);
 
 var _store2 = _interopRequireDefault(_store);
 
@@ -1091,7 +1002,7 @@ var _Home = __webpack_require__(20);
 
 var _Home2 = _interopRequireDefault(_Home);
 
-var _YesmPage = __webpack_require__(27);
+var _YesmPage = __webpack_require__(28);
 
 var _YesmPage2 = _interopRequireDefault(_YesmPage);
 
@@ -1465,7 +1376,91 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactBodyClassname = __webpack_require__(26);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var YesmBrandName = function (_Component) {
+  _inherits(YesmBrandName, _Component);
+
+  function YesmBrandName() {
+    _classCallCheck(this, YesmBrandName);
+
+    return _possibleConstructorReturn(this, (YesmBrandName.__proto__ || Object.getPrototypeOf(YesmBrandName)).apply(this, arguments));
+  }
+
+  _createClass(YesmBrandName, [{
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          page = _props.page,
+          bnameClassName = _props.bnameClassName;
+
+      console.log(bnameClassName);
+      var className = bnameClassName ? bnameClassName : !page ? 'yesm-bname' : 'yesm-bname-logo';
+      return _react2.default.createElement(
+        'svg',
+        { viewBox: '-2 -13 200 50', xmlns: 'http://www.w3.org/2000/svg', xmlnsXlink: 'http://www.w3.org/1999/xlink', width: '50%', height: '50%', className: className },
+        _react2.default.createElement(
+          'text',
+          { className: 'yesm-bname-text' },
+          _react2.default.createElement(
+            'tspan',
+            { x: '0', y: '0', className: 'yesm-bname-main' },
+            'Ye'
+          ),
+          _react2.default.createElement(
+            'tspan',
+            { x: '24', y: '2', className: 'yesm-bname-main' },
+            'S'
+          ),
+          _react2.default.createElement(
+            'tspan',
+            { x: '36.5', y: '4', className: 'yesm-bname-main' },
+            'mart'
+          ),
+          _react2.default.createElement(
+            'tspan',
+            { x: '0', y: '15', className: 'yesm-bname-subhead yesm-bname-subhead1' },
+            '\u0423\u041C\u041D\u042B\u0415 \u0420\u0415\u0428\u0415\u041D\u0418\u042F'
+          ),
+          _react2.default.createElement(
+            'tspan',
+            { x: '0', y: '26', className: 'yesm-bname-subhead yesm-bname-subhead2' },
+            '\u0414\u041B\u042F \u0412\u0410\u0428\u0415\u0413\u041E \u0411\u0418\u0417\u041D\u0415\u0421\u0410'
+          )
+        )
+      );
+    }
+  }]);
+
+  return YesmBrandName;
+}(_react.Component);
+
+exports.default = YesmBrandName;
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactBodyClassname = __webpack_require__(8);
 
 var _reactBodyClassname2 = _interopRequireDefault(_reactBodyClassname);
 
@@ -1493,13 +1488,6 @@ var MainContent = function (_Component) {
   }
 
   _createClass(MainContent, [{
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
-      console.log('i mounterd');
-      window.scrollTo(0, 0);
-      console.log('ha i mounterd');
-    }
-  }, {
     key: 'render',
     value: function render() {
       var _props = this.props,
@@ -1536,13 +1524,8 @@ var MainContent = function (_Component) {
 exports.default = MainContent;
 
 /***/ }),
-/* 26 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-body-classname");
-
-/***/ }),
-/* 27 */
+/* 27 */,
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1558,7 +1541,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(33);
+var _reactDom = __webpack_require__(29);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -1574,7 +1557,7 @@ var _YesmLink2 = _interopRequireDefault(_YesmLink);
 
 var _mainActions = __webpack_require__(10);
 
-var _YesmSVGFilters = __webpack_require__(28);
+var _YesmSVGFilters = __webpack_require__(30);
 
 var _YesmSVGFilters2 = _interopRequireDefault(_YesmSVGFilters);
 
@@ -1691,7 +1674,13 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, { moveOffMain: _mainActions.moveOffMain })(YesmPage));
 
 /***/ }),
-/* 28 */
+/* 29 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-dom");
+
+/***/ }),
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1729,7 +1718,7 @@ var YesmSVGFilters = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         "svg",
-        { xmlns: "http://www.w3.org/2000/svg", version: "1.1", className: "svg-filters", width: "0", height: "0" },
+        { xmlns: "http://www.w3.org/2000/svg", version: "1.1", className: "svg-filters", width: "0", height: "0", "aria-hidden": "true" },
         _react2.default.createElement(
           "defs",
           null,
@@ -1765,41 +1754,6 @@ var YesmSVGFilters = function (_Component) {
 exports.default = YesmSVGFilters;
 
 /***/ }),
-/* 29 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _redux = __webpack_require__(14);
-
-var _reduxThunk = __webpack_require__(30);
-
-var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
-
-var _reducers = __webpack_require__(31);
-
-var _reducers2 = _interopRequireDefault(_reducers);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var middleware = [_reduxThunk2.default];
-
-var store = (0, _redux.createStore)(_reducers2.default, (0, _redux.compose)(_redux.applyMiddleware.apply(undefined, middleware)));
-
-exports.default = store;
-
-/***/ }),
-/* 30 */
-/***/ (function(module, exports) {
-
-module.exports = require("redux-thunk");
-
-/***/ }),
 /* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1812,7 +1766,42 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(14);
 
-var _mainReducers = __webpack_require__(32);
+var _reduxThunk = __webpack_require__(32);
+
+var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+
+var _reducers = __webpack_require__(33);
+
+var _reducers2 = _interopRequireDefault(_reducers);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var middleware = [_reduxThunk2.default];
+
+var store = (0, _redux.createStore)(_reducers2.default, (0, _redux.compose)(_redux.applyMiddleware.apply(undefined, middleware)));
+
+exports.default = store;
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports) {
+
+module.exports = require("redux-thunk");
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _redux = __webpack_require__(14);
+
+var _mainReducers = __webpack_require__(34);
 
 var _mainReducers2 = _interopRequireDefault(_mainReducers);
 
@@ -1823,7 +1812,7 @@ exports.default = (0, _redux.combineReducers)({
 });
 
 /***/ }),
-/* 32 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1862,12 +1851,6 @@ var initialState = {
   onMain: 0,
   offMain: 0
 };
-
-/***/ }),
-/* 33 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-dom");
 
 /***/ })
 /******/ ]);

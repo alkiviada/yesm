@@ -4,11 +4,6 @@ import { sideNav, headerNav, footerNav } from './constants'
 import RipeMemberSVG from './RipeMemberSVG'
 
 class MainContent extends Component {
-  componentDidUpdate() {
-  console.log('i mounterd')
-  window.scrollTo(0, 0)
-  console.log('ha i mounterd')
-}
   render() {
     const { page, lang } = this.props
     console.log(this.props.mainref)

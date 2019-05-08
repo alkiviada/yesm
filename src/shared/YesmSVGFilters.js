@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 class YesmSVGFilters extends Component {
   render() {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" className="svg-filters" width="0" height="0" >
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" className="svg-filters" width="0" height="0" aria-hidden="true">
       <defs>
        <filter id="colorMeBlueMatrix">
     <feColorMatrix in="SourceGraphic" colorInterpolationFilters="sRGB"

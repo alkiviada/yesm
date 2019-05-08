@@ -2,7 +2,7 @@ import React, { Component, } from 'react'
 import { Link } from "react-router-dom";
 import YesCube from "./YesCube";
 import YesmLink from "./YesmLink";
-import YesBrandName from "./YesBrandName";
+import YesmBrandName from "./YesmBrandName";
 import { headerNav, langs } from './constants'
 
 class Header extends Component {
@@ -13,9 +13,9 @@ class Header extends Component {
         <div className="yesm-header1">
           { !page ? '' : 
             <h1 className="yesm-logo">
-              <a href={'/' + lang} onClick={(e) => this.props.onClickFn(e, '/' + lang)}>
-                <YesBrandName page={page} lang={lang} />
-                <img src="/cube-logo.png" alt="small rubic cube"  title="YeSmart Main Page" className='yesm-main-cube-logo' />
+              <a href={'/' + lang} onClick={(e) => this.props.onClickFn(e, '/' + lang)} title="YeSmart Main Page link">
+                <YesmBrandName page={page} lang={lang} />
+                <img src="/cube-logo.png" alt=""  className='yesm-main-cube-logo' />
               </a>
             </h1>
           }

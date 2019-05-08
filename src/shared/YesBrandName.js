@@ -7,7 +7,7 @@ class YesBrandName extends Component {
     const className = bnameClassName ? bnameClassName : !page ? 'yesm-bname' : 'yesm-bname-logo' 
     return (
       <svg viewBox="-5 -3 26 24.4" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="100%" height="100%" className={className}> 
-        <title>YeSmart</title>
+        <title>YeSmart main page link</title>
         <defs>
         <path id="bname-lower-path" d="M 0 3 L 5.8 3 M 6 3.5 L 10 3.5 M 10 4.5 L26 4.5" className="yesm-text-path"/>
         <path id="bname-cap-path" d="M 3.9 3 L 5.3 3 M 9.2 4.5 L26 4.5" className="yesm-text-path-part"/>

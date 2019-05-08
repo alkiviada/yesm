@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import YesCube from "./YesCube";
-import YesBrandName from "./YesBrandName";
+import YesmBrandName from "./YesmBrandName";
 import MainContent from "./MainContent";
 import { sideNav, headerNav, footerNav } from './constants'
 import { connect } from 'react-redux';
@@ -28,7 +28,7 @@ class Main extends Component {
         <BodyClassName className={lang}>
         <main role="main" className="yesm-main">
           <img src="/cube-main.png" alt="Rubik cube" title="YeSmart Main Page" className={mainCubeClass} id="yesm-main-cube" />
-          <YesBrandName page={page} bnameClassName={mainBNameClass} /> 
+          <YesmBrandName page={page} bnameClassName={mainBNameClass} /> 
         </main>
      </BodyClassName>)
     }
