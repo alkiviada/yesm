@@ -1614,12 +1614,12 @@ var YesmPage = function (_Component) {
       var onMain = this.props.onMain;
 
       if (onMain) {
-        window.scrollTo(0, 0);
         this.props.moveOffMain();
         this.timeout = setTimeout(function () {
           _this2.props.history.push(to);
         }, 500);
       } else this.props.history.push(to);
+      window.scrollTo(0, 0);
       var domNode = _reactDom2.default.findDOMNode(this.mainRef.current);
       console.log(domNode);
     }

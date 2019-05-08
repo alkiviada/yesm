@@ -21,7 +21,6 @@ class YesmPage extends Component {
     e.preventDefault()
     const { onMain } = this.props
     if (onMain) {
-      window.scrollTo(0, 0)
       this.props.moveOffMain()
       this.timeout = setTimeout(() => {
         this.props.history.push(to);
@@ -29,6 +28,7 @@ class YesmPage extends Component {
     }
     else
       this.props.history.push(to);
+    window.scrollTo(0, 0)
     const domNode = ReactDOM.findDOMNode(this.mainRef.current)
     console.log(domNode)
   };
