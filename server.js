@@ -958,7 +958,7 @@ app.get("*", function (req, res, next) {
     )
   ));
 
-  res.send("\n    <!DOCTYPE html>\n    <html>\n      <head>\n        <title>YeSmart</title>\n        <link href=\"//fonts.googleapis.com/css?family=Open+Sans:300,400,700,900|Montserrat:400,700,900|Yanone+Kaffeesatz:400|Architects+Daughter:400\" rel=\"stylesheet\" type=\"text/css\">\n        <link rel=\"stylesheet\" href=\"/main.css\">\n        <script src=\"/bundle.js\" defer></script>\n      </head>\n\n      <body>\n        <div id=\"app\" class=\"yesm-container\">" + markup + "</div>\n      </body>\n    </html>\n  ");
+  res.send("\n    <!DOCTYPE html>\n    <html>\n      <head>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n        <title>YeSmart</title>\n        <link href=\"//fonts.googleapis.com/css?family=Open+Sans:300,400,700,900|Montserrat:400,700,900|Yanone+Kaffeesatz:400|Architects+Daughter:400\" rel=\"stylesheet\" type=\"text/css\">\n        <link rel=\"stylesheet\" href=\"/main.css\">\n        <script src=\"/bundle.js\" defer></script>\n      </head>\n\n      <body>\n        <div id=\"app\" class=\"yesm-container\">" + markup + "</div>\n      </body>\n    </html>\n  ");
 });
 
 app.listen(3000, function () {

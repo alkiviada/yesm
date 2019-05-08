@@ -32,6 +32,7 @@ app.get("*", (req, res, next) => {
     <!DOCTYPE html>
     <html>
       <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>YeSmart</title>
         <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,700,900|Montserrat:400,700,900|Yanone+Kaffeesatz:400|Architects+Daughter:400" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="/main.css">

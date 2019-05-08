@@ -284,9 +284,27 @@ width: 100%;
     "center-content side-nav"
 }
 
+@media(max-width: 900px) {
+  .yesm-body {
+    display: grid;
+    grid-template-columns: .1fr 1fr .1fr;
+    grid-template-rows: 15em 1fr;
+    grid-area: middle;
+    row-gap: 1em;
+    grid-template-areas: ". main-content ."
+      ". nav-content .";
+  }
+}
+
 .yesm-main-content {
   grid-area: center-content;
   position: relative;
+}
+
+@media(max-width: 900px) {
+  .yesm-main-content, .yesm-main {
+    grid-area: main-content;
+  }
 }
 
 .yesm-main-content::before {
