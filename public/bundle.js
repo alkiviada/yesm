@@ -4190,7 +4190,7 @@ var RipeMemberSVG = function (_Component) {
 			return _react2.default.createElement(
 				"svg",
 				{ version: "1.1", id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px",
-					viewBox: "0 0 841.9 595.3", xmlSpace: "preserve", className: "yesm-ripe-member", width: "100%", height: "100%" },
+					viewBox: "0 0 841.9 595.3", xmlSpace: "preserve", className: "yesm-ripe-member", width: "10%", height: "10%" },
 				_react2.default.createElement("style", { type: "text/css" }),
 				_react2.default.createElement(
 					"text",
@@ -4993,6 +4993,8 @@ var _constants = __webpack_require__(8);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -5030,9 +5032,9 @@ var Header = function (_Component) {
               "a",
               { href: '/' + lang, onClick: function onClick(e) {
                   return _this2.props.onClickFn(e, '/' + lang);
-                }, title: "YeSmart Main Page link" },
+                } },
               _react2.default.createElement(_YesmBrandName2.default, { page: page, lang: lang }),
-              _react2.default.createElement("img", { src: "/cube-logo.png", alt: "", className: "yesm-main-cube-logo" })
+              _react2.default.createElement("img", _defineProperty({ src: "/cube-logo.png", alt: "", className: "yesm-main-cube-logo" }, "alt", "Yesmart main"))
             )
           ),
           _react2.default.createElement(
@@ -17789,12 +17791,18 @@ var YesmBrandName = function (_Component) {
 
       console.log(bnameClassName);
       var className = bnameClassName ? bnameClassName : !page ? 'yesm-bname' : 'yesm-bname-logo';
+      var descr = bnameClassName == 'yesm-bname' ? 'yesm-descr' : '';
       return _react2.default.createElement(
         'svg',
-        { viewBox: '-2 -13 200 50', xmlns: 'http://www.w3.org/2000/svg', xmlnsXlink: 'http://www.w3.org/1999/xlink', width: '50%', height: '50%', className: className },
+        { viewBox: '-2 -13 390 50', xmlns: 'http://www.w3.org/2000/svg', xmlnsXlink: 'http://www.w3.org/1999/xlink', width: '50%', height: '50%', className: className, 'aria-describedby': descr },
+        _react2.default.createElement(
+          'desc',
+          { id: 'timeline-desc' },
+          'Yesmart is smart decisions for your business'
+        ),
         _react2.default.createElement(
           'text',
-          { className: 'yesm-bname-text' },
+          { className: 'yesm-bname-text', role: 'presentation' },
           _react2.default.createElement(
             'tspan',
             { x: '0', y: '0', className: 'yesm-bname-main' },

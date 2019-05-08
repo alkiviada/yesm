@@ -4,7 +4,7 @@ class RipeMemberSVG extends Component {
   render() {
     return (
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 841.9 595.3" xmlSpace="preserve" className="yesm-ripe-member" width="100%" height="100%">
+	 viewBox="0 0 841.9 595.3" xmlSpace="preserve" className="yesm-ripe-member" width="10%" height="10%">
 <style type="text/css">
 </style>
 <text x="272" y="180" className="yesm-is-ripe-member" textLength="550">YESMART</text>
